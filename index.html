@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Estimasi Konstruksi Terpadu</title>
+    <title>Sistem Estimasi Konstruksi Terpadu (Pro Version)</title>
     <style>
         :root { --primary: #1a5276; --secondary: #5d6d7e; --accent: #d35400; --bg: #f4f6f7; --text: #212f3d; --white: #ffffff; --border: #d5dbdb; --success: #27ae60; --danger: #c0392b; --warning: #f39c12; --info: #3498db; }
         body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 0; font-size: 13px; }
@@ -32,27 +32,27 @@
         table { width: 100%; border-collapse: collapse; margin-top: 0; }
         th { background: #2c3e50; padding: 12px 10px; text-align: left; color: white; position: sticky; top: 0; }
         td { padding: 8px 10px; border-bottom: 1px solid #f2f3f4; }
-        .row-category { background: #ebf5fb; font-weight: 700; color: var(--primary); }
+        .row-category { background: #d6eaf8; font-weight: 800; color: #154360; text-transform: uppercase; letter-spacing: 1px; }
         .text-right { text-align: right; } .text-center { text-align: center; }
         #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; }
         .loader-spinner { width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid var(--accent); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        
-        /* TOAST NOTIFICATION */
-        #toast-notification {
-            display: none; position: fixed; bottom: 20px; right: 20px; padding: 15px;
-            background: #2c3e50; color: white; border-radius: 5px; z-index: 9999;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1); animation: slideIn 0.3s;
-        }
-        @keyframes slideIn { from { transform: translateY(100%); } to { transform: translateY(0); } }
+        /* MODAL */
+        .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); }
+        .modal-content { background-color: #fefefe; margin: 5% auto; padding: 20px; border: 1px solid #888; width: 90%; max-width: 700px; border-radius: 8px; max-height: 80vh; overflow-y: auto; }
+        .close { float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+        .search-item-result { padding: 10px; border-bottom: 1px solid #eee; cursor: pointer; display: flex; justify-content: space-between; }
+        .search-item-result:hover { background-color: #ebf5fb; }
+        /* TOAST */
+        #toast-notification { display: none; position: fixed; bottom: 20px; right: 20px; padding: 15px; background: #2c3e50; color: white; border-radius: 5px; z-index: 9999; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body>
 
     <div id="loader">
         <div class="loader-spinner"></div>
-        <h3 style="color:#2c3e50;">Memuat Aplikasi...</h3>
-        <small id="loader-status" style="color:#7f8c8d;">Menghubungkan Database</small>
+        <h3 style="color:#2c3e50;">Memuat Database AHSP...</h3>
+        <small id="loader-status" style="color:#7f8c8d;">Mohon tunggu sebentar</small>
     </div>
 
     <div id="toast-notification"></div>
@@ -80,16 +80,23 @@
                     <div class="input-wrap"><label>💰 Target Budget</label><input type="number" id="inp_target_budget" placeholder="0" oninput="calculateAuto()"></div>
                     <div class="input-wrap"><label>🏛️ Kelas Struktur</label><select id="inp_structure_grade" onchange="calculateAuto()"><option value="light">Ekonomis</option><option value="std" selected>Standar SNI</option><option value="heavy">Heavy Duty</option></select></div>
                 </div>
-                <div style="margin-top:20px; padding:15px; border:1px dashed #ccc; background:#fbfbfb; border-radius:6px;">
-                    <h4 style="margin-top:0; color:#555;">➕ Item Tambahan Manual</h4>
-                    <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                        <input type="text" id="cust_name" placeholder="Nama Pekerjaan" style="flex:2; padding:8px; border:1px solid #ddd; border-radius:4px;">
-                        <input type="number" id="cust_vol" placeholder="Vol" style="width:70px; padding:8px; border:1px solid #ddd; border-radius:4px;">
-                        <input type="text" id="cust_sat" placeholder="Sat" style="width:70px; padding:8px; border:1px solid #ddd; border-radius:4px;">
-                        <input type="number" id="cust_price" placeholder="Harga Satuan" style="flex:1; padding:8px; border:1px solid #ddd; border-radius:4px;">
-                        <button onclick="addCustomItem()" style="background: var(--success); color: white; border: none; padding: 8px 15px; border-radius:4px; cursor:pointer;">Tambah</button>
+                
+                <div style="margin-top:20px; padding:15px; border:1px dashed #ccc; background:#fbfbfb; border-radius:6px; display:flex; gap:15px; align-items:center; flex-wrap:wrap;">
+                    <div style="flex:1;">
+                        <h4 style="margin:0; color:#2c3e50;">➕ Tambah Pekerjaan</h4>
+                        <small style="color:#7f8c8d;">Cari item dari database atau input manual</small>
+                    </div>
+                    <button onclick="openSearchModal()" style="background: var(--info); color: white; border: none; padding: 10px 20px; border-radius:4px; cursor:pointer; font-weight:bold; display:flex; align-items:center; gap:5px;">
+                        🔍 CARI DI DATABASE
+                    </button>
+                    <div style="height:30px; width:1px; background:#ddd;"></div>
+                    <div style="display:flex; gap:5px; align-items:center;">
+                        <input type="text" id="cust_name" placeholder="Manual: Nama Item" style="padding:8px; border:1px solid #ddd; border-radius:4px;">
+                        <input type="number" id="cust_price" placeholder="Harga" style="width:100px; padding:8px; border:1px solid #ddd; border-radius:4px;">
+                        <button onclick="addCustomItem()" style="background: var(--secondary); color: white; border: none; padding: 8px 15px; border-radius:4px; cursor:pointer;">+</button>
                     </div>
                 </div>
+
                 <div class="btn-group">
                     <button id="btn-calc" class="btn btn-calc" onclick="calculateAuto()" disabled>🔄 RE-KALKULASI</button>
                     <button class="btn btn-export" onclick="exportToCSV()">📄 Export CSV</button>
@@ -128,8 +135,19 @@
         </div>
     </div>
 
+    <div id="searchModal" class="modal">
+        <div class="modal-content">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                <h3 style="margin:0;">🗂️ Cari Database AHSP</h3>
+                <span class="close" onclick="closeSearchModal()">&times;</span>
+            </div>
+            <input type="text" id="searchBox" placeholder="Ketik nama pekerjaan (misal: 'Pasang Bata')..." style="width:100%; padding:12px; margin-bottom:15px; box-sizing:border-box; border:2px solid #3498db; border-radius:4px; font-size:16px;" onkeyup="doSearch(this.value)">
+            <div id="searchResults" style="max-height:400px; overflow-y:auto; border:1px solid #eee;"></div>
+        </div>
+    </div>
+
     <script>
-    /* 1. INIT VARIABLES */
+    // 1. INIT & CONFIG
     window.V = {}; window.DATABASE = []; window.ACTIVE_ITEMS = []; window.CURRENT_GRAND_TOTAL = 0; window.TYPE_MAP = {};
     const GIST_URLS = [
         "https://raw.githubusercontent.com/freddyhutauruk18-cpu/rab/main/AHSP-01.json", "https://raw.githubusercontent.com/freddyhutauruk18-cpu/rab/main/AHSP-02.json",
@@ -144,49 +162,53 @@
         "https://raw.githubusercontent.com/freddyhutauruk18-cpu/rab/main/AHSP-19.json", "https://raw.githubusercontent.com/freddyhutauruk18-cpu/rab/main/AHSP-20.json"
     ];
 
-    /* 2. CORE MODELS */
-    class Room {
-        constructor(id, name, w, h, type='general') {
-            this.id = id; this.name = name; this.w = w; this.h = h; this.x = 0; this.y = 0; this.type = type; this.color = this.getColor(type);
-        }
-        getColor(t) { const c={bedroom:'#3498db', wc:'#e74c3c', living:'#f1c40f', kitchen:'#e67e22', garden:'#2ecc71'}; return c[t]||'#95a5a6'; }
-        isTooSmall() { return (this.type==='bedroom' && (this.w<2.5||this.h<2.5)) || (this.type==='wc' && (this.w<1.2||this.h<1.2)); }
-    }
-    window.Room = Room;
-    window.FURNITURE_LIST = [ {id:'bed',name:'Bed',x:2,y:2,w:2,h:2,color:'#e67e22'}, {id:'sofa',name:'Sofa',x:5,y:5,w:2.5,h:1,color:'#9b59b6'} ];
-    window.SELECTED_FURNITURE = null; window.IS_DRAGGING_FURNITURE = false;
-
-    /* 3. BUILDING TYPES */
-    const DATA_RESIDENTIAL = {
-        'rumah_subsidi_30': { name: "Rumah Subsidi Type 30/60 (FLPP)", filter: ['grade:eco','subsidi'], desc: "Type 30 Subsidi" },
-        'rumah_type_45': { name: "Rumah Type 45 (Menengah)", filter: ['grade:std','bata_merah'], desc: "Type 45 Menengah" },
-        'rumah_mewah': { name: "Rumah Mewah / Sultan", filter: ['grade:lux','marmer'], desc: "Full Marmer" }
+    // 2. CORE DATA (BUILDING TYPES) - SUDAH LENGKAP
+    const ALL_TYPES = {
+        // Residential
+        'rumah_subsidi_30': { name: "Rumah Subsidi Type 30/60", filter: ['grade:eco','subsidi','batako'], desc: "Subsidi FLPP" },
+        'rumah_subsidi_36': { name: "Rumah Subsidi Type 36/72", filter: ['grade:eco','subsidi','bata_ringan'], desc: "Standar Subsidi" },
+        'rumah_type_45': { name: "Rumah Type 45 (Menengah)", filter: ['grade:std','bata_merah','granit'], desc: "Menengah" },
+        'rumah_2_lantai': { name: "Rumah 2 Lantai (Type 100)", filter: ['grade:std','building:multistory'], desc: "2 Lantai" },
+        'rumah_mewah': { name: "Rumah Mewah / Sultan", filter: ['grade:lux','marmer','kolam_renang'], desc: "Mewah" },
+        'kost_eksklusif': { name: "Kost Eksklusif", filter: ['grade:std','km_dalam'], desc: "Kostan" },
+        // Commercial
+        'ruko': { name: "Ruko 2-3 Lantai", filter: ['grade:std','ruko','rolling_door'], desc: "Ruko" },
+        'cafe': { name: "Cafe Industrial", filter: ['industrial','beton_ekspos'], desc: "Cafe" },
+        'hotel': { name: "Hotel Budget", filter: ['grade:std','hotel'], desc: "Hotel" },
+        // Industrial
+        'gudang': { name: "Gudang Baja WF", filter: ['industrial','baja_wf'], desc: "Gudang" },
+        'kandang': { name: "Kandang Ayam (Close House)", filter: ['ternak','blower'], desc: "Kandang" },
+        // Special
+        'rs': { name: "Rumah Sakit", filter: ['grade:lux','vinyl_antibakteri'], desc: "RS" },
+        'jalan': { name: "Jalan Beton", filter: ['infrastruktur','beton_k350'], desc: "Jalan" }
     };
-    Object.assign(window.TYPE_MAP, DATA_RESIDENTIAL);
+    Object.assign(window.TYPE_MAP, ALL_TYPES);
 
-    /* 4. ENGINE CALC (FIXED toFixed ERROR) */
+    class Room { constructor(id,n,w,h,t='general'){this.id=id;this.name=n;this.w=w;this.h=h;this.x=0;this.y=0;this.type=t;this.color=this.getColor(t);} getColor(t){const c={bedroom:'#3498db',wc:'#e74c3c',living:'#f1c40f',kitchen:'#e67e22'};return c[t]||'#95a5a6';} isTooSmall(){return(this.type==='bedroom'&&(this.w<2.5||this.h<2.5));}}
+    window.Room = Room;
+    window.FURNITURE_LIST=[{id:'bed',name:'Bed',x:2,y:2,w:2,h:2,color:'#e67e22'},{id:'sofa',name:'Sofa',x:5,y:5,w:2.5,h:1,color:'#9b59b6'}];
+    window.SELECTED_FURNITURE=null; window.IS_DRAGGING_FURNITURE=false;
+
+    // 3. ENGINE CALC
     const EngineCalc = {
         calculate: function(inputs, database) {
             const LB = parseFloat(inputs.LB)||0; const LT = parseFloat(inputs.LT)||0; const floors = parseFloat(inputs.floors)||1;
             const width = Math.sqrt(LB/2); const length = width*2;
             const V = { LB:LB, LT:LT, floors:floors, KLL: 2*(length+width), KM: Math.max(1,floors), L_Dinding: (2*(length+width)*3.5*floors)*0.85, Math:Math };
             let rab=[], total=0;
-            
             if(database) database.forEach(item => {
                 let vol = 0;
                 try {
                     if(typeof item.formula === 'string') { vol = new Function("V","Math", "return " + item.formula)(V, Math); }
                     else { vol = parseFloat(item.formula); }
                 } catch(e) { vol = 0; }
-
-                // SAFETY CHECK: Cegah error "toFixed of undefined"
                 if (typeof vol !== 'number' || isNaN(vol)) vol = 0;
                 vol = Math.max(0, parseFloat(vol.toFixed(3)));
-
                 if(vol>0) {
                     const price = (item.hsp_mat||0) + (item.hsp_upah||0);
                     const sub = vol*price; total+=sub;
-                    rab.push({ ...item, volume:vol, price:price, total:sub });
+                    // Simpan divId untuk grouping
+                    rab.push({ ...item, volume:vol, price:price, total:sub, divId: item.divId, divName: item.divName });
                 }
             });
             return { details:rab, total:total };
@@ -194,132 +216,74 @@
     };
     window.Engine = EngineCalc;
 
-    /* 5. ENGINE ARCHITECT */
+    // 4. ENGINE ARCHITECT & FURNITURE
     const EngineArchitect = {
-        canvas: null, ctx: null, rooms: [], scale: 20, isDragging: false, selectedRoom: null, dragStartX:0, dragStartY:0,
-        init: function(id) {
-            this.canvas = document.getElementById(id);
-            if(!this.canvas) return;
-            this.ctx = this.canvas.getContext('2d');
-            this.canvas.addEventListener('mousedown', e=>this.handleDown(e));
-            this.canvas.addEventListener('mousemove', e=>this.handleMove(e));
-            this.canvas.addEventListener('mouseup', e=>this.handleUp(e));
-            this.draw();
-        },
-        addRoom: function(n,w,h,t) { 
-            const r = new window.Room('r-'+Date.now(), n, w, h, t); 
-            this.findSpot(r); this.rooms.push(r); this.draw(); 
-        },
+        canvas:null, ctx:null, rooms:[], scale:20, isDragging:false, selectedRoom:null, dragStartX:0, dragStartY:0,
+        init: function(id) { this.canvas=document.getElementById(id); if(!this.canvas) return; this.ctx=this.canvas.getContext('2d'); this.canvas.addEventListener('mousedown',e=>this.down(e)); this.canvas.addEventListener('mousemove',e=>this.move(e)); this.canvas.addEventListener('mouseup',e=>this.up(e)); this.draw(); },
+        addRoom: function(n,w,h,t) { const r=new window.Room('r-'+Date.now(),n,w,h,t); this.findSpot(r); this.rooms.push(r); this.draw(); },
         findSpot: function(r) { let step=0.5; for(let i=0;i<50;i++){ if(!this.checkCol(r)) return; r.x+=r.w+step; } r.x=0; r.y+=r.h+step; },
-        checkCol: function(t) { return this.rooms.some(r => r!==t && t.x < r.x+r.w && t.x+t.w > r.x && t.y < r.y+r.h && t.y+t.h > r.y); },
-        optimizeLayout: function() { 
-            let cx=0, cy=0, maxH=0; 
-            this.rooms.forEach(r => { r.x=cx; r.y=cy; maxH=Math.max(maxH,r.h); cx+=r.w+0.5; if(cx>10){cx=0; cy+=maxH+0.5; maxH=0;} });
-            this.draw();
-        },
-        draw: function() {
-            if(!this.ctx || !this.canvas) return;
-            const w=this.canvas.width, h=this.canvas.height;
-            this.ctx.clearRect(0,0,w,h); this.ctx.fillStyle='#fdfdfd'; this.ctx.fillRect(0,0,w,h);
-            this.ctx.save(); this.ctx.translate(w/2, h/2);
-            this.drawGrid(); this.rooms.forEach(r=>this.drawRoom(r)); 
-            if(window.FurnitureEngine) window.FurnitureEngine.draw(this.ctx, this.scale);
-            this.ctx.restore();
-        },
-        drawGrid: function() {
-            this.ctx.lineWidth=0.5; this.ctx.strokeStyle='#ecf0f1';
-            for(let i=-50; i<=50; i++) {
-                let p = i*this.scale;
-                this.ctx.beginPath(); this.ctx.moveTo(p, -1000); this.ctx.lineTo(p, 1000); this.ctx.stroke();
-                this.ctx.beginPath(); this.ctx.moveTo(-1000, p); this.ctx.lineTo(1000, p); this.ctx.stroke();
-            }
-        },
-        drawRoom: function(r) {
-            let rx=r.x*this.scale, ry=r.y*this.scale, rw=r.w*this.scale, rh=r.h*this.scale;
-            this.ctx.fillStyle=r.color; this.ctx.fillRect(rx,ry,rw,rh);
-            this.ctx.strokeStyle='#2c3e50'; this.ctx.strokeRect(rx,ry,rw,rh);
-            this.ctx.fillStyle='white'; this.ctx.font='10px Arial'; this.ctx.fillText(r.name, rx+5, ry+15);
-        },
-        getMouse: function(e) {
-            if(!this.canvas) return {x:0,y:0};
-            const r = this.canvas.getBoundingClientRect();
-            return { x: (e.clientX-r.left-this.canvas.width/2)/this.scale, y: (e.clientY-r.top-this.canvas.height/2)/this.scale };
-        },
-        handleDown: function(e) {
-            if(window.IS_DRAGGING_FURNITURE) return;
-            const m = this.getMouse(e);
-            for(let i=this.rooms.length-1; i>=0; i--) {
-                let r = this.rooms[i];
-                if(m.x>=r.x && m.x<=r.x+r.w && m.y>=r.y && m.y<=r.y+r.h) {
-                    this.selectedRoom=r; this.isDragging=true; this.dragStartX=m.x-r.x; this.dragStartY=m.y-r.y; this.draw(); return;
-                }
-            }
-        },
-        handleMove: function(e) {
-            if(!this.isDragging || !this.selectedRoom) return;
-            const m = this.getMouse(e);
-            this.selectedRoom.x = Math.round((m.x-this.dragStartX)*2)/2;
-            this.selectedRoom.y = Math.round((m.y-this.dragStartY)*2)/2;
-            this.draw();
-        },
-        handleUp: function() { this.isDragging=false; this.selectedRoom=null; }
+        checkCol: function(t) { return this.rooms.some(r=>r!==t && t.x<r.x+r.w && t.x+t.w>r.x && t.y<r.y+r.h && t.y+t.h>r.y); },
+        optimizeLayout: function() { let cx=0,cy=0,mh=0; this.rooms.forEach(r=>{r.x=cx;r.y=cy;mh=Math.max(mh,r.h);cx+=r.w+0.5;if(cx>10){cx=0;cy+=mh+0.5;mh=0;}}); this.draw(); },
+        draw: function() { if(!this.ctx) return; const w=this.canvas.width, h=this.canvas.height; this.ctx.clearRect(0,0,w,h); this.ctx.fillStyle='#fdfdfd'; this.ctx.fillRect(0,0,w,h); this.ctx.save(); this.ctx.translate(w/2,h/2); this.drawGrid(); this.rooms.forEach(r=>this.drawRoom(r)); if(window.FurnitureEngine) window.FurnitureEngine.draw(this.ctx,this.scale); this.ctx.restore(); },
+        drawGrid: function() { this.ctx.lineWidth=0.5; this.ctx.strokeStyle='#ecf0f1'; for(let i=-50;i<=50;i++){ let p=i*this.scale; this.ctx.beginPath();this.ctx.moveTo(p,-1000);this.ctx.lineTo(p,1000);this.ctx.stroke(); this.ctx.beginPath();this.ctx.moveTo(-1000,p);this.ctx.lineTo(1000,p);this.ctx.stroke(); } },
+        drawRoom: function(r) { let rx=r.x*this.scale,ry=r.y*this.scale,rw=r.w*this.scale,rh=r.h*this.scale; this.ctx.fillStyle=r.color; this.ctx.fillRect(rx,ry,rw,rh); this.ctx.strokeStyle='#2c3e50'; this.ctx.strokeRect(rx,ry,rw,rh); this.ctx.fillStyle='white'; this.ctx.font='10px Arial'; this.ctx.fillText(r.name,rx+5,ry+15); },
+        getMouse: function(e) { if(!this.canvas) return{x:0,y:0}; const r=this.canvas.getBoundingClientRect(); return{x:(e.clientX-r.left-this.canvas.width/2)/this.scale, y:(e.clientY-r.top-this.canvas.height/2)/this.scale}; },
+        down: function(e) { if(window.IS_DRAGGING_FURNITURE) return; const m=this.getMouse(e); for(let i=this.rooms.length-1;i>=0;i--){ let r=this.rooms[i]; if(m.x>=r.x && m.x<=r.x+r.w && m.y>=r.y && m.y<=r.y+r.h){ this.selectedRoom=r;this.isDragging=true;this.dragStartX=m.x-r.x;this.dragStartY=m.y-r.y;this.draw();return; } } },
+        move: function(e) { if(!this.isDragging||!this.selectedRoom) return; const m=this.getMouse(e); this.selectedRoom.x=Math.round((m.x-this.dragStartX)*2)/2; this.selectedRoom.y=Math.round((m.y-this.dragStartY)*2)/2; this.draw(); },
+        up: function() { this.isDragging=false;this.selectedRoom=null; }
     };
     window.Engine_Architect = EngineArchitect;
 
-    /* 6. ENGINE FURNITURE */
     const EngineFurniture = {
-        draw: function(ctx, scale) {
-            window.FURNITURE_LIST.forEach(f => {
-                ctx.fillStyle = f.color; ctx.fillRect(f.x*scale, f.y*scale, f.w*scale, f.h*scale);
-                ctx.fillStyle = 'white'; ctx.font='9px Arial'; ctx.fillText(f.name, f.x*scale+2, f.y*scale+10);
-            });
-        },
-        init: function(id) {
-            const c = document.getElementById(id); if(!c) return;
-            c.addEventListener('mousedown', e=>this.down(e));
-            c.addEventListener('mousemove', e=>this.move(e));
-            c.addEventListener('mouseup', e=>this.up(e));
-        },
-        down: function(e) {
-            const m = window.Engine_Architect.getMouse(e);
-            for(let i=window.FURNITURE_LIST.length-1; i>=0; i--) {
-                let f = window.FURNITURE_LIST[i];
-                if(m.x>=f.x && m.x<=f.x+f.w && m.y>=f.y && m.y<=f.y+f.h) {
-                    window.IS_DRAGGING_FURNITURE=true; window.SELECTED_FURNITURE=f;
-                    this.offX = m.x-f.x; this.offY = m.y-f.y; 
-                    window.Engine_Architect.draw(); return;
-                }
-            }
-        },
-        move: function(e) {
-            if(!window.IS_DRAGGING_FURNITURE || !window.SELECTED_FURNITURE) return;
-            const m = window.Engine_Architect.getMouse(e);
-            window.SELECTED_FURNITURE.x = m.x - this.offX; window.SELECTED_FURNITURE.y = m.y - this.offY;
-            window.Engine_Architect.draw();
-        },
-        up: function() { window.IS_DRAGGING_FURNITURE=false; window.SELECTED_FURNITURE=null; }
+        draw: function(ctx,s) { window.FURNITURE_LIST.forEach(f=>{ctx.fillStyle=f.color;ctx.fillRect(f.x*s,f.y*s,f.w*s,f.h*s);ctx.fillStyle='white';ctx.font='9px Arial';ctx.fillText(f.name,f.x*s+2,f.y*s+10);}); },
+        init: function(id) { const c=document.getElementById(id);if(!c)return; c.addEventListener('mousedown',e=>this.down(e));c.addEventListener('mousemove',e=>this.move(e));c.addEventListener('mouseup',e=>this.up(e)); },
+        down: function(e) { const m=window.Engine_Architect.getMouse(e); for(let i=window.FURNITURE_LIST.length-1;i>=0;i--){ let f=window.FURNITURE_LIST[i]; if(m.x>=f.x&&m.x<=f.x+f.w&&m.y>=f.y&&m.y<=f.y+f.h){ window.IS_DRAGGING_FURNITURE=true;window.SELECTED_FURNITURE=f;this.offX=m.x-f.x;this.offY=m.y-f.y;window.Engine_Architect.draw();return; } } },
+        move: function(e) { if(!window.IS_DRAGGING_FURNITURE||!window.SELECTED_FURNITURE) return; const m=window.Engine_Architect.getMouse(e); window.SELECTED_FURNITURE.x=m.x-this.offX; window.SELECTED_FURNITURE.y=m.y-this.offY; window.Engine_Architect.draw(); },
+        up: function() { window.IS_DRAGGING_FURNITURE=false;window.SELECTED_FURNITURE=null; }
     };
     window.FurnitureEngine = EngineFurniture;
 
-    /* 7. UI RENDERER */
+    // 5. UI RENDERER (GROUPING HEADER FIX)
     const UIRenderer = {
         renderTable: function(items) {
             const tbody = document.getElementById('table-body'); if(!tbody) return;
             tbody.innerHTML = '';
+            
+            // Grouping Logic
+            const groups = {};
+            items.forEach(item => {
+                const divId = item.divId || 'DIV-99';
+                const divName = item.divName || 'Lain-lain';
+                if(!groups[divId]) groups[divId] = { name: divName, items: [] };
+                groups[divId].items.push(item);
+            });
+
+            const sortedKeys = Object.keys(groups).sort();
             let grandTotal = 0;
-            items.forEach((item, idx) => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td class="text-center"><button onclick="removeItem(${idx})" style="color:red;border:none;background:none;cursor:pointer;">×</button></td>
-                    <td class="text-center">${item.code||'-'}</td>
-                    <td>${item.name}</td>
-                    <td class="text-center">${parseFloat(item.volume).toFixed(2)}</td>
-                    <td class="text-center">${item.sat}</td>
-                    <td class="text-right">Rp ${Math.round(item.price).toLocaleString('id-ID')}</td>
-                    <td class="text-right">Rp ${Math.round(item.total).toLocaleString('id-ID')}</td>
-                `;
-                tbody.appendChild(tr);
-                grandTotal += item.total;
+
+            sortedKeys.forEach(key => {
+                const grp = groups[key];
+                // HEADER ROW
+                const trHeader = document.createElement('tr');
+                trHeader.innerHTML = `<td colspan="7" class="row-category">${grp.name.toUpperCase()}</td>`;
+                tbody.appendChild(trHeader);
+
+                // ITEMS ROW
+                grp.items.forEach((item, idx) => {
+                    const realIdx = items.indexOf(item); // Find original index for removal
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td class="text-center"><button onclick="removeItem(${realIdx})" style="color:red;border:none;background:none;cursor:pointer;font-weight:bold;">×</button></td>
+                        <td class="text-center" style="font-size:0.85em;color:#666;">${item.code||'-'}</td>
+                        <td>${item.name}</td>
+                        <td class="text-center">${parseFloat(item.volume).toFixed(2)}</td>
+                        <td class="text-center">${item.sat}</td>
+                        <td class="text-right">Rp ${Math.round(item.price).toLocaleString('id-ID')}</td>
+                        <td class="text-right" style="font-weight:600;">Rp ${Math.round(item.total).toLocaleString('id-ID')}</td>
+                    `;
+                    tbody.appendChild(tr);
+                    grandTotal += item.total;
+                });
             });
             this.updateSummary(grandTotal);
         },
@@ -332,13 +296,10 @@
     };
     window.UIRenderer = UIRenderer;
 
-    /* 8. CONTROLLER & LOGIC (NO ALERT - TOAST ONLY) */
+    // 6. CONTROLLER
     window.showToast = function(msg, type) {
-        const t = document.getElementById('toast-notification');
-        if(!t) return;
-        t.innerText = msg;
-        t.style.display = 'block';
-        t.style.background = type==='warning'?'#e67e22':'#2c3e50';
+        const t = document.getElementById('toast-notification'); if(!t) return;
+        t.innerText = msg; t.style.display = 'block'; t.style.background = type==='warning'?'#e67e22':'#2c3e50';
         setTimeout(()=> { t.style.display='none'; }, 3000);
     };
 
@@ -347,7 +308,6 @@
         const lt = document.getElementById('inp_LT').value;
         const result = window.Engine.calculate({LB:lb, LT:lt}, window.DATABASE);
         
-        // Merge Auto + Manual
         const manual = window.ACTIVE_ITEMS.filter(i => i.isAuto === false);
         const auto = result.details.map(i => ({...i, isAuto:true}));
         window.ACTIVE_ITEMS = [...auto, ...manual];
@@ -361,7 +321,7 @@
         if(!name || !price) { showToast("⚠️ Isi nama dan harga!", "warning"); return; }
         
         window.ACTIVE_ITEMS.push({
-            code:'MANUAL', name:name, volume:1, sat:'Ls', price:price, total:price, isAuto:false
+            code:'MANUAL', name:name, volume:1, sat:'Ls', price:price, total:price, isAuto:false, divId:'DIV-99', divName:'PEKERJAAN TAMBAHAN'
         });
         window.UIRenderer.renderTable(window.ACTIVE_ITEMS);
         showToast("✅ Item ditambahkan", "success");
@@ -384,11 +344,9 @@
 
     window.exportToCSV = function() {
         if(window.ACTIVE_ITEMS.length === 0) { showToast("⚠️ Data Kosong!", "warning"); return; }
-        let csv = "ITEM,HARGA\n";
-        window.ACTIVE_ITEMS.forEach(i => csv += `"${i.name}",${i.total}\n`);
-        const a = document.createElement('a');
-        a.href = URL.createObjectURL(new Blob([csv],{type:'text/csv'}));
-        a.download = 'RAB.csv'; a.click();
+        let csv = "DIVISI,KODE,URAIAN,VOL,SAT,HARGA,TOTAL\n";
+        window.ACTIVE_ITEMS.forEach(i => csv += `"${i.divName}","${i.code}","${i.name}",${i.volume},"${i.sat}",${i.price},${i.total}\n`);
+        const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv],{type:'text/csv'})); a.download = 'RAB.csv'; a.click();
     };
 
     window.showPage = function(id) {
@@ -397,32 +355,52 @@
         if(id==='denah') setTimeout(()=>window.Engine_Architect.draw(), 100);
     };
 
-    /* 9. INIT SEQUENCE */
+    // SEARCH MODAL LOGIC
+    window.openSearchModal = function() { document.getElementById('searchModal').style.display='block'; document.getElementById('searchBox').focus(); };
+    window.closeSearchModal = function() { document.getElementById('searchModal').style.display='none'; };
+    
+    window.doSearch = function(q) {
+        const resDiv = document.getElementById('searchResults'); resDiv.innerHTML = '';
+        if(!q || q.length < 3) return;
+        const term = q.toLowerCase();
+        const results = window.DATABASE.filter(i => (i.name||'').toLowerCase().includes(term));
+        
+        results.slice(0, 50).forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'search-item-result';
+            const price = (item.hsp_mat||0) + (item.hsp_upah||0);
+            div.innerHTML = `<div><b>${item.name}</b><br><small>${item.code} - ${item.divName}</small></div><div style="font-weight:bold;">Rp ${price.toLocaleString()}</div>`;
+            div.onclick = () => {
+                window.ACTIVE_ITEMS.push({ ...item, volume:1, price:price, total:price, isAuto:false });
+                window.UIRenderer.renderTable(window.ACTIVE_ITEMS);
+                window.closeSearchModal();
+                showToast("✅ Item "+item.name+" ditambahkan");
+            };
+            resDiv.appendChild(div);
+        });
+        if(results.length===0) resDiv.innerHTML = '<div style="padding:10px;">Tidak ditemukan.</div>';
+    };
+
+    // 7. INIT
     async function initSystem() {
-        console.log("🚀 System Start (V5.1 Fixed)...");
+        console.log("🚀 System Start (Full Features)...");
         const status = document.getElementById('system-status');
         
         try {
-            // Render Dropdown
-            const sel = document.getElementById('inp_type');
-            sel.innerHTML = '';
+            // Render Dropdown Tipe Bangunan
+            const sel = document.getElementById('inp_type'); sel.innerHTML = '';
             Object.keys(window.TYPE_MAP).forEach(k => {
-                const opt = document.createElement('option'); opt.value=k; opt.innerText=window.TYPE_MAP[k].name;
-                sel.appendChild(opt);
+                const opt = document.createElement('option'); opt.value=k; opt.innerText=window.TYPE_MAP[k].name; sel.appendChild(opt);
             });
 
             // Fetch Data
             const reqs = GIST_URLS.map(u => fetch(u).then(r=>r.json()));
             const res = await Promise.all(reqs);
             window.DATABASE = [];
-            res.forEach(d => { if(d.items) window.DATABASE.push(...d.items); else if(Array.isArray(d)) window.DATABASE.push(...d[0].items); });
+            res.forEach(d => { if(d.items) d.items.forEach(i => window.DATABASE.push({...i, divId:d.id, divName:d.category})); else if(Array.isArray(d)) d[0].items.forEach(i => window.DATABASE.push({...i, divId:d[0].id, divName:d[0].category})); });
             
-            status.innerHTML = `✅ SIAP: ${window.DATABASE.length} Item Database.`;
-            status.style.color = 'green';
-            document.getElementById('btn-calc').disabled = false;
-            
-            const loader = document.getElementById('loader');
-            if(loader) loader.style.display = 'none';
+            status.innerHTML = `✅ SIAP: ${window.DATABASE.length} Item.`; status.style.color = 'green';
+            document.getElementById('loader').style.display = 'none';
 
             // Init Engines
             setTimeout(() => {
@@ -431,16 +409,10 @@
                 calculateAuto();
             }, 500);
 
-        } catch(e) {
-            console.error(e);
-            status.innerHTML = "⚠️ Gagal memuat data.";
-            status.style.color = 'red';
-        }
+        } catch(e) { console.error(e); status.innerHTML = "⚠️ Gagal memuat data."; status.style.color = 'red'; }
     }
 
-    // Start
     initSystem();
-
     </script>
 </body>
 </html>
