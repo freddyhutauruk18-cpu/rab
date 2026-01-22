@@ -1,5 +1,5 @@
-/* BUILDING_TYPES.JS - VERSI 8.1 (MODULAR GROUPING) 
-   Kita pecah definisi bangunan per kategori agar mudah dikelola.
+/* BUILDING_TYPES.JS - VERSI 8.1 (MASTER DEFINITION) 
+   Menggabungkan semua definisi bangunan dalam satu file agar lebih rapi.
 */
 
 // =========================================================
@@ -147,12 +147,16 @@ const DATA_SPECIAL = {
 };
 
 // =========================================================
-// PENGGABUNGAN DATA (MERGE)
+// PENGGABUNGAN DATA KE GLOBAL STATE
 // =========================================================
-// Kita gabungkan semua kategori menjadi satu objek TYPE_MAP utama.
-const TYPE_MAP = Object.assign({}, 
+// Kita masukkan data ini ke window.TYPE_MAP yang sudah disiapkan di init.js
+if(typeof window.TYPE_MAP === 'undefined') window.TYPE_MAP = {};
+
+Object.assign(window.TYPE_MAP, 
     DATA_RESIDENTIAL, 
     DATA_COMMERCIAL, 
     DATA_INDUSTRIAL, 
     DATA_SPECIAL
 );
+
+console.log("✅ Building Types Loaded: " + Object.keys(window.TYPE_MAP).length + " types available.");
