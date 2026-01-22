@@ -3,6 +3,7 @@
  * Tugas: Menyiapkan Global State, Fetch Data, dan Bootstrapping.
  */
 
+
 // --- GLOBAL STATE DEFINITION ---
 window.V = {}; 
 window.DATABASE = []; 
