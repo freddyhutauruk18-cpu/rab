@@ -1,0 +1,237 @@
+{
+  "id": "DIV.06",
+  "category": "06. PEKERJAAN DINDING, PARTISI, PLESTERAN & ACIAN",
+  "items": [
+    {
+      "code": "A.4.4.1.1",
+      "name": "Pasangan Dinding Bata Merah (5x11x22) cm - 1SP:5PP",
+      "sat": "m2",
+      "hsp_mat": 135000,
+      "hsp_upah": 55000,
+      "formula": "V.L_Dinding - (V.KM * 1.5 * 4)",
+      "coeffs": { "Bata Merah": 70, "Semen": 9.68, "Pasir": 0.045 },
+      "tags": ["dinding", "bata_merah", "grade:std", "rumah_type_45", "grade:lux", "mandatory", "ahsp_2024"],
+      "desc": "Dinding bata merah kokoh (AHSP 2024). Dikurangi area trasram KM."
+    },
+    {
+      "code": "A.4.4.1.2",
+      "name": "Pasangan Dinding Bata Merah Trasram (Kedap Air) 1SP:3PP",
+      "sat": "m2",
+      "hsp_mat": 145000,
+      "hsp_upah": 55000,
+      "formula": "V.KM > 0 ? (V.KM * 1.5 * 4) : 0",
+      "coeffs": { "Bata Merah": 70, "Semen": 14.37, "Pasir": 0.04 },
+      "tags": ["dinding", "bata_merah", "kamar_mandi", "waterproof", "mandatory", "ahsp_2024"],
+      "desc": "Dinding anti-rembes area basah (Kamar Mandi) setinggi 1.5m."
+    },
+    {
+      "code": "A.4.4.3.1",
+      "name": "Pasangan Dinding Bata Ringan (Hebel) t=10cm + Mortar",
+      "sat": "m2",
+      "hsp_mat": 95000,
+      "hsp_upah": 35000,
+      "formula": "V.L_Dinding",
+      "coeffs": { "Bata Ringan": 8.33, "Semen Instan": 4 },
+      "tags": ["dinding", "hebel", "grade:eco", "rumah_subsidi_30", "ruko", "apartemen", "mandatory", "ahsp_2024"],
+      "desc": "Dinding hebel efisien, cepat & ringan. Standar proyek modern."
+    },
+    {
+      "code": "A.4.4.3.3",
+      "name": "Pasangan Dinding Bata Ringan (Hebel) t=7.5cm + Mortar",
+      "sat": "m2",
+      "hsp_mat": 85000,
+      "hsp_upah": 30000,
+      "formula": "0",
+      "coeffs": { "Bata Ringan": 8.33, "Semen Instan": 3 },
+      "tags": ["dinding", "hebel", "grade:eco", "partisi", "kosan", "optional"],
+      "desc": "Dinding hebel tipis untuk sekat ruangan interior / kos-kosan."
+    },
+    {
+      "code": "A.4.4.3.2",
+      "name": "Pasangan Dinding Batako Press (40x20x10) cm",
+      "sat": "m2",
+      "hsp_mat": 75000,
+      "hsp_upah": 30000,
+      "formula": "0",
+      "coeffs": { "Batako": 12.5, "Semen": 6.5, "Pasir": 0.025 },
+      "tags": ["dinding", "batako", "grade:eco", "pagar", "gudang", "temporary", "optional", "ahsp_2024"],
+      "desc": "Solusi termurah untuk dinding pagar belakang atau gudang."
+    },
+    {
+      "code": "A.4.4.2.1",
+      "name": "Pasangan Dinding Roster / Kerawang Beton (Ventilasi)",
+      "sat": "m2",
+      "hsp_mat": 250000,
+      "hsp_upah": 85000,
+      "formula": "0",
+      "coeffs": { "Roster Beton": 25 },
+      "tags": ["dinding", "ventilasi", "grade:std", "dapur", "service", "optional", "ahsp_2024"],
+      "desc": "Dinding lubang angin untuk area jemur/dapur belakang."
+    },
+    {
+      "code": "A.4.4.2.2",
+      "name": "Pasangan Glass Block (20x20) cm",
+      "sat": "m2",
+      "hsp_mat": 450000,
+      "hsp_upah": 100000,
+      "formula": "0",
+      "coeffs": { "Glass Block": 25, "Semen Putih": 2 },
+      "tags": ["dinding", "cahaya", "grade:std", "km", "tangga", "optional"],
+      "desc": "Dinding kaca blok untuk pencahayaan alami privasi tinggi."
+    },
+    {
+      "code": "A.4.4.L.1",
+      "name": "Plesteran Dinding 1SP:5PP Tebal 15mm",
+      "sat": "m2",
+      "hsp_mat": 45000,
+      "hsp_upah": 35000,
+      "formula": "(V.L_Dinding * 2) - (V.KM * 1.5 * 4)",
+      "coeffs": { "Semen": 6.24, "Pasir": 0.024 },
+      "tags": ["plester", "grade:std", "bata_merah", "batako", "mandatory", "ahsp_2024"],
+      "desc": "Pelapis dinding bata merah (2 Sisi)."
+    },
+    {
+      "code": "A.4.4.L.2",
+      "name": "Plesteran Skimcoat (Khusus Bata Ringan/Hebel) t=3mm",
+      "sat": "m2",
+      "hsp_mat": 25000,
+      "hsp_upah": 20000,
+      "formula": "V.L_Dinding * 2",
+      "coeffs": { "Skimcoat": 3.5 },
+      "tags": ["plester", "hebel", "grade:eco", "grade:std", "apartemen", "mandatory", "ahsp_2024"],
+      "desc": "Plesteran tipis khusus hebel (hemat material & waktu)."
+    },
+    {
+      "code": "A.4.4.L.3",
+      "name": "Plesteran Trasram (Kedap Air) 1SP:3PP",
+      "sat": "m2",
+      "hsp_mat": 55000,
+      "hsp_upah": 40000,
+      "formula": "V.KM > 0 ? (V.KM * 1.5 * 4 * 1) : 0",
+      "coeffs": { "Semen": 9.36, "Pasir": 0.018 },
+      "tags": ["plester", "kamar_mandi", "waterproof", "mandatory", "ahsp_2024"],
+      "desc": "Plesteran anti air dinding KM (Sisi dalam saja)."
+    },
+    {
+      "code": "A.4.4.L.4",
+      "name": "Acian Semen (Finishing Halus)",
+      "sat": "m2",
+      "hsp_mat": 15000,
+      "hsp_upah": 20000,
+      "formula": "V.L_Dinding * 2",
+      "coeffs": { "Semen": 3.25 },
+      "tags": ["acian", "grade:std", "bata_merah", "batako", "mandatory", "ahsp_2024"],
+      "desc": "Penghalus permukaan plesteran sebelum dicat."
+    },
+    {
+      "code": "A.4.4.L.5",
+      "name": "Semen Ekspos / Unfinished Concrete (Industrial)",
+      "sat": "m2",
+      "hsp_mat": 35000,
+      "hsp_upah": 45000,
+      "formula": "0",
+      "coeffs": { "Semen": 5, "Bonding Agent": 0.1 },
+      "tags": ["acian", "finishing", "grade:lux", "cafe", "kantor", "optional"],
+      "desc": "Finishing acian ekspos poles halus gaya industrial."
+    },
+    {
+      "code": "A.4.4.L.6",
+      "name": "Tali Air / Grooving Dinding (Minimalis)",
+      "sat": "m'",
+      "hsp_mat": 5000,
+      "hsp_upah": 15000,
+      "formula": "0",
+      "coeffs": {},
+      "tags": ["acian", "finishing", "grade:std", "optional"],
+      "desc": "Pembuatan celah garis lurus pemanis dinding fasad."
+    },
+    {
+      "code": "A.4.2.1.1",
+      "name": "Partisi Gypsum 9mm 2 Sisi + Rangka Hollow Galvalum",
+      "sat": "m2",
+      "hsp_mat": 165000,
+      "hsp_upah": 45000,
+      "formula": "0",
+      "coeffs": { "Gypsum Board": 2.1, "Hollow 4x4": 1.5, "Hollow 2x4": 1.5 },
+      "tags": ["partisi", "kantor", "ruko", "mall", "renovasi", "indoor", "optional", "ahsp_2024"],
+      "desc": "Sekat ruangan kering, cepat pasang. Standar kantor & ruko sewa."
+    },
+    {
+      "code": "A.4.2.1.2",
+      "name": "Partisi GRC / Kalsiboard 6mm (Area Basah/Luar)",
+      "sat": "m2",
+      "hsp_mat": 185000,
+      "hsp_upah": 55000,
+      "formula": "0",
+      "coeffs": { "Kalsiboard": 2.1, "Hollow Galvanis": 3 },
+      "tags": ["partisi", "tahan_air", "toilet_umum", "bedeng", "temporary", "optional", "ahsp_2024"],
+      "desc": "Sekat tahan air/lembab untuk toilet umum atau dinding luar bedeng."
+    },
+    {
+      "code": "A.4.2.1.5",
+      "name": "Partisi Akustik / Peredam Suara (Rockwool Insulation)",
+      "sat": "m2",
+      "hsp_mat": 350000,
+      "hsp_upah": 75000,
+      "formula": "0",
+      "coeffs": { "Gypsum": 2.1, "Rockwool": 1, "Hollow": 1.5 },
+      "tags": ["partisi", "akustik", "studio", "meeting_room", "optional"],
+      "desc": "Partisi gypsum isi rockwool untuk kedap suara."
+    },
+    {
+      "code": "A.4.2.1.3",
+      "name": "Partisi Kaca Tempered 10mm Frameless",
+      "sat": "m2",
+      "hsp_mat": 950000,
+      "hsp_upah": 150000,
+      "formula": "0",
+      "coeffs": { "Kaca Tempered": 1, "Sealant": 0.5 },
+      "tags": ["partisi", "kaca", "grade:lux", "kantor", "mall", "bank", "optional"],
+      "desc": "Dinding kaca transparan mewah untuk fasad toko atau ruang meeting."
+    },
+    {
+      "code": "A.4.2.1.4",
+      "name": "Partisi Cubicle Toilet Phenolic (Setara Mall)",
+      "sat": "unit",
+      "hsp_mat": 2500000,
+      "hsp_upah": 350000,
+      "formula": "0",
+      "coeffs": {},
+      "tags": ["partisi", "toilet", "mall", "kantor", "rs", "bandara", "optional"],
+      "desc": "Penyekat toilet bahan phenolic anti air, anti bakteri, standar mall."
+    },
+    {
+      "code": "A.4.5.1",
+      "name": "Dinding Panel Precast Beton Ringan (EPS Sandwich)",
+      "sat": "m2",
+      "hsp_mat": 350000,
+      "hsp_upah": 50000,
+      "formula": "0",
+      "coeffs": {},
+      "tags": ["dinding", "precast", "risha", "cepat", "tahan_gempa", "optional"],
+      "desc": "Dinding panel styrofoam-beton. Sangat ringan, tahan gempa, super cepat."
+    },
+    {
+      "code": "A.4.5.2",
+      "name": "Wall Cladding ACP (Aluminium Composite Panel) + Rangka",
+      "sat": "m2",
+      "hsp_mat": 650000,
+      "hsp_upah": 150000,
+      "formula": "0",
+      "coeffs": { "ACP PVDF": 1.1, "Rangka Hollow": 2 },
+      "tags": ["facade", "eksterior", "grade:lux", "ruko", "kantor", "mall", "rs", "optional", "ahsp_2024"],
+      "desc": "Pelapis dinding luar bangunan komersial. Tahan cuaca & warna warni."
+    },
+    {
+      "code": "A.4.5.3",
+      "name": "Dinding Lead / Timbal (Ruang Radiologi RS)",
+      "sat": "m2",
+      "hsp_mat": 2500000,
+      "hsp_upah": 500000,
+      "formula": "0",
+      "coeffs": { "Timbal Pb": 1, "Plywood": 1 },
+      "tags": ["dinding", "medis", "rs", "radiologi", "optional"],
+      "desc": "Pelapis dinding anti radiasi X-Ray standar rumah sakit."
+    }
+  ]
+}

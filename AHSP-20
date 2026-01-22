@@ -1,0 +1,171 @@
+{
+  "id": "DIV.20",
+  "category": "20. PEKERJAAN BESI, BAJA BERAT, STAINLESS & KACA",
+  "items": [
+    {
+      "code": "20.1.1",
+      "name": "Railing Tangga Besi Hollow Minimalis",
+      "sat": "m'",
+      "hsp_mat": 650000,
+      "hsp_upah": 150000,
+      "formula": "V.inp_floors>1 ? Math.sqrt(V.LB/2)*2.5 : 0",
+      "coeffs": { "Hollow 4x4": 2, "Cat Duco": 0.5 },
+      "tags": ["railing", "grade:std", "standar", "building:multistory", "mandatory"],
+      "desc": "Pegangan tangga standar perumahan. Finishing cat duco/semprot."
+    },
+    {
+      "code": "20.1.2",
+      "name": "Railing Tangga Besi Tempa (Klasik/Ulir)",
+      "sat": "m'",
+      "hsp_mat": 1850000,
+      "hsp_upah": 450000,
+      "formula": "0",
+      "coeffs": { "Besi Tempa": 1, "Ornamen": 1 },
+      "tags": ["railing", "grade:lux", "klasik", "building:multistory", "optional"],
+      "desc": "Model klasik dengan ornamen bunga/ulir. Cat antik (Copper/Gold)."
+    },
+    {
+      "code": "20.1.3",
+      "name": "Railing Tangga Kaca Tempered 10mm (Stainless)",
+      "sat": "m'",
+      "hsp_mat": 1950000,
+      "hsp_upah": 350000,
+      "formula": "0",
+      "coeffs": { "Kaca Tempered": 1, "Handrail Stainless": 1 },
+      "tags": ["railing", "grade:lux", "mewah", "building:multistory", "optional"],
+      "desc": "Tampilan modern & luas. Handrail stainless/kayu."
+    },
+    {
+      "code": "20.2.1",
+      "name": "Tangga Putar Besi (Service Area)",
+      "sat": "unit",
+      "hsp_mat": 3500000,
+      "hsp_upah": 1000000,
+      "formula": "V.inp_floors>1 ? 0.5 : 0",
+      "coeffs": { "Pipa Besi": 1, "Plat Bordes": 1 },
+      "tags": ["tangga", "grade:std", "servis", "building:multistory", "optional"],
+      "desc": "Akses ke dak toren atau jemuran. Diameter standar 1.2m."
+    },
+    {
+      "code": "20.2.2",
+      "name": "Tangga Layang / Floating Stairs (Konstruksi WF)",
+      "sat": "unit",
+      "hsp_mat": 15000000,
+      "hsp_upah": 5000000,
+      "formula": "0",
+      "coeffs": { "Baja WF": 1, "Plat Baja": 1 },
+      "tags": ["tangga", "grade:lux", "sultan", "building:multistory", "optional"],
+      "desc": "Tangga utama model industrial melayang (tanpa tiang penyangga bawah)."
+    },
+    {
+      "code": "20.2.3",
+      "name": "Tangga Monyet / Vertical Ladder (Akses Toren)",
+      "sat": "m'",
+      "hsp_mat": 350000,
+      "hsp_upah": 100000,
+      "formula": "0",
+      "coeffs": { "Besi Pipa": 1 },
+      "tags": ["tangga", "grade:std", "servis", "optional"],
+      "desc": "Tangga tegak lurus menempel dinding."
+    },
+    {
+      "code": "20.3.1",
+      "name": "Mezzanine Besi WF / H-Beam (Lantai Tambahan)",
+      "sat": "m2",
+      "hsp_mat": 2500000,
+      "hsp_upah": 850000,
+      "formula": "0",
+      "coeffs": { "Baja WF": 25, "Bondek": 1, "Cor": 0.1 },
+      "tags": ["struktur", "grade:lux", "industrial", "optional"],
+      "desc": "Membuat lantai baru di void tinggi (Ruko/Gudang/Kafe)."
+    },
+    {
+      "code": "20.4.1",
+      "name": "Teralis Jendela Besi Nako (Minimalis)",
+      "sat": "lubang",
+      "hsp_mat": 450000,
+      "hsp_upah": 100000,
+      "formula": "Math.ceil(V.LB/15)",
+      "coeffs": { "Besi Nako": 1 },
+      "tags": ["keamanan", "grade:std", "wajib", "mandatory"],
+      "desc": "Pengaman jendela anti maling."
+    },
+    {
+      "code": "20.4.2",
+      "name": "Kerangkeng Pengaman AC Outdoor / Pompa Air",
+      "sat": "unit",
+      "hsp_mat": 550000,
+      "hsp_upah": 150000,
+      "formula": "Math.ceil(V.LB/25)",
+      "coeffs": { "Besi Siku": 1, "Ram Kawat": 1 },
+      "tags": ["keamanan", "grade:std", "servis", "optional"],
+      "desc": "Mencegah pencurian unit outdoor AC."
+    },
+    {
+      "code": "20.4.3",
+      "name": "Pintu Kawat Nyamuk Baja (Expanda Door)",
+      "sat": "unit",
+      "hsp_mat": 1850000,
+      "hsp_upah": 250000,
+      "formula": "1",
+      "coeffs": { "Pintu Expanda": 1 },
+      "tags": ["keamanan", "grade:std", "pintu", "optional"],
+      "desc": "Pintu lapis kedua untuk sirkulasi udara aman."
+    },
+    {
+      "code": "20.5.1",
+      "name": "Folding Gate Besi 0.5mm (Ruko Standar)",
+      "sat": "m2",
+      "hsp_mat": 550000,
+      "hsp_upah": 100000,
+      "formula": "0",
+      "coeffs": { "Folding Gate": 1 },
+      "tags": ["pintu", "grade:std", "ruko", "optional"],
+      "desc": "Pintu lipat besi standar ruko."
+    },
+    {
+      "code": "20.5.2",
+      "name": "Rolling Door One Sheet (Tanpa Suara)",
+      "sat": "m2",
+      "hsp_mat": 850000,
+      "hsp_upah": 150000,
+      "formula": "0",
+      "coeffs": { "Rolling Door": 1 },
+      "tags": ["pintu", "grade:lux", "mall", "optional"],
+      "desc": "Pintu gulung modern, tidak berisik, slat rapat."
+    },
+    {
+      "code": "20.6.1",
+      "name": "Partisi Kaca Tempered 10mm (Shower Box)",
+      "sat": "m2",
+      "hsp_mat": 950000,
+      "hsp_upah": 250000,
+      "formula": "0",
+      "coeffs": { "Kaca Tempered": 1 },
+      "tags": ["kaca", "grade:lux", "km", "optional"],
+      "desc": "Kaca pembatas area shower."
+    },
+    {
+      "code": "20.6.2",
+      "name": "Pintu Kaca Frameless 12mm (Floor Hinge)",
+      "sat": "unit",
+      "hsp_mat": 5500000,
+      "hsp_upah": 800000,
+      "formula": "0",
+      "coeffs": { "Kaca 12mm": 1, "Engsel Tanam": 1, "Handle": 1 },
+      "tags": ["kaca", "grade:lux", "pintu", "optional"],
+      "desc": "Pintu kaca tebal kantor/bank tanpa kusen."
+    },
+    {
+      "code": "20.6.3",
+      "name": "Kanopi Kaca Spider Fitting (Laminated Glass)",
+      "sat": "m2",
+      "hsp_mat": 3500000,
+      "hsp_upah": 1000000,
+      "formula": "0",
+      "coeffs": { "Kaca Laminated": 1, "Spider Fitting": 4 },
+      "tags": ["kaca", "grade:lux", "sultan", "optional"],
+      "desc": "Kanopi kaca futuristik dengan penjepit laba-laba stainless."
+    }
+  ]
+}

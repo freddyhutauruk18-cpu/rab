@@ -1,0 +1,243 @@
+{
+  "id": "DIV.19",
+  "category": "19. PEKERJAAN KOLAM RENANG, TAMAN & HARDSCAPE",
+  "description": "Pekerjaan konstruksi kolam renang, kolam ikan, serta penataan lansekap (taman) dan perkerasan area luar (hardscape) untuk estetika dan fungsi.",
+  "items": [
+    {
+      "code": "19.1.1",
+      "name": "Pembuatan Kolam Renang Skimmer System (Standard)",
+      "sat": "m2",
+      "hsp_mat": 3800000,
+      "hsp_upah": 1200000,
+      "formula": "0",
+      "coeffs": { "Beton K-300 Waterproof": 1, "Mozaik Keramik": 1, "Pompa & Sand Filter": 1, "Skimmer Box": 1 },
+      "tags": ["pool", "grade:std", "grade:lux", "perumahan", "optional", "ahsp_2024"],
+      "desc": "Kolam renang sistem skimmer (permukaan air 10cm di bawah bibir kolam). Harga per m2 luas lantai kolam (termasuk struktur, finishing, MEP). Kedalaman rata-rata 1.2 - 1.5m."
+    },
+    {
+      "code": "19.1.2",
+      "name": "Pembuatan Kolam Renang Overflow / Infinity (Mewah)",
+      "sat": "m2",
+      "hsp_mat": 5800000,
+      "hsp_upah": 1800000,
+      "formula": "0",
+      "coeffs": { "Beton K-350 Waterproof": 1, "Mozaik Kuda Laut": 1, "Balancing Tank": 1, "Gutter/Selokan": 1 },
+      "tags": ["pool", "grade:lux", "grade:prem", "hotel", "villa", "sultan", "optional", "ahsp_2024"],
+      "desc": "Kolam renang sistem air tumpah keliling atau salah satu sisi (Infinity Edge). Membutuhkan ruang ekstra untuk Balancing Tank dan Gutter. Estetika premium."
+    },
+    {
+      "code": "19.1.3",
+      "name": "Kolam Renang Fiber / Prefabrikasi (Instan)",
+      "sat": "unit",
+      "hsp_mat": 45000000,
+      "hsp_upah": 5000000,
+      "formula": "0",
+      "coeffs": { "Kolam Fiber": 1, "Pompa Portable": 1 },
+      "tags": ["pool", "grade:eco", "praktis", "kecil", "optional"],
+      "desc": "Kolam renang cetakan pabrik bahan fiberglass (ukuran sekitar 3x6m). Pemasangan cepat (tinggal tanam), anti bocor, tapi bentuk terbatas."
+    },
+    {
+      "code": "19.1.4",
+      "name": "Jacuzzi / Whirpool Beton (Air Panas)",
+      "sat": "unit",
+      "hsp_mat": 15000000,
+      "hsp_upah": 3500000,
+      "formula": "0",
+      "coeffs": { "Nozzle Jacuzzi": 6, "Heater (Pemanas)": 1, "Pompa Booster": 1 },
+      "tags": ["pool", "spa", "grade:lux", "kesehatan", "optional"],
+      "desc": "Kolam rendam kecil dengan semburan air pijat (hydrotherapy) dan air hangat. Bisa menyatu atau terpisah dari kolam utama."
+    },
+
+    {
+      "code": "19.2.1",
+      "name": "Kolam Ikan Koi Minimalis (Batu Alam + Chamber Filter)",
+      "sat": "m2",
+      "hsp_mat": 2800000,
+      "hsp_upah": 950000,
+      "formula": "0",
+      "coeffs": { "Batu Alam Andesit": 1, "Media Filter (Japmat/Bioball)": 1, "Pompa Celup": 1 },
+      "tags": ["landscape", "grade:std", "kolam_ikan", "hobi", "optional", "ahsp_2024"],
+      "desc": "Kolam ikan konstruksi beton finish batu alam. Wajib sistem filterasi 30% dari volume kolam agar air jernih."
+    },
+    {
+      "code": "19.2.2",
+      "name": "Kolam Koi Sultan (Kaca Tempered 12mm - Aquarium View)",
+      "sat": "unit",
+      "hsp_mat": 18500000,
+      "hsp_upah": 4500000,
+      "formula": "0",
+      "coeffs": { "Kaca Tempered 12mm": 1, "Struktur Beton Bertulang": 1, "Bottom Drain": 1 },
+      "tags": ["landscape", "grade:lux", "grade:prem", "sultan", "estetik", "optional"],
+      "desc": "Kolam koi dengan satu sisi dinding kaca tebal transparan. Memerlukan perhitungan struktur air yang presisi agar kaca tidak pecah."
+    },
+    {
+      "code": "19.2.3",
+      "name": "Water Feature / Air Terjun Dinding (Waterwall)",
+      "sat": "m2",
+      "hsp_mat": 1200000,
+      "hsp_upah": 450000,
+      "formula": "0",
+      "coeffs": { "Batu Alam Susun Sirih": 1, "Pompa Sirkulasi": 1, "Pipa Sembur": 1 },
+      "tags": ["landscape", "dekorasi", "taman", "suara_air", "optional"],
+      "desc": "Dinding dekoratif dengan aliran air gemericik. Cocok untuk foyer, taman belakang, atau area relaksasi."
+    },
+
+    {
+      "code": "19.3.1",
+      "name": "Taman Rumput Gajah Mini (Standard)",
+      "sat": "m2",
+      "hsp_mat": 45000,
+      "hsp_upah": 20000,
+      "formula": "0",
+      "coeffs": { "Rumput Gajah Mini": 1.1, "Tanah Subur": 0.05, "Pupuk": 0.2 },
+      "tags": ["taman", "grade:eco", "grade:std", "hidup", "hijau", "optional", "ahsp_2024"],
+      "desc": "Penanaman rumput hidup jenis Gajah Mini. Tahan pijak, perawatan mudah, perlu sinar matahari."
+    },
+    {
+      "code": "19.3.2",
+      "name": "Taman Rumput Jepang / Peking (Halus)",
+      "sat": "m2",
+      "hsp_mat": 55000,
+      "hsp_upah": 25000,
+      "formula": "0",
+      "coeffs": { "Rumput Jepang": 1.1, "Pasir Urug": 0.03 },
+      "tags": ["taman", "grade:std", "halus", "optional"],
+      "desc": "Rumput berdaun jarum halus dan rapat. Terlihat lebih rapi tapi sedikit tajam jika diduduki."
+    },
+    {
+      "code": "19.3.3",
+      "name": "Taman Rumput Sintetis Premium 3cm (Anti Ribet)",
+      "sat": "m2",
+      "hsp_mat": 165000,
+      "hsp_upah": 35000,
+      "formula": "0",
+      "coeffs": { "Rumput Sintetis": 1, "Drainase Cell (Alas)": 1, "Lem Kuning": 0.2 },
+      "tags": ["taman", "grade:std", "praktis", "indoor", "balkon", "rooftop", "optional"],
+      "desc": "Rumput buatan kualitas tinggi (Swiss/Jepang). Bebas perawatan, selalu hijau, aman untuk anak. Wajib drainage cell jika outdoor."
+    },
+    {
+      "code": "19.3.4",
+      "name": "Vertical Garden Living (Tanaman Hidup + Irigasi Otomatis)",
+      "sat": "m2",
+      "hsp_mat": 1500000,
+      "hsp_upah": 450000,
+      "formula": "0",
+      "coeffs": { "Modul Tanam/Karpet": 1, "Tanaman Hias (30-40 phn/m2)": 35, "Irigasi Tetes & Timer": 1 },
+      "tags": ["taman", "grade:lux", "dinding_hijau", "sultan", "optional"],
+      "desc": "Taman vertikal tanaman asli pada dinding. Menciptakan iklim mikro sejuk. Perlu maintenance rutin."
+    },
+    {
+      "code": "19.3.5",
+      "name": "Taman Kering (Dry Garden) Batu Koral & Tanaman Gurun",
+      "sat": "m2",
+      "hsp_mat": 250000,
+      "hsp_upah": 75000,
+      "formula": "0",
+      "coeffs": { "Batu Koral Putih/Hitam": 20, "Tanaman (Siklok/Kaktus)": 3, "Geotextile": 1.1 },
+      "tags": ["taman", "grade:std", "grade:lux", "interior", "minimalis", "optional"],
+      "desc": "Taman nuansa zen/minimalis dengan dominasi batu koral. Bersih, cocok untuk area dalam rumah (indoor) atau lahan sempit."
+    },
+
+    {
+      "code": "19.4.1",
+      "name": "Lantai Decking WPC (Wood Plastic Composite) - Anti Rayap",
+      "sat": "m2",
+      "hsp_mat": 950000,
+      "hsp_upah": 200000,
+      "formula": "0",
+      "coeffs": { "WPC Decking Board": 1.05, "Rangka Hollow Galvanis/Alum": 1.5, "Clip System": 15 },
+      "tags": ["hardscape", "grade:std", "grade:lux", "pool_deck", "teras", "awet", "optional", "ahsp_2024"],
+      "desc": "Pengganti kayu outdoor. Tahan air, anti lapuk, anti rayap, tidak perlu cat ulang. Cocok untuk pinggir kolam renang."
+    },
+    {
+      "code": "19.4.2",
+      "name": "Lantai Decking Kayu Ulin Kalimantan (Iron Wood)",
+      "sat": "m2",
+      "hsp_mat": 1850000,
+      "hsp_upah": 450000,
+      "formula": "0",
+      "coeffs": { "Papan Kayu Ulin": 1.1, "Baut Stainless": 20, "Coating Khusus": 1 },
+      "tags": ["hardscape", "grade:prem", "sultan", "alami", "villa", "optional"],
+      "desc": "Kayu terkeras di dunia (Kayu Besi). Sangat tahan cuaca ekstrim dan air laut. Semakin kena air semakin kuat."
+    },
+    {
+      "code": "19.4.3",
+      "name": "Lantai Batu Sikat / Koral Sikat Motif (Carport)",
+      "sat": "m2",
+      "hsp_mat": 275000,
+      "hsp_upah": 135000,
+      "formula": "0",
+      "coeffs": { "Batu Koral": 15, "Semen": 0.4, "Coating Batu": 0.2 },
+      "tags": ["hardscape", "grade:std", "garasi", "jalan_taman", "optional", "ahsp_2024"],
+      "desc": "Lantai dekoratif batu koral kecil yang disikat. Anti licin dan estetis."
+    },
+    {
+      "code": "19.4.4",
+      "name": "Pemasangan Grass Block (Paving Rumput)",
+      "sat": "m2",
+      "hsp_mat": 165000,
+      "hsp_upah": 55000,
+      "formula": "0",
+      "coeffs": { "Grass Block": 1.02, "Pasir & Tanah": 0.1, "Rumput": 0.5 },
+      "tags": ["hardscape", "grade:eco", "grade:std", "parkir", "resapan", "optional"],
+      "desc": "Paving berlubang yang bisa ditanami rumput. Berfungsi sebagai area parkir sekaligus resapan air hujan."
+    },
+
+    {
+      "code": "19.5.1",
+      "name": "Gazebo Kayu Kelapa (Glagu) Atap Sirap 2x2m",
+      "sat": "unit",
+      "hsp_mat": 8500000,
+      "hsp_upah": 1500000,
+      "formula": "0",
+      "coeffs": {},
+      "tags": ["gazebo", "grade:std", "taman", "santai", "optional"],
+      "desc": "Saung taman bahan kayu kelapa tua. Atap sirap kayu ulin atau genteng tanah liat. Knock-down system."
+    },
+    {
+      "code": "19.5.2",
+      "name": "Gazebo Kayu Jati Ukir (Jepara/Bali) 3x3m",
+      "sat": "unit",
+      "hsp_mat": 25000000,
+      "hsp_upah": 3000000,
+      "formula": "0",
+      "coeffs": {},
+      "tags": ["gazebo", "grade:prem", "sultan", "seni", "optional"],
+      "desc": "Gazebo bahan jati asli dengan ukiran detail. Sangat awet dan bernilai seni tinggi."
+    },
+    {
+      "code": "19.5.3",
+      "name": "Pergola Besi / Kayu (Rambatan Tanaman)",
+      "sat": "m2",
+      "hsp_mat": 750000,
+      "hsp_upah": 200000,
+      "formula": "0",
+      "coeffs": { "Besi Hollow/Kayu": 1.5, "Cat": 0.5 },
+      "tags": ["hardscape", "taman", "peneduh", "optional"],
+      "desc": "Rangka atap terbuka (kisi-kisi) untuk rambatan tanaman hias atau peneduh area duduk taman."
+    },
+
+    {
+      "code": "19.6.1",
+      "name": "Lampu Taman Sorot LED (Garden Spike Light) IP65",
+      "sat": "ttk",
+      "hsp_mat": 185000,
+      "hsp_upah": 65000,
+      "formula": "0",
+      "coeffs": { "Lampu LED Outdoor": 1, "Kabel NYFGBY (Tanam)": 8 },
+      "tags": ["mep", "taman", "lampu", "grade:std", "optional"],
+      "desc": "Lampu sorot tancap tanah untuk menerangi pohon/semak. Tahan hujan (Waterproof)."
+    },
+    {
+      "code": "19.6.2",
+      "name": "Lampu Kolam Renang Underwater LED (12V)",
+      "sat": "ttk",
+      "hsp_mat": 1200000,
+      "hsp_upah": 250000,
+      "formula": "0",
+      "coeffs": { "Lampu Pool LED": 1, "Trafo": 1, "Kabel Khusus": 5 },
+      "tags": ["mep", "pool", "lampu", "grade:lux", "optional"],
+      "desc": "Lampu dinding kolam renang yang aman (voltase rendah 12V). Wajib dipasang saat pengecoran."
+    }
+  ]
+}

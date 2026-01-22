@@ -1,0 +1,160 @@
+{
+  "id": "DIV.17",
+  "category": "17. PEKERJAAN BESI, RAILING TANGGA & TERALIS",
+  "items": [
+    {
+      "code": "A.4.6.2.1",
+      "name": "Railing Tangga Besi Hollow Minimalis (40x40) - Cat Duco",
+      "sat": "m'",
+      "hsp_mat": 650000,
+      "hsp_upah": 150000,
+      "formula": "V.inp_floors > 1 ? ((V.inp_floors - 1) * 5) : 0",
+      "coeffs": { "Besi Hollow": 1.2, "Cat Duco": 0.5, "Kawat Las": 0.2 },
+      "tags": ["besi", "railing", "grade:std", "grade:eco", "building:multistory", "mandatory", "ahsp_2024"],
+      "desc": "Pegangan tangga standar model garis-garis minimalis. (Otomatis hitung jika bertingkat)."
+    },
+    {
+      "code": "A.4.6.2.2",
+      "name": "Railing Tangga Stainless Steel + Kaca Tempered 10mm",
+      "sat": "m'",
+      "hsp_mat": 2200000,
+      "hsp_upah": 350000,
+      "formula": "0",
+      "coeffs": { "Stainless 304": 1, "Kaca Tempered": 0.8, "Spider Fitting": 2 },
+      "tags": ["besi", "railing", "grade:lux", "sultan", "mall", "hotel", "mewah", "optional", "ahsp_2024"],
+      "desc": "Railing mewah kaca bening/frameless dengan handrail stainless anti karat (Grade 304)."
+    },
+    {
+      "code": "17.1.3",
+      "name": "Railing Balkon / Void Besi Tempa (Klasik)",
+      "sat": "m'",
+      "hsp_mat": 1850000,
+      "hsp_upah": 450000,
+      "formula": "0",
+      "coeffs": { "Besi Tempa": 1, "Ornamen Alferrom": 1 },
+      "tags": ["besi", "railing", "grade:lux", "klasik", "optional"],
+      "desc": "Pagar pengaman balkon lantai atas dengan motif ukiran besi tempa."
+    },
+    {
+      "code": "17.1.3-B",
+      "name": "Railing Balkon / Void (Besi Hollow / Laser Cutting)",
+      "sat": "m'",
+      "hsp_mat": 850000,
+      "hsp_upah": 200000,
+      "formula": "0",
+      "coeffs": { "Plat Laser": 0.6, "Hollow Frame": 1 },
+      "tags": ["besi", "railing", "grade:lux", "eksterior", "optional"],
+      "desc": "Pagar pengaman balkon lantai atas."
+    },
+    {
+      "code": "17.1.4",
+      "name": "Handerson / Railing Dinding (Pegangan Saja)",
+      "sat": "m'",
+      "hsp_mat": 350000,
+      "hsp_upah": 100000,
+      "formula": "0",
+      "coeffs": { "Pipa Stainless": 1.1, "Bracket Dinding": 1 },
+      "tags": ["besi", "railing", "rs", "lansia", "difabel", "optional"],
+      "desc": "Pegangan dinding untuk ramp kursi roda atau kamar mandi difabel."
+    },
+    {
+      "code": "17.2.1",
+      "name": "Teralis Jendela Besi Nako 12mm (Minimalis)",
+      "sat": "unit",
+      "hsp_mat": 450000,
+      "hsp_upah": 100000,
+      "formula": "Math.ceil(V.LB/15)",
+      "coeffs": { "Besi Nako": 4, "Plat Strip": 2 },
+      "tags": ["besi", "keamanan", "grade:std", "grade:lux", "mandatory"],
+      "desc": "Pengaman jendela anti maling. (Jumlah otomatis mengikuti estimasi jendela)."
+    },
+    {
+      "code": "17.2.1-B",
+      "name": "Teralis Jendela Besi Nako (Minimalis Eco)",
+      "sat": "unit",
+      "hsp_mat": 350000,
+      "hsp_upah": 75000,
+      "formula": "Math.ceil(V.LB/15)",
+      "coeffs": { "Besi Nako": 1, "Cat": 0.1 },
+      "tags": ["besi", "keamanan", "grade:std", "mandatory"],
+      "desc": "Pengaman jendela anti maling. (Estimasi jumlah sama dengan jumlah jendela)."
+    },
+    {
+      "code": "17.2.2",
+      "name": "Pintu Kawat Nyamuk Besi + Kasa (Pintu Expanda)",
+      "sat": "unit",
+      "hsp_mat": 2500000,
+      "hsp_upah": 350000,
+      "formula": "1",
+      "coeffs": { "Pintu Expanda": 1 },
+      "tags": ["besi", "pintu", "grade:std", "grade:lux", "mandatory"],
+      "desc": "Pintu lapis kedua untuk sirkulasi udara aman. (Otomatis 1 unit di pintu utama)."
+    },
+    {
+      "code": "17.2.2-B",
+      "name": "Pintu Kawat Nyamuk Baja (Pintu Expanda Eco)",
+      "sat": "unit",
+      "hsp_mat": 1850000,
+      "hsp_upah": 150000,
+      "formula": "0",
+      "coeffs": { "Pintu Expanda": 1 },
+      "tags": ["besi", "pintu", "keamanan", "grade:std", "optional"],
+      "desc": "Pintu lapis kedua (double door) jaring baja anti nyamuk & maling."
+    },
+    {
+      "code": "17.3.1",
+      "name": "Tangga Putar Besi (Diameter 1.2m)",
+      "sat": "unit",
+      "hsp_mat": 2800000,
+      "hsp_upah": 750000,
+      "formula": "0",
+      "coeffs": { "Pipa Tiang": 1, "Plat Bordes": 1 },
+      "tags": ["besi", "tangga", "service", "toren", "jemuran", "optional"],
+      "desc": "Akses ke dak toren air/jemuran. Hemat tempat (Spiral)."
+    },
+    {
+      "code": "17.3.2",
+      "name": "Tangga Rebah Besi WF / Trap Kayu (Mezzanine)",
+      "sat": "unit",
+      "hsp_mat": 8500000,
+      "hsp_upah": 2500000,
+      "formula": "0",
+      "coeffs": { "Baja WF 150": 1, "Papan Kayu": 15 },
+      "tags": ["besi", "tangga", "industrial", "cafe", "kantor", "optional"],
+      "desc": "Tangga utama model industrial (Besi IWF + Pijakan Kayu Solid)."
+    },
+    {
+      "code": "17.3.3",
+      "name": "Tangga Monyet / Vertical Ladder (Maintenance)",
+      "sat": "m'",
+      "hsp_mat": 350000,
+      "hsp_upah": 150000,
+      "formula": "0",
+      "coeffs": { "Pipa Besi": 1 },
+      "tags": ["besi", "tangga", "service", "gudang", "pabrik", "optional"],
+      "desc": "Tangga vertikal besi yang ditempel di dinding (untuk maintenance atap/tandon)."
+    },
+    {
+      "code": "17.4.1",
+      "name": "Tutup Bak Kontrol Besi Plat Bordes",
+      "sat": "unit",
+      "hsp_mat": 450000,
+      "hsp_upah": 100000,
+      "formula": "1",
+      "coeffs": { "Plat Bordes": 1, "Siku Besi": 1 },
+      "tags": ["besi", "drainase", "grade:std", "grade:lux", "mandatory"],
+      "desc": "Tutup lubang pompa air/septictank agar aman diinjak & rapi."
+    },
+    {
+      "code": "17.4.1-B",
+      "name": "Grill Penutup Selokan / Got (Besi Siku + Behel)",
+      "sat": "m'",
+      "hsp_mat": 450000,
+      "hsp_upah": 100000,
+      "formula": "0",
+      "coeffs": { "Besi Siku": 2, "Besi Behel": 5 },
+      "tags": ["besi", "drainase", "garasi", "optional"],
+      "desc": "Tutup saluran air garasi agar bisa dilewati mobil."
+    }
+  ]
+}

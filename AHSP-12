@@ -1,0 +1,138 @@
+{
+  "id": "DIV.12",
+  "category": "12. PEKERJAAN PENGECATAN DINDING, PLAFON & KAYU",
+  "items": [
+    {
+      "code": "A.4.7.1.10",
+      "name": "Cat Dinding Interior Standar (Vinilex/Setara) - 2x Lapis",
+      "sat": "m2",
+      "hsp_mat": 35000,
+      "hsp_upah": 20000,
+      "formula": "(V.L_Dinding * 0.6) - (V.KM * 12)",
+      "coeffs": { "Cat Tembok": 0.25, "Plamir": 0.1, "Amplas": 0.5 },
+      "tags": ["cat", "dinding", "grade:eco", "grade:std", "rumah_subsidi_30", "mandatory", "ahsp_2024"],
+      "desc": "Cat tembok standar ekonomis. (Estimasi Volume: 60% luas dinding dikurangi dinding keramik KM)."
+    },
+    {
+      "code": "A.4.7.1.11",
+      "name": "Cat Dinding Interior Premium (Dulux EasyClean) - Washable",
+      "sat": "m2",
+      "hsp_mat": 65000,
+      "hsp_upah": 25000,
+      "formula": "(V.L_Dinding * 0.6) - (V.KM * 12)",
+      "coeffs": { "Cat Premium": 0.22, "Alkali Sealer": 0.1, "Sealer": 0.1 },
+      "tags": ["cat", "dinding", "grade:lux", "mudah_dibersihkan", "kamar_anak", "rumah_mewah", "hotel", "mandatory", "ahsp_2024"],
+      "desc": "Cat dinding yang bisa dibersihkan/dilap jika kotor (Anti Noda). Wajib pakai Sealer untuk hasil maksimal."
+    },
+    {
+      "code": "12.1.3",
+      "name": "Cat Dinding Anti Bakteri (Vinyl Acrylic) - Standar RS",
+      "sat": "m2",
+      "hsp_mat": 85000,
+      "hsp_upah": 30000,
+      "formula": "V.L_Dinding * 0.8",
+      "coeffs": { "Cat Anti Bakteri": 0.25, "Epoxy Primer": 0.15 },
+      "tags": ["cat", "dinding", "rs", "klinik", "lab", "mandatory"],
+      "desc": "Cat khusus dinding RS/Lab. Tahan bahan kimia, anti jamur & bakteri."
+    },
+    {
+      "code": "A.4.7.1.12",
+      "name": "Cat Dinding Eksterior Weathershield (Tahan Cuaca)",
+      "sat": "m2",
+      "hsp_mat": 85000,
+      "hsp_upah": 30000,
+      "formula": "V.KLL * V.inp_floors * 3.5",
+      "coeffs": { "Cat Weathershield": 0.3, "Cat Eksterior": 0.25, "Alkali Sealer": 0.15 },
+      "tags": ["cat", "eksterior", "grade:std", "grade:lux", "mandatory", "ahsp_2024"],
+      "desc": "Cat khusus luar ruangan, tahan hujan & panas 5 tahun+ serta sinar UV. (Estimasi Luas Fasad)."
+    },
+    {
+      "code": "12.2.1",
+      "name": "Cat Plafon Putih (Ceiling White) - Anti Jamur",
+      "sat": "m2",
+      "hsp_mat": 30000,
+      "hsp_upah": 20000,
+      "formula": "(V.LB * V.inp_floors) - (V.KM * 3)",
+      "coeffs": { "Cat Plafon": 0.25 },
+      "tags": ["cat", "plafon", "grade:eco", "grade:std", "grade:lux", "mandatory", "ahsp_2024"],
+      "desc": "Pengecatan langit-langit warna putih (Maxi White). (Otomatis hitung luas plafon kering)."
+    },
+    {
+      "code": "12.2.2",
+      "name": "Cat Plafon Semprot Kompresor (Exposed Industrial)",
+      "sat": "m2",
+      "hsp_mat": 55000,
+      "hsp_upah": 40000,
+      "formula": "V.LB * V.inp_floors",
+      "coeffs": { "Cat Minyak/Duco": 0.35 },
+      "tags": ["cat", "plafon", "grade:lux", "cafe_industrial", "kantor", "optional"],
+      "desc": "Cat semprot hitam/abu untuk dak beton & pipa ekspos (Gaya Industrial Cafe/Kantor)."
+    },
+    {
+      "code": "12.3.1",
+      "name": "Waterproofing Dinding Luar (No Drop/Aquaproof)",
+      "sat": "m2",
+      "hsp_mat": 65000,
+      "hsp_upah": 25000,
+      "formula": "V.L_Dinding * 0.4",
+      "coeffs": { "Waterproofing": 0.4, "Serat Fiber": 0.1 },
+      "tags": ["cat", "eksterior", "waterproof", "grade:lux", "apartemen", "ruko", "optional"],
+      "desc": "Pelapis anti bocor elastis pengganti cat eksterior biasa. Menutup retak rambut."
+    },
+    {
+      "code": "A.4.7.3.1",
+      "name": "Cat Minyak Kayu & Besi (Synthetic Enamel)",
+      "sat": "m2",
+      "hsp_mat": 55000,
+      "hsp_upah": 30000,
+      "formula": "0",
+      "coeffs": { "Cat Minyak": 0.2, "Thinner": 0.1 },
+      "tags": ["cat", "kayu", "besi", "grade:eco", "grade:std", "pagar", "optional", "renovasi"],
+      "desc": "Pengecatan kusen kayu biasa atau pagar besi (Kuas/Roll) dengan cat sintetis mengkilap."
+    },
+    {
+      "code": "A.4.7.3.2",
+      "name": "Politur / Melamik Kusen & Pintu (Spray Finish)",
+      "sat": "m2",
+      "hsp_mat": 110000,
+      "hsp_upah": 65000,
+      "formula": "0",
+      "coeffs": { "Impra/Propan": 0.3, "Sanding Sealer": 0.2 },
+      "tags": ["cat", "kayu", "grade:lux", "klasik", "pintu_utama", "optional"],
+      "desc": "Finishing semprot menampilkan serat kayu asli. Wajib jika pakai Kusen Jati/Kamper."
+    },
+    {
+      "code": "12.4.3",
+      "name": "Cat Duco Pintu & Kusen (Solid Colour - Mobil)",
+      "sat": "m2",
+      "hsp_mat": 135000,
+      "hsp_upah": 75000,
+      "formula": "0",
+      "coeffs": { "Cat Duco": 0.3, "Epoxy Filler": 0.2 },
+      "tags": ["cat", "kayu", "grade:lux", "modern", "minimalis", "optional"],
+      "desc": "Finishing semprot warna solid (Putih/Abu) halus seperti cat mobil."
+    },
+    {
+      "code": "12.5.1",
+      "name": "Coating Batu Alam (Glossy/Doff) - Anti Lumut",
+      "sat": "m2",
+      "hsp_mat": 45000,
+      "hsp_upah": 20000,
+      "formula": "0",
+      "coeffs": { "Coating Arca": 0.25 },
+      "tags": ["cat", "batu_alam", "eksterior", "taman", "grade:std", "optional"],
+      "desc": "Pelapis batu alam agar tidak berlumut dan warna lebih tajam. Wajib jika ada item 'Pasangan Batu Alam'."
+    },
+    {
+      "code": "12.6.1",
+      "name": "Cat Marka Jalan (Thermoplastic) - Parkiran",
+      "sat": "m'",
+      "hsp_mat": 25000,
+      "hsp_upah": 15000,
+      "formula": "0",
+      "coeffs": { "Cat Marka": 0.15, "Glass Bead": 0.05 },
+      "tags": ["cat", "marka", "jalan_beton", "parkir", "mall", "rs", "optional"],
+      "desc": "Garis parkir / marka jalan reflektif. Wajib untuk area parkir Mall/RS."
+    }
+  ]
+}

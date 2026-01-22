@@ -1,0 +1,282 @@
+{
+  "id": "DIV.05",
+  "category": "05. STRUKTUR ATAS BETON, BONDEK, COR & PRECAST",
+  "description": "Pekerjaan struktur beton bertulang, plat lantai, bekisting, dan finishing lantai beton untuk berbagai jenis bangunan.",
+  "items": [
+    {
+      "code": "5.1.1",
+      "name": "Beton Cor Manual 1:2:3 (Molen Kecil) K-175",
+      "sat": "m3",
+      "hsp_mat": 1250000,
+      "hsp_upah": 500000,
+      "formula": "V.inp_floors == 1 ? (V.LB * 0.15) : 0",
+      "coeffs": { "Semen PC": 8.5, "Pasir Beton": 0.5, "Split 1/2": 0.8 },
+      "tags": ["beton", "grade:eco", "grade:std", "building:tiny", "renovasi", "mandatory", "ahsp_2024"],
+      "desc": "Pengecoran beton site mix (aduk di lokasi) mutu K-175. Cocok untuk kolom praktis, ring balok, dak teras rumah sederhana."
+    },
+    {
+      "code": "5.1.2",
+      "name": "Beton Ready Mix K-250 (Standar SNI)",
+      "sat": "m3",
+      "hsp_mat": 950000,
+      "hsp_upah": 150000,
+      "formula": "V.inp_floors > 1 ? (V.LB * (V.inp_floors - 1) * 0.3) : 0",
+      "coeffs": { "Ready Mix K250": 1.05 },
+      "tags": ["beton", "grade:std", "building:multistory", "rumah_type_45", "mandatory", "ahsp_2024"],
+      "desc": "Beton truk molen mutu struktural K-250. Standar untuk dak lantai 2, balok, dan kolom rumah tinggal 2-3 lantai."
+    },
+    {
+      "code": "5.1.3",
+      "name": "Beton Ready Mix K-350 NFA (Kedap Air/Kolam)",
+      "sat": "m3",
+      "hsp_mat": 1150000,
+      "hsp_upah": 175000,
+      "formula": "0",
+      "coeffs": { "Ready Mix K350 NFA": 1.05 },
+      "tags": ["beton", "grade:lux", "kolam", "waterproof", "rs", "tangki_air", "optional", "ahsp_2024"],
+      "desc": "Beton kedap air (Non Fly Ash) mutu K-350. Wajib untuk kolam renang, ground tank, STP, atau dak beton expose."
+    },
+    {
+      "code": "5.1.4",
+      "name": "Beton Ready Mix K-500 (High Strength - Gedung)",
+      "sat": "m3",
+      "hsp_mat": 1550000,
+      "hsp_upah": 250000,
+      "formula": "0",
+      "coeffs": { "Ready Mix K500": 1.05 },
+      "tags": ["beton", "grade:lux", "building:huge", "pabrik", "jembatan", "high_rise", "optional"],
+      "desc": "Beton mutu tinggi K-500. Digunakan untuk kolom struktur utama gedung bertingkat tinggi (>5 lantai) atau dudukan mesin berat."
+    },
+    {
+      "code": "5.1.5",
+      "name": "Beton Instan / Dry Concrete K-300 (Sak 50kg)",
+      "sat": "m3",
+      "hsp_mat": 2800000,
+      "hsp_upah": 400000,
+      "formula": "0",
+      "coeffs": { "Beton Instan Sak": 45 },
+      "tags": ["beton", "renovasi", "cepat", "akses_sulit", "tambalan", "optional"],
+      "desc": "Beton kering siap pakai dalam kemasan sak, praktis hanya tambah air. Solusi untuk area yang tidak bisa dijangkau truk molen."
+    },
+    {
+      "code": "5.2.1",
+      "name": "Bekisting Triplek 9mm + Kaso (Konvensional)",
+      "sat": "m2",
+      "hsp_mat": 195000,
+      "hsp_upah": 90000,
+      "formula": "V.inp_floors > 1 ? (V.LB * (V.inp_floors - 1) * 1.5) : 0",
+      "coeffs": { "Triplek 9mm": 0.5, "Kaso Kayu": 0.04, "Paku": 0.3, "Minyak Bekisting": 0.1 },
+      "tags": ["bekisting", "grade:std", "mandatory", "ahsp_2024"],
+      "desc": "Cetakan beton menggunakan triplek dan kayu kaso. Untuk sisi balok gantung, kolom, dan plat lantai."
+    },
+    {
+      "code": "5.2.2",
+      "name": "Bekisting Semi Sistem (Phenolic Film 12mm + Hollow)",
+      "sat": "m2",
+      "hsp_mat": 280000,
+      "hsp_upah": 120000,
+      "formula": "0",
+      "coeffs": { "Phenolic Film": 0.35, "Besi Hollow": 1, "Tie Rod": 0.5 },
+      "tags": ["bekisting", "grade:lux", "apartemen", "mall", "beton_expose", "optional"],
+      "desc": "Bekisting multiplek lapis film (licin) dengan rangka besi. Menghasilkan permukaan beton halus (fair face) tanpa plester."
+    },
+    {
+      "code": "5.2.3",
+      "name": "Bekisting Kolom Bulat (Fiberglass/Plate Besi)",
+      "sat": "m2",
+      "hsp_mat": 550000,
+      "hsp_upah": 180000,
+      "formula": "0",
+      "coeffs": { "Sewa Cetakan": 1 },
+      "tags": ["bekisting", "kolom", "grade:lux", "masjid", "hotel", "optional"],
+      "desc": "Cetakan khusus untuk kolom bundar agar presisi dan halus."
+    },
+    {
+      "code": "5.3.1",
+      "name": "Pemasangan Bondek 0.75mm (Floordeck) Galvanis",
+      "sat": "m2",
+      "hsp_mat": 145000,
+      "hsp_upah": 40000,
+      "formula": "V.inp_floors > 1 ? (V.LB * (V.inp_floors-1)) : 0",
+      "coeffs": { "Bondek 0.75": 1.05, "Shear Connector": 2 },
+      "tags": ["plat", "grade:std", "grade:lux", "building:multistory", "mandatory", "ahsp_2024"],
+      "desc": "Plat baja gelombang sebagai bekisting tetap sekaligus tulangan positif plat lantai. Hemat beton dan besi."
+    },
+    {
+      "code": "5.3.2",
+      "name": "Panel Lantai Ringan Hebel (Precast AAC) t=12.5cm",
+      "sat": "m2",
+      "hsp_mat": 480000,
+      "hsp_upah": 95000,
+      "formula": "0",
+      "coeffs": { "Panel Lantai": 1.05, "Semen Grouting": 0.1, "Besi Angkur": 2 },
+      "tags": ["precast", "renovasi", "indoor", "cepat", "mezzanine", "optional", "ahsp_2024"],
+      "desc": "Dak lantai beton ringan pracetak. Pemasangan cepat, tidak perlu cor, langsung bisa dikeramik. Cocok untuk renovasi rumah tingkat."
+    },
+    {
+      "code": "5.3.3",
+      "name": "Plat Lantai Precast Hollow Core Slab (HCS)",
+      "sat": "m2",
+      "hsp_mat": 750000,
+      "hsp_upah": 60000,
+      "formula": "0",
+      "coeffs": { "Precast HCS": 1, "Semen Grouting": 0.1 },
+      "tags": ["precast", "plat", "building:huge", "mall", "bentang_lebar", "optional"],
+      "desc": "Plat lantai beton prategang berlubang untuk bentang lebar tanpa tiang tengah. Digunakan di mall atau gedung parkir."
+    },
+    {
+      "code": "5.4.1",
+      "name": "Pembesian Besi Ulir U-40 (TS 420) - Struktur Utama",
+      "sat": "kg",
+      "hsp_mat": 17500,
+      "hsp_upah": 6000,
+      "formula": "V.inp_floors > 1 ? (V.LB * (V.inp_floors - 1) * 35) : 0",
+      "coeffs": { "Besi Ulir": 1.05, "Kawat Ikat": 0.02 },
+      "tags": ["besi", "grade:std", "grade:lux", "building:multistory", "mandatory", "ahsp_2024"],
+      "desc": "Besi beton ulir mutu tinggi untuk tulangan utama Balok, Kolom, dan Plat Lantai."
+    },
+    {
+      "code": "5.4.2",
+      "name": "Wiremesh M8 (Satu Layer) - Dak Rumah",
+      "sat": "m2",
+      "hsp_mat": 75000,
+      "hsp_upah": 20000,
+      "formula": "V.inp_floors > 1 ? (V.LB * (V.inp_floors-1)) : 0",
+      "coeffs": { "Wiremesh M8": 1.1 },
+      "tags": ["besi", "grade:std", "building:multistory", "mandatory", "ahsp_2024"],
+      "desc": "Jaring besi anyaman pabrikasi M8 (8mm) untuk tulangan plat lantai rumah (di atas bondek)."
+    },
+    {
+      "code": "5.4.3",
+      "name": "Wiremesh M10 (Double Layer) - Gudang/Jalan/Parkir",
+      "sat": "m2",
+      "hsp_mat": 210000,
+      "hsp_upah": 35000,
+      "formula": "0",
+      "coeffs": { "Wiremesh M10": 2.2, "Kaki Ayam": 4 },
+      "tags": ["besi", "grade:lux", "building:huge", "gudang", "parkir", "heavy_duty", "optional", "ahsp_2024"],
+      "desc": "Wiremesh M10 dipasang 2 lapis (atas bawah) untuk lantai yang menahan beban berat (mobil/mesin)."
+    },
+    {
+      "code": "5.4.4",
+      "name": "Besi Beton Polos U-24 (TP 280) - Sengkang/Begel",
+      "sat": "kg",
+      "hsp_mat": 16000,
+      "hsp_upah": 5500,
+      "formula": "0",
+      "coeffs": { "Besi Polos": 1.05, "Kawat Ikat": 0.02 },
+      "tags": ["besi", "struktur", "grade:std", "mandatory", "ahsp_2024"],
+      "desc": "Besi beton polos untuk cincin/sengkang pengikat tulangan utama kolom dan balok."
+    },
+    {
+      "code": "5.5.1",
+      "name": "Kolom Praktis 15/15 (K-175) Siap Pakai / Pabrikasi",
+      "sat": "m'",
+      "hsp_mat": 110000,
+      "hsp_upah": 50000,
+      "formula": "V.KLL * 1.5 * V.inp_floors",
+      "coeffs": { "Kolom Praktis Jadi": 1, "Semen": 0.1, "Pasir": 0.05, "Split": 0.08 },
+      "tags": ["struktur", "grade:eco", "grade:std", "dinding", "mandatory", "ahsp_2024"],
+      "desc": "Kolom pengaku dinding bata ringan setiap jarak 3 meter atau sudut ruangan."
+    },
+    {
+      "code": "5.5.2",
+      "name": "Balok Lintel / Latei 10/15 (Pengaku Kusen)",
+      "sat": "m'",
+      "hsp_mat": 85000,
+      "hsp_upah": 40000,
+      "formula": "V.KLL * V.inp_floors",
+      "coeffs": { "Besi 8mm": 4, "Begel 6mm": 6, "Beton K175": 0.015 },
+      "tags": ["struktur", "grade:std", "mandatory", "ahsp_2024"],
+      "desc": "Balok beton kecil di atas kusen pintu/jendela untuk menahan beban dinding di atasnya agar kusen tidak melengkung."
+    },
+    {
+      "code": "5.5.3",
+      "name": "Sloof Struktur 20/40 (Rumah Bertingkat)",
+      "sat": "m'",
+      "hsp_mat": 380000,
+      "hsp_upah": 120000,
+      "formula": "V.inp_floors > 1 ? V.KLL : 0",
+      "coeffs": { "Besi 13mm Ulir": 6, "Begel 8mm": 6, "Beton K250": 0.08, "Bekisting": 0.8 },
+      "tags": ["struktur", "pondasi", "grade:lux", "building:multistory", "mandatory", "ahsp_2024"],
+      "desc": "Balok sloof besar untuk rumah 2 lantai atau lebih. Menghubungkan antar pondasi cakar ayam."
+    },
+    {
+      "code": "5.5.4",
+      "name": "Ring Balok Beton 15/20 (Pengikat Atas)",
+      "sat": "m'",
+      "hsp_mat": 145000,
+      "hsp_upah": 60000,
+      "formula": "V.KLL * V.inp_floors",
+      "coeffs": { "Besi 10mm": 4, "Begel 8mm": 6, "Beton K225": 0.03 },
+      "tags": ["struktur", "atap", "mandatory", "ahsp_2024"],
+      "desc": "Balok beton keliling di atas dinding paling atas sebagai pengikat struktur dan tumpuan rangka atap."
+    },
+    {
+      "code": "5.6.1",
+      "name": "Floor Hardener Natural (Gudang/Parkir)",
+      "sat": "m2",
+      "hsp_mat": 55000,
+      "hsp_upah": 30000,
+      "formula": "0",
+      "coeffs": { "Bubuk Hardener": 4, "Curing Compound": 0.2 },
+      "tags": ["finishing_lantai", "grade:lux", "industrial", "gudang", "parkir", "mall", "optional", "ahsp_2024"],
+      "desc": "Penaburan serbuk pengeras pada permukaan beton basah yang kemudian di-trowel halus. Meningkatkan ketahanan aus lantai."
+    },
+    {
+      "code": "5.6.2",
+      "name": "Sewa Mesin Trowel Finish (Poles Beton)",
+      "sat": "hari",
+      "hsp_mat": 400000,
+      "hsp_upah": 175000,
+      "formula": "0",
+      "coeffs": { "Sewa Mesin": 1, "BBM": 5 },
+      "tags": ["alat", "finishing_lantai", "grade:lux", "industrial", "optional"],
+      "desc": "Alat poles beton (helikopter) untuk meratakan Floor Hardener agar licin, padat, dan mengkilap."
+    },
+    {
+      "code": "5.6.3",
+      "name": "Epoxy Flooring Self Leveling 1000 micron (Gudang/Lab/RS)",
+      "sat": "m2",
+      "hsp_mat": 280000,
+      "hsp_upah": 95000,
+      "formula": "0",
+      "coeffs": { "Epoxy Paint": 1.5 },
+      "tags": ["finishing_lantai", "grade:lux", "industrial", "rs", "lab", "pabrik_makanan", "optional"],
+      "desc": "Pelapis lantai berbahan epoxy resin. Hasil akhir mengkilap, higienis (tanpa nat), tahan kimia, dan mudah dibersihkan."
+    },
+    {
+      "code": "5.7.1",
+      "name": "Sewa Concrete Pump (Pompa Kodok/Portable) - Gang Sempit",
+      "sat": "shift",
+      "hsp_mat": 3800000,
+      "hsp_upah": 0,
+      "formula": "0",
+      "coeffs": { "Sewa Pompa": 1 },
+      "tags": ["alat", "sewa", "grade:std", "optional"],
+      "desc": "Pompa beton portable dengan pipa besi (max 100m) untuk lokasi yang sulit dijangkau truk pompa besar."
+    },
+    {
+      "code": "5.7.2",
+      "name": "Sewa Concrete Pump (Long Boom) - Gedung",
+      "sat": "shift",
+      "hsp_mat": 5500000,
+      "hsp_upah": 0,
+      "formula": "V.inp_floors > 1 ? 1 : 0",
+      "coeffs": { "Sewa Pompa": 1 },
+      "tags": ["alat", "sewa", "grade:lux", "building:multistory", "mandatory"],
+      "desc": "Pompa beton dengan belalai panjang (Boom) untuk pengecoran lantai tingkat gedung."
+    },
+    {
+      "code": "5.8.1",
+      "name": "Grouting Baseplate Kolom Baja (Sika Grout)",
+      "sat": "titik",
+      "hsp_mat": 175000,
+      "hsp_upah": 60000,
+      "formula": "0",
+      "coeffs": { "Sika Grout 215": 0.2 },
+      "tags": ["struktur", "baja", "gudang_wf", "optional"],
+      "desc": "Pengisi celah beton di bawah plat landasan (baseplate) kolom baja struktur dengan semen khusus anti susut (non-shrink)."
+    }
+  ]
+}

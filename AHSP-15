@@ -1,0 +1,249 @@
+{
+  "id": "DIV.15",
+  "category": "15. PEKERJAAN HALAMAN, PAGAR, KANOPI & TAMAN (EXTERIOR)",
+  "description": "Pekerjaan penataan area luar bangunan, meliputi pagar pembatas, pintu gerbang, atap pelindung kendaraan (carport), serta penataan taman (landscape) dan drainase lingkungan.",
+  "items": [
+    {
+      "code": "15.1.1",
+      "name": "Pagar Besi Hollow Minimalis (Galvanis 4x4 & 2x4) Cat Duco",
+      "sat": "m2",
+      "hsp_mat": 550000,
+      "hsp_upah": 175000,
+      "formula": "Math.sqrt(V.LT) * 1.5",
+      "coeffs": { "Besi Hollow Galvanis": 1.2, "Cat Duco Besi": 0.5, "Kawat Las": 0.1 },
+      "tags": ["pagar", "eksterior", "grade:std", "mandatory", "ahsp_2024"],
+      "desc": "Pagar besi hollow galvanis model minimalis vertikal/horizontal. Finishing cat semprot (duco) anti karat. (Volume Estimasi = Lebar Muka Tanah x Tinggi 1.5m)."
+    },
+    {
+      "code": "15.1.2",
+      "name": "Pagar Laser Cutting Plat Besi (Motif Custom) + Frame",
+      "sat": "m2",
+      "hsp_mat": 1350000,
+      "hsp_upah": 300000,
+      "formula": "0",
+      "coeffs": { "Plat Besi Laser": 1, "Frame Hollow Tebal": 1.1, "Cat Powder Coating": 1 },
+      "tags": ["pagar", "eksterior", "grade:lux", "grade:prem", "mewah", "estetik", "optional", "ahsp_2024"],
+      "desc": "Pagar plat besi dengan motif potongan laser (batik, abstrak, floral). Finishing Powder Coating tahan gores. Memberikan privasi maksimal namun tetap sirkulasi udara."
+    },
+    {
+      "code": "15.1.3",
+      "name": "Pagar Expanded Metal (Jaring Wajik) Industrial Style",
+      "sat": "m2",
+      "hsp_mat": 780000,
+      "hsp_upah": 200000,
+      "formula": "0",
+      "coeffs": { "Expanded Metal GM": 1.1, "Frame Besi Siku/Hollow": 1 },
+      "tags": ["pagar", "eksterior", "grade:std", "grade:lux", "industrial", "cafe", "kantor", "optional"],
+      "desc": "Pagar jaring besi tebal motif wajik. Kokoh, transparan, dan bergaya industrial modern."
+    },
+    {
+      "code": "15.1.4",
+      "name": "Pagar BRC Galvanis Hot Dip (Tinggi 190cm) Lengkap Tiang",
+      "sat": "m'",
+      "hsp_mat": 380000,
+      "hsp_upah": 65000,
+      "formula": "0",
+      "coeffs": { "Panel Pagar BRC": 1, "Tiang BRC": 1, "Aksesoris (U-Clip/Mur)": 3, "Pondasi Setempat": 1 },
+      "tags": ["pagar", "eksterior", "grade:eco", "grade:std", "pabrik", "gudang", "batas_tanah", "optional", "ahsp_2024"],
+      "desc": "Pagar kawat baja pabrikan anti karat (Hot Dip Galvanized). Pemasangan cepat, cocok untuk pagar samping, belakang, atau area industri."
+    },
+    {
+      "code": "15.1.5",
+      "name": "Pagar Tembok Batako / Bata Ringan (Pagar Keliling)",
+      "sat": "m2",
+      "hsp_mat": 210000,
+      "hsp_upah": 95000,
+      "formula": "0",
+      "coeffs": { "Batako/Hebel": 13, "Semen Pasang": 8, "Pasir Pasang": 0.04, "Kolom Praktis": 0.3 },
+      "tags": ["pagar", "dinding", "grade:eco", "grade:std", "perumahan", "batas_kavling", "optional", "ahsp_2024"],
+      "desc": "Dinding pembatas lahan keliling material batako atau hebel, diplester aci finish cat tembok luar."
+    },
+    {
+      "code": "15.1.6",
+      "name": "Pagar Kayu Bengkirai / Ulin (Outdoor Wood) + Rangka Besi",
+      "sat": "m2",
+      "hsp_mat": 1650000,
+      "hsp_upah": 350000,
+      "formula": "0",
+      "coeffs": { "Papan Kayu Keras": 1.1, "Rangka Besi": 1, "Politur Outdoor": 0.5 },
+      "tags": ["pagar", "eksterior", "grade:prem", "sultan", "natural", "villa", "optional"],
+      "desc": "Pagar kombinasi rangka besi dengan papan kayu solid tahan cuaca (Bengkirai/Ulin). Tampilan natural dan eksklusif."
+    },
+    {
+      "code": "15.1.7",
+      "name": "Pintu Gerbang Utama Sliding + Pintu Kecil (Manhole)",
+      "sat": "unit",
+      "hsp_mat": 4500000,
+      "hsp_upah": 1200000,
+      "formula": "0",
+      "coeffs": { "Material Pagar": 1, "Roda Heavy Duty": 2, "Rel Besi Beton": 1, "Engsel Pivot": 2 },
+      "tags": ["pagar", "pintu", "grade:std", "grade:lux", "mandatory", "ahsp_2024"],
+      "desc": "Pintu gerbang utama sliding (geser) dan pintu kecil (swing) untuk akses orang. Estimasi lebar total 4-5 meter."
+    },
+    {
+      "code": "15.1.8",
+      "name": "Mesin Pintu Pagar Otomatis (Autogate Sliding System)",
+      "sat": "unit",
+      "hsp_mat": 5500000,
+      "hsp_upah": 750000,
+      "formula": "0",
+      "coeffs": { "Mesin Motor AC/DC": 1, "Rel Gigi (Rack Gear)": 4, "Remote Control": 2, "Sensor Safety": 1 },
+      "tags": ["pagar", "otomatis", "smart_home", "grade:lux", "grade:prem", "optional"],
+      "desc": "Motor penggerak pintu pagar otomatis kapasitas 800-1000kg. Dilengkapi remote control dan sensor anti jepit."
+    },
+    {
+      "code": "15.2.1",
+      "name": "Kanopi Baja Ringan + Atap Spandek Polos (Ekonomis)",
+      "sat": "m2",
+      "hsp_mat": 195000,
+      "hsp_upah": 75000,
+      "formula": "15",
+      "coeffs": { "Kanal C Baja Ringan": 1.5, "Reng Baja Ringan": 2, "Atap Spandek": 1.05 },
+      "tags": ["kanopi", "eksterior", "grade:eco", "rumah_subsidi", "fungsional", "mandatory", "ahsp_2024"],
+      "desc": "Kanopi carport paling hemat biaya. Rangka baja ringan, atap seng zincalume. Berisik saat hujan. (Default: 15m2 untuk 1 mobil)."
+    },
+    {
+      "code": "15.2.2",
+      "name": "Kanopi Besi Hollow + Atap Spandek Pasir (Peredam Suara)",
+      "sat": "m2",
+      "hsp_mat": 420000,
+      "hsp_upah": 120000,
+      "formula": "0",
+      "coeffs": { "Besi Hollow 4x6 & 4x4": 2.5, "Spandek Pasir": 1.05, "Cat Besi": 0.5 },
+      "tags": ["kanopi", "eksterior", "grade:std", "carport", "optional", "ahsp_2024"],
+      "desc": "Kanopi rangka besi hollow cat hitam/putih. Atap spandek berlapis pasir aspal untuk meredam suara hujan dan panas."
+    },
+    {
+      "code": "15.2.3",
+      "name": "Kanopi Besi Hollow + Atap UPVC (Alderon Double Layer)",
+      "sat": "m2",
+      "hsp_mat": 750000,
+      "hsp_upah": 180000,
+      "formula": "15",
+      "coeffs": { "Besi Hollow Galvanis Tebal": 2.5, "Atap UPVC Alderon": 1.05, "Sealant": 0.2 },
+      "tags": ["kanopi", "eksterior", "grade:std", "grade:lux", "mandatory", "ahsp_2024"],
+      "desc": "Kanopi premium standar perumahan menengah-atas. Atap UPVC rongga udara, sangat dingin, kedap suara, dan awet."
+    },
+    {
+      "code": "15.2.4",
+      "name": "Kanopi Kaca Tempered 10mm + Rangka Baja WF / Hollow Besar",
+      "sat": "m2",
+      "hsp_mat": 2100000,
+      "hsp_upah": 550000,
+      "formula": "0",
+      "coeffs": { "Kaca Tempered 10mm": 1, "Baja WF/Hollow 5x10": 18, "Spider Fitting / Sealant": 1, "Kaca Film Sunblast": 1 },
+      "tags": ["kanopi", "eksterior", "grade:prem", "sultan", "modern", "skylight", "optional", "ahsp_2024"],
+      "desc": "Kanopi atap transparan mewah (Skylight). Menggunakan kaca tempered aman pecah jagung. Struktur baja berat ekspose."
+    },
+    {
+      "code": "15.2.5",
+      "name": "Kanopi Membrane (Tensile Structure) Import",
+      "sat": "m2",
+      "hsp_mat": 1450000,
+      "hsp_upah": 400000,
+      "formula": "0",
+      "coeffs": { "Kain Membrane Agtex/Heytex": 1.2, "Pipa Besi Hitam Schedule": 15, "Sling Baja & Aksesoris": 1 },
+      "tags": ["kanopi", "eksterior", "grade:lux", "cafe", "hotel", "taman", "optional"],
+      "desc": "Atap tenda membrane tarik yang estetis dan futuristik. Cocok untuk area luas, carport mewah, atau area komersial."
+    },
+    {
+      "code": "15.2.6",
+      "name": "Atap Buka Tutup (Sun Louvre / Lovera) Aluminium",
+      "sat": "m2",
+      "hsp_mat": 1800000,
+      "hsp_upah": 350000,
+      "formula": "0",
+      "coeffs": { "Daun Lovera Aluminium": 1, "Rangka & Mekanik": 1, "Sistem Operasional": 1 },
+      "tags": ["kanopi", "eksterior", "grade:prem", "void", "kolam_renang", "jemuran", "optional"],
+      "desc": "Atap kisi-kisi aluminium yang bisa dibuka tutup (adjustable) untuk mengatur cahaya dan sirkulasi udara. Anti karat."
+    },
+    {
+      "code": "15.3.1",
+      "name": "Penanaman Rumput Gajah Mini / Jepang (Taman)",
+      "sat": "m2",
+      "hsp_mat": 45000,
+      "hsp_upah": 20000,
+      "formula": "(V.LT - V.LB) > 0 ? (V.LT - V.LB) : 0",
+      "coeffs": { "Bibit Rumput": 1.1, "Tanah Subur/Top Soil": 0.05, "Pupuk Kandang": 0.5 },
+      "tags": ["taman", "landscape", "grade:std", "grade:lux", "mandatory", "ahsp_2024"],
+      "desc": "Penghijauan area sisa lahan (RTH). Termasuk pengemburan tanah, penambahan tanah subur, dan penanaman rumput."
+    },
+    {
+      "code": "15.3.2",
+      "name": "Pembuatan Taman Kering (Dry Garden - Batu Koral & Tanaman)",
+      "sat": "m2",
+      "hsp_mat": 185000,
+      "hsp_upah": 65000,
+      "formula": "0",
+      "coeffs": { "Batu Koral Putih/Hitam": 25, "Tanaman Hias (Bromelia/Siklok)": 4, "Geotextile": 1.1, "Batu Pijakan": 2 },
+      "tags": ["taman", "landscape", "grade:lux", "interior", "void", "perawatan_mudah", "optional", "ahsp_2024"],
+      "desc": "Taman minimalis dominasi batu koral dan tanaman hias tahan indoor. Perawatan rendah, bersih, cocok untuk area dalam rumah/void."
+    },
+    {
+      "code": "15.3.3",
+      "name": "Vertical Garden (Taman Dinding) Tanaman Hidup + Irigasi",
+      "sat": "m2",
+      "hsp_mat": 1200000,
+      "hsp_upah": 350000,
+      "formula": "0",
+      "coeffs": { "Modul Karpet Tanam": 1, "Tanaman Hias Rimbun": 30, "Sistem Irigasi Tetes & Timer": 1, "Rangka Besi": 1 },
+      "tags": ["taman", "vertical", "grade:lux", "cafe", "kantor", "fasad", "optional"],
+      "desc": "Taman vertikal pada dinding dengan tanaman hidup rapat. Sudah termasuk sistem penyiraman otomatis (drip irrigation)."
+    },
+    {
+      "code": "15.3.4",
+      "name": "Vertical Garden Artificial (Tanaman Palsu Premium)",
+      "sat": "m2",
+      "hsp_mat": 650000,
+      "hsp_upah": 100000,
+      "formula": "0",
+      "coeffs": { "Panel Tanaman Artificial": 1, "Paku/Sekrup/Lem": 1 },
+      "tags": ["taman", "vertical", "grade:std", "grade:lux", "interior", "bebas_perawatan", "optional"],
+      "desc": "Hiasan dinding nuansa hijau dengan tanaman plastik kualitas premium (mirip asli). Bebas perawatan, tahan lama indoor."
+    },
+    {
+      "code": "15.3.5",
+      "name": "Kolam Ikan Koi Minimalis (Kaca Tempered & Batu Alam)",
+      "sat": "unit",
+      "hsp_mat": 4500000,
+      "hsp_upah": 2000000,
+      "formula": "0",
+      "coeffs": { "Konstruksi Kolam": 1, "Kaca 12mm": 1, "Pompa & Media Filter": 1, "Waterproofing": 1, "Batu Alam": 1 },
+      "tags": ["taman", "kolam", "grade:lux", "teras", "optional"],
+      "desc": "Pembuatan kolam ikan koi dengan satu sisi kaca transparan. Lengkap dengan sistem filterasi 3 chamber standar hobi."
+    },
+    {
+      "code": "15.3.6",
+      "name": "Dek Kayu Kolam / Teras (WPC Decking - Anti Rayap)",
+      "sat": "m2",
+      "hsp_mat": 650000,
+      "hsp_upah": 150000,
+      "formula": "0",
+      "coeffs": { "WPC Decking": 1.05, "Rangka Hollow Galv": 1.5, "Clip System": 15 },
+      "tags": ["taman", "lantai", "kolam", "grade:lux", "outdoor", "optional"],
+      "desc": "Lantai kayu sintetis (Wood Plastic Composite) untuk area pinggir kolam atau teras outdoor. Tahan air, tahan rayap, tidak perlu cat ulang."
+    },
+    {
+      "code": "15.4.1",
+      "name": "Grill Penutup Selokan Besi Siku Heavy Duty (Jalan Masuk Mobil)",
+      "sat": "m'",
+      "hsp_mat": 450000,
+      "hsp_upah": 125000,
+      "formula": "Math.sqrt(V.LT)",
+      "coeffs": { "Besi Siku 5x5": 4, "Besi Beton Ulir 13mm": 8, "Cat Anti Karat": 0.2 },
+      "tags": ["drainase", "besi", "grade:std", "grade:lux", "mandatory", "ahsp_2024"],
+      "desc": "Tutup got/selokan depan rumah dari besi yang kuat dilindas mobil. (Panjang = Estimasi Lebar Muka Tanah)."
+    },
+    {
+      "code": "15.4.2",
+      "name": "Bak Kontrol / Resapan Air Hujan (Biopori Jumbo)",
+      "sat": "unit",
+      "hsp_mat": 850000,
+      "hsp_upah": 350000,
+      "formula": "0",
+      "coeffs": { "Buis Beton / Bata": 1, "Tutup Beton": 1, "Ijuk & Kerikil": 1 },
+      "tags": ["drainase", "sanitasi", "lingkungan", "grade:std", "optional", "ahsp_2024"],
+      "desc": "Sumur resapan mini atau bak kontrol saluran air hujan untuk mencegah genangan di halaman."
+    }
+  ]
+}

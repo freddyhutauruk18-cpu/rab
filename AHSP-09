@@ -1,0 +1,298 @@
+{
+  "id": "DIV.09",
+  "category": "09. PEKERJAAN RANGKA, PENUTUP ATAP & INSULASI",
+  "description": "Pekerjaan struktur atap (baja ringan/berat/kayu), pemasangan penutup atap (genteng/metal/kaca), sistem insulasi panas/suara, dan drainase atap.",
+  "items": [
+    {
+      "code": "9.1.1",
+      "name": "Rangka Atap Baja Ringan C75.075 (SNI) - Standar",
+      "sat": "m2",
+      "hsp_mat": 155000,
+      "hsp_upah": 55000,
+      "formula": "V.LB * 1.3",
+      "coeffs": { "Kanal C 0.75mm": 4, "Reng 0.45mm": 6, "Screw Baja Ringan": 30, "Dynabolt": 4 },
+      "tags": ["rangka", "grade:std", "grade:eco", "rumah_type_36", "rumah_type_45", "mandatory", "ahsp_2024"],
+      "desc": "Rangka atap standar perumahan untuk beban atap ringan (Metal/Spandek). Garansi struktur 10 tahun. (Luas Atap = Luas Bangunan x 1.3)."
+    },
+    {
+      "code": "9.1.2",
+      "name": "Rangka Atap Baja Ringan C75.100 (Heavy Duty)",
+      "sat": "m2",
+      "hsp_mat": 195000,
+      "hsp_upah": 70000,
+      "formula": "0",
+      "coeffs": { "Kanal C 1.00mm": 4.5, "Reng 0.45mm": 6, "Screw Baja Ringan": 35 },
+      "tags": ["rangka", "grade:lux", "berat", "genteng_keramik", "genteng_beton", "sekolah", "optional", "ahsp_2024"],
+      "desc": "Profil baja lebih tebal (1.00mm) untuk menahan beban atap berat seperti genteng keramik, beton, atau tanah liat. Jarak kuda-kuda lebih rapat."
+    },
+    {
+      "code": "9.1.3",
+      "name": "Rangka Atap Kayu Kelas II (Kamper/Meranti) Anti Rayap",
+      "sat": "m2",
+      "hsp_mat": 450000,
+      "hsp_upah": 150000,
+      "formula": "0",
+      "coeffs": { "Kayu Kaso 5/7": 0.015, "Kayu Reng 3/4": 0.01, "Paku": 0.5, "Residu Anti Rayap": 0.2 },
+      "tags": ["rangka", "tradisional", "grade:lux", "ekspose", "pendopo", "villa", "optional"],
+      "desc": "Rangka atap kayu konvensional. Cocok untuk desain atap ekspose (pendopo/gazebor) yang menonjolkan estetika kayu. Wajib treatment anti rayap."
+    },
+    {
+      "code": "9.1.4",
+      "name": "Konstruksi Baja Berat IWF (Gudang/Pabrik Bentang Lebar)",
+      "sat": "kg",
+      "hsp_mat": 35000,
+      "hsp_upah": 15000,
+      "formula": "0",
+      "coeffs": { "Baja IWF": 1.05, "Cat Zinchromate": 0.05, "Angkur Bolt": 0.02, "Plat Simpul": 0.1 },
+      "tags": ["rangka", "industrial", "gudang_wf", "pabrik", "futsal", "bentang_lebar", "optional", "ahsp_2024"],
+      "desc": "Rangka atap bentang lebar (>12m) menggunakan baja profil IWF. Perhitungan volume berdasarkan total berat besi (kg) termasuk gording CNP."
+    },
+    {
+      "code": "9.1.5",
+      "name": "Rangka Atap Exposed Hollow Hitam (Industrial Cafe)",
+      "sat": "m2",
+      "hsp_mat": 250000,
+      "hsp_upah": 85000,
+      "formula": "0",
+      "coeffs": { "Besi Hollow 5x10": 3, "Cat Duco Hitam": 0.5, "Kawat Las": 0.2 },
+      "tags": ["rangka", "industrial", "cafe", "kantor_open_space", "ekspose", "optional"],
+      "desc": "Rangka atap besi hollow yang diekspos dan dicat hitam/putih. Populer untuk cafe industrial atau kantor open space."
+    },
+
+    {
+      "code": "9.2.1",
+      "name": "Atap Spandek Galvalum Polos 0.35mm (Ekonomis)",
+      "sat": "m2",
+      "hsp_mat": 85000,
+      "hsp_upah": 35000,
+      "formula": "V.LB * 1.3",
+      "coeffs": { "Spandek 0.35mm": 1.05, "Screw Roofing": 6 },
+      "tags": ["penutup", "grade:eco", "fungsional", "gudang", "kos_kosan", "mandatory", "ahsp_2024"],
+      "desc": "Penutup atap lembaran metal zincalume. Ringan, anti bocor, namun berisik saat hujan dan panas. Pilihan utama untuk budget terbatas."
+    },
+    {
+      "code": "9.2.2",
+      "name": "Genteng Metal Pasir (Peredam Suara & Panas)",
+      "sat": "m2",
+      "hsp_mat": 125000,
+      "hsp_upah": 45000,
+      "formula": "V.LB * 1.3",
+      "coeffs": { "Genteng Metal Pasir": 1.7, "Screw Roofing": 10 },
+      "tags": ["penutup", "grade:std", "rumah_subsidi", "renovasi", "mandatory", "ahsp_2024"],
+      "desc": "Lembaran metal profil genteng dengan lapisan pasir aspal. Lebih estetis (mirip genteng beton), tidak berisik, dan menahan panas."
+    },
+    {
+      "code": "9.2.3",
+      "name": "Atap UPVC Double Layer (Alderon/Dr.Shield) - Dingin",
+      "sat": "m2",
+      "hsp_mat": 265000,
+      "hsp_upah": 60000,
+      "formula": "0",
+      "coeffs": { "Atap UPVC": 1.05, "Screw Cap Set": 6 },
+      "tags": ["penutup", "grade:lux", "dingin", "pabrik", "kanopi", "gudang_kimia", "optional", "ahsp_2024"],
+      "desc": "Atap plastik UPVC berongga udara. Sangat efektif meredam panas dan suara hujan. Tahan karat, asam, dan bahan kimia (Cocok untuk pabrik/pantai)."
+    },
+    {
+      "code": "9.2.4",
+      "name": "Genteng Keramik Glazur M-Class / Kanmuri (Premium)",
+      "sat": "m2",
+      "hsp_mat": 350000,
+      "hsp_upah": 95000,
+      "formula": "0",
+      "coeffs": { "Genteng Keramik": 14.5, "Screw/Paku": 14.5 },
+      "tags": ["penutup", "grade:lux", "mewah", "adem", "tahan_lama", "rumah_klasik", "optional", "ahsp_2024"],
+      "desc": "Genteng tanah liat bakar finishing glazur. Warna awet selamanya, adem, dan mewah. Wajib menggunakan rangka baja ringan C75.100 (jarak reng presisi)."
+    },
+    {
+      "code": "9.2.5",
+      "name": "Atap Aspal Bitumen (Onduline/Tegola) + Alas Multiplek",
+      "sat": "m2",
+      "hsp_mat": 320000,
+      "hsp_upah": 85000,
+      "formula": "0",
+      "coeffs": { "Shingle Bitumen": 1.1, "Multiplek 9mm": 1, "Underlayer Membrane": 1, "Paku Bitumen": 20 },
+      "tags": ["penutup", "grade:lux", "klasik", "villa", "resort", "atap_lengkung", "optional"],
+      "desc": "Atap sirap aspal flat. Ringan, fleksibel (bisa untuk atap lengkung/kubah/mansard), dan estetis. Wajib alas triplek/GRC."
+    },
+    {
+      "code": "9.2.6",
+      "name": "Genteng Beton Flat (Cisangkan/Mutiara) Minimalis",
+      "sat": "m2",
+      "hsp_mat": 165000,
+      "hsp_upah": 65000,
+      "formula": "0",
+      "coeffs": { "Genteng Beton": 10, "Screw": 10 },
+      "tags": ["penutup", "grade:std", "minimalis", "modern", "berat", "rumah_cluster", "optional", "ahsp_2024"],
+      "desc": "Genteng beton model datar (flat). Tampilan modern minimalis kotak. Berat, membutuhkan struktur rangka yang kuat (Heavy Duty)."
+    },
+    {
+      "code": "9.2.7",
+      "name": "Atap Polycarbonate Twinlite 6mm (Transparan)",
+      "sat": "m2",
+      "hsp_mat": 220000,
+      "hsp_upah": 50000,
+      "formula": "0",
+      "coeffs": { "Polycarbonate Sheet": 1.05, "Profile Sambungan H": 1, "Karet/Sealant": 1 },
+      "tags": ["penutup", "kanopi", "transparan", "jemuran", "greenhouse", "optional"],
+      "desc": "Atap plastik berongga transparan. Cocok untuk kanopi, jemuran, skylight, atau greenhouse agar cahaya masuk."
+    },
+    {
+      "code": "9.2.8",
+      "name": "Atap SolarTuff / SolarFlat 3mm (Solid Polycarbonate)",
+      "sat": "m2",
+      "hsp_mat": 450000,
+      "hsp_upah": 75000,
+      "formula": "0",
+      "coeffs": { "SolarFlat Sheet": 1.05, "Screw Khusus": 8 },
+      "tags": ["penutup", "kanopi", "mewah", "kaca_plastik", "modern", "optional"],
+      "desc": "Lembaran polycarbonate padat seperti kaca tapi tidak mudah pecah (unbreakable). Tahan UV tinggi, sangat jernih dan mewah."
+    },
+    {
+      "code": "9.2.9",
+      "name": "Atap Kaca Tempered 10mm (Skylight Premium)",
+      "sat": "m2",
+      "hsp_mat": 1800000,
+      "hsp_upah": 450000,
+      "formula": "0",
+      "coeffs": { "Kaca Tempered Laminated": 1, "Sealant Structural": 2, "Spider Fitting": 1 },
+      "tags": ["penutup", "kanopi", "grade:prem", "sultan", "mall", "lobby", "optional"],
+      "desc": "Atap kaca asli (Tempered/Laminated) untuk pencahayaan maksimal dan view langit. Wajib konstruksi baja yang presisi dan aman."
+    },
+
+    {
+      "code": "9.3.1",
+      "name": "Nok / Bubungan Metal Pasir (Pelengkap Genteng Metal)",
+      "sat": "m'",
+      "hsp_mat": 85000,
+      "hsp_upah": 40000,
+      "formula": "Math.sqrt(V.LB) * 1.5",
+      "coeffs": { "Nok Metal Pasir": 1.1, "Screw": 4 },
+      "tags": ["aksesoris", "grade:std", "mandatory", "ahsp_2024"],
+      "desc": "Penutup pertemuan atap bagian atas (Karpus) untuk atap genteng metal."
+    },
+    {
+      "code": "9.3.2",
+      "name": "Nok / Bubungan Keramik Glazur (Sistem Dry Fix / Semen)",
+      "sat": "m'",
+      "hsp_mat": 185000,
+      "hsp_upah": 110000,
+      "formula": "0",
+      "coeffs": { "Nok Keramik": 3.5, "Semen/Dry Fix Roll": 1 },
+      "tags": ["aksesoris", "grade:lux", "mandatory", "ahsp_2024"],
+      "desc": "Nok khusus genteng keramik. Pemasangan bisa menggunakan adukan semen atau sistem lembaran (Dry Fix) agar lebih rapi dan bebas bocor."
+    },
+    {
+      "code": "9.3.3",
+      "name": "Talang Jurai Dalam (Seng Plat BJLS 0.35mm)",
+      "sat": "m'",
+      "hsp_mat": 110000,
+      "hsp_upah": 50000,
+      "formula": "0",
+      "coeffs": { "Seng Plat Lebar 90cm": 1.1, "Paku/Screw": 10, "Cat Anti Karat": 0.2 },
+      "tags": ["drainase", "atap_limas", "mandatory", "ahsp_2024"],
+      "desc": "Talang air pada pertemuan dua bidang atap yang menyudut ke dalam (Jurai). Wajib anti bocor dan lebar cukup."
+    },
+
+    {
+      "code": "9.4.1",
+      "name": "Lisplang GRC Urat Kayu 20cm (Double Trap)",
+      "sat": "m'",
+      "hsp_mat": 95000,
+      "hsp_upah": 50000,
+      "formula": "Math.sqrt(V.LB) * 4 * 1.2",
+      "coeffs": { "Papan GRC 20cm": 1, "Papan GRC 10cm": 1, "Skrup": 10, "Cat Kayu": 0.2 },
+      "tags": ["finishing", "grade:std", "grade:lux", "mandatory", "ahsp_2024"],
+      "desc": "Papan semen motif kayu di ujung atap agar rapi. Pemasangan double (trap) bertumpuk untuk estetika lebih baik."
+    },
+    {
+      "code": "9.4.2",
+      "name": "Lisplang Metal / Zincalume Warna (Pabrik)",
+      "sat": "m'",
+      "hsp_mat": 75000,
+      "hsp_upah": 35000,
+      "formula": "0",
+      "coeffs": { "Lisplang Metal": 1.05, "Screw": 6 },
+      "tags": ["finishing", "grade:eco", "gudang", "modern", "optional"],
+      "desc": "Lisplang dari bahan plat metal tekuk pabrikan. Lebih awet, anti retak, warna tahan lama, cepat dipasang."
+    },
+
+    {
+      "code": "9.5.1",
+      "name": "Insulasi Bubble Foil Double Side (Peredam Panas)",
+      "sat": "m2",
+      "hsp_mat": 65000,
+      "hsp_upah": 25000,
+      "formula": "V.LB * 1.3",
+      "coeffs": { "Bubble Foil Aluminium": 1.1, "Kawat Loket (Penahan)": 1 },
+      "tags": ["insulasi", "grade:std", "grade:lux", "mandatory", "ahsp_2024"],
+      "desc": "Lapisan gelembung udara lapis aluminium foil 2 sisi. Efektif memantulkan panas matahari hingga 95%."
+    },
+    {
+      "code": "9.5.2",
+      "name": "Peredam Panas & Suara Glasswool 50mm + Aluminium Foil",
+      "sat": "m2",
+      "hsp_mat": 95000,
+      "hsp_upah": 40000,
+      "formula": "0",
+      "coeffs": { "Glasswool Roll": 1.05, "Aluminium Foil Paper": 1.1, "Wiremesh Galvanis": 1 },
+      "tags": ["insulasi", "industrial", "pabrik", "gudang", "studio", "optional"],
+      "desc": "Insulasi serat kaca tebal untuk meredam panas ekstrim dan suara hujan (bising). Biasa dipakai di pabrik/gudang."
+    },
+    {
+      "code": "9.5.3",
+      "name": "Roof Mesh (Kawat Harmonika Pengaman Atap)",
+      "sat": "m2",
+      "hsp_mat": 45000,
+      "hsp_upah": 20000,
+      "formula": "0",
+      "coeffs": { "Kawat Harmonika": 1.05 },
+      "tags": ["aksesoris", "safety", "gudang", "pabrik", "optional"],
+      "desc": "Jaring kawat baja di bawah atap sebagai pengaman (safety net) untuk mencegah orang/barang jatuh saat perawatan atap, sekaligus penahan glasswool."
+    },
+    {
+      "code": "9.5.4",
+      "name": "Turbine Ventilator (Exhaust Atap Tanpa Listrik)",
+      "sat": "unit",
+      "hsp_mat": 1200000,
+      "hsp_upah": 250000,
+      "formula": "0",
+      "coeffs": { "Turbine 24 Inch": 1, "Dudukan Seng": 1 },
+      "tags": ["insulasi", "sirkulasi", "gudang", "pabrik", "optional"],
+      "desc": "Alat sirkulasi udara atap yang berputar dengan tenaga angin. Membuang hawa panas dari dalam ruangan."
+    },
+
+    {
+      "code": "9.6.1",
+      "name": "Talang Air PVC Kotak (Gantung) Standard + Corong",
+      "sat": "m'",
+      "hsp_mat": 135000,
+      "hsp_upah": 50000,
+      "formula": "0",
+      "coeffs": { "Talang PVC RG": 1, "Gantungan Besi": 2, "Corong/Tutup": 0.5, "Lem PVC": 0.1 },
+      "tags": ["drainase", "grade:std", "optional", "ahsp_2024"],
+      "desc": "Saluran air hujan gantung bahan PVC. Murah dan mudah diganti."
+    },
+    {
+      "code": "9.6.2",
+      "name": "Talang Beton Cor Bertulang Waterproof (Dak Talang)",
+      "sat": "m'",
+      "hsp_mat": 550000,
+      "hsp_upah": 300000,
+      "formula": "0",
+      "coeffs": { "Beton K-250": 0.15, "Besi Tulangan": 8, "Waterproofing Coating": 1 },
+      "tags": ["drainase", "grade:lux", "awet", "rumah_mewah", "optional", "ahsp_2024"],
+      "desc": "Talang air permanen dari struktur beton cor. Sangat awet, bisa diinjak untuk maintenance, anti melengkung."
+    },
+    {
+      "code": "9.6.3",
+      "name": "Waterproofing Bakar (Membrane Torch-On) 3mm (Dak Beton)",
+      "sat": "m2",
+      "hsp_mat": 165000,
+      "hsp_upah": 55000,
+      "formula": "0",
+      "coeffs": { "Membrane Bakar": 1.1, "Primer Bitumen": 0.3, "Gas Elpiji": 0.1 },
+      "tags": ["penutup", "dak_beton", "waterproof", "ruko", "mall", "optional", "ahsp_2024"],
+      "desc": "Pelapis anti bocor lembaran aspal (bitumen) yang diaplikasikan dengan dibakar. Solusi terbaik untuk dak beton datar."
+    }
+  ]
+}

@@ -1,0 +1,270 @@
+{
+  "id": "DIV.13",
+  "category": "13. PEKERJAAN MEKANIKAL, SANITASI & PLUMBING (MEP - AIR)",
+  "items": [
+    {
+      "code": "A.5.1.1.1",
+      "name": "Kloset Jongkok Keramik (Standar/INA) + Pemasangan",
+      "sat": "unit",
+      "hsp_mat": 350000,
+      "hsp_upah": 125000,
+      "formula": "V.KM",
+      "coeffs": { "Kloset Jongkok": 1, "Semen": 6, "Pasir": 0.01 },
+      "tags": ["sanitair", "kloset", "grade:eco", "rumah_subsidi_30", "kontrakan", "mandatory", "ahsp_2024"],
+      "desc": "Kloset jongkok leher angsa standar rakyat. (AHSP 2024)."
+    },
+    {
+      "code": "A.5.1.1.2",
+      "name": "Kloset Duduk Monoblok (Toto/Amstad) + Jet Washer",
+      "sat": "unit",
+      "hsp_mat": 2450000,
+      "hsp_upah": 250000,
+      "formula": "0",
+      "coeffs": { "Kloset Duduk": 1, "Jet Washer": 1, "Gasket": 1 },
+      "tags": ["sanitair", "kloset", "grade:std", "grade:lux", "rumah_type_45", "apartemen", "mandatory", "ahsp_2024"],
+      "desc": "Kloset duduk standar perumahan menengah/mewah. Termasuk aksesoris."
+    },
+    {
+      "code": "13.1.3",
+      "name": "Smart Toilet (Otomatis/Remote) - Sultan Grade",
+      "sat": "unit",
+      "hsp_mat": 12000000,
+      "hsp_upah": 500000,
+      "formula": "0",
+      "coeffs": { "Smart Closet": 1 },
+      "tags": ["sanitair", "kloset", "grade:lux", "smart_home", "hotel", "optional"],
+      "desc": "Kloset canggih (auto flush, seat warmer, bidet). Wajib untuk Smart Home."
+    },
+    {
+      "code": "A.5.1.1.4",
+      "name": "Wastafel Gantung + Cermin + Kran",
+      "sat": "unit",
+      "hsp_mat": 1200000,
+      "hsp_upah": 250000,
+      "formula": "V.KM",
+      "coeffs": { "Wastafel": 1, "Kran Wastafel": 1, "Sifon": 1, "Cermin": 1 },
+      "tags": ["sanitair", "wastafel", "grade:std", "grade:lux", "mandatory", "ahsp_2024"],
+      "desc": "Paket wastafel cuci tangan lengkap. (Asumsi 1 per KM)."
+    },
+    {
+      "code": "13.1.5",
+      "name": "Wastafel Meja Marmer / Cabinet (Vanity)",
+      "sat": "unit",
+      "hsp_mat": 3500000,
+      "hsp_upah": 450000,
+      "formula": "0",
+      "coeffs": { "Wastafel Mangkok": 1, "Meja Marmer": 1, "Kran Tinggi": 1 },
+      "tags": ["sanitair", "wastafel", "grade:lux", "hotel", "optional"],
+      "desc": "Wastafel meja mewah dengan kabinet bawah."
+    },
+    {
+      "code": "A.5.1.1.5",
+      "name": "Kitchen Sink 1 Lubang + Sayap (Stainless)",
+      "sat": "unit",
+      "hsp_mat": 750000,
+      "hsp_upah": 150000,
+      "formula": "1",
+      "coeffs": { "Bak Cuci Piring": 1, "Kran Angsa": 1, "Afur": 1 },
+      "tags": ["sanitair", "dapur", "grade:std", "mandatory", "ahsp_2024"],
+      "desc": "Bak cuci piring dapur standar."
+    },
+    {
+      "code": "13.2.1",
+      "name": "Paket Hand Shower + Kran Cabang (Standar)",
+      "sat": "set",
+      "hsp_mat": 450000,
+      "hsp_upah": 75000,
+      "formula": "V.KM",
+      "coeffs": { "Hand Shower Set": 1, "Kran Cabang": 1 },
+      "tags": ["sanitair", "mandi", "grade:std", "grade:lux", "mandatory"],
+      "desc": "Shower mandi standar yang umum dipakai."
+    },
+    {
+      "code": "13.2.2",
+      "name": "Shower Column Set (Rain Shower + Mixer Panas Dingin)",
+      "sat": "set",
+      "hsp_mat": 2800000,
+      "hsp_upah": 350000,
+      "formula": "0",
+      "coeffs": { "Shower Column": 1, "Kran Mixer": 1 },
+      "tags": ["sanitair", "mandi", "grade:lux", "hotel", "water_heater", "optional"],
+      "desc": "Shower tiang besar (hujan) dengan opsi air panas dingin. Mewah."
+    },
+    {
+      "code": "13.2.3",
+      "name": "Bathtub Acrylic Tanam + Kran Mixer",
+      "sat": "unit",
+      "hsp_mat": 4500000,
+      "hsp_upah": 850000,
+      "formula": "0",
+      "coeffs": { "Bathtub": 1, "Avur": 1, "Kran Bathtub": 1 },
+      "tags": ["sanitair", "mandi", "grade:lux", "sultan", "optional"],
+      "desc": "Bak mandi rendam bahan acrylic. Butuh dudukan bata."
+    },
+    {
+      "code": "13.3.1",
+      "name": "Floor Drain Stainless (Anti Bau & Serangga)",
+      "sat": "buah",
+      "hsp_mat": 125000,
+      "hsp_upah": 25000,
+      "formula": "V.KM + (Math.ceil(V.LB/50))",
+      "coeffs": {},
+      "tags": ["sanitair", "aksesoris", "grade:std", "grade:lux", "mandatory"],
+      "desc": "Saringan got kamar mandi model mangkok/klep (Smart Drain)."
+    },
+    {
+      "code": "13.3.2",
+      "name": "Kran Air Tembok 1/2 inch (Taman/Wudhu)",
+      "sat": "buah",
+      "hsp_mat": 65000,
+      "hsp_upah": 25000,
+      "formula": "2 + V.inp_floors",
+      "coeffs": {},
+      "tags": ["sanitair", "aksesoris", "grade:eco", "grade:std", "mandatory"],
+      "desc": "Kran air biasa untuk taman/teras/garasi."
+    },
+    {
+      "code": "A.5.2.1.1",
+      "name": "Instalasi Pipa Air Bersih PVC AW 1/2\" - 3/4\"",
+      "sat": "m'",
+      "hsp_mat": 35000,
+      "hsp_upah": 20000,
+      "formula": "(V.KM * 12) + (V.inp_floors * 8) + 15",
+      "coeffs": { "Pipa PVC AW": 1.2, "Fitting": 0.5, "Lem": 0.1 },
+      "tags": ["plumbing", "air_bersih", "grade:eco", "grade:std", "mandatory", "ahsp_2024"],
+      "desc": "Estimasi panjang pipa air bersih supply ke kran/shower."
+    },
+    {
+      "code": "13.4.2",
+      "name": "Instalasi Pipa Air Panas PPR (Green Pipe) - Tahan Panas",
+      "sat": "m'",
+      "hsp_mat": 85000,
+      "hsp_upah": 45000,
+      "formula": "0",
+      "coeffs": { "Pipa PPR": 1.1, "Fitting PPR": 0.5 },
+      "tags": ["plumbing", "air_panas", "grade:lux", "water_heater", "optional"],
+      "desc": "Pipa khusus air panas (welding system). Wajib jika ada Water Heater sentral."
+    },
+    {
+      "code": "A.5.2.1.2",
+      "name": "Instalasi Pipa Air Kotor PVC D 3\" - 4\" (Limbah)",
+      "sat": "m'",
+      "hsp_mat": 65000,
+      "hsp_upah": 30000,
+      "formula": "(V.KM * 10) + (V.inp_floors * 6)",
+      "coeffs": { "Pipa PVC D": 1.1, "Fitting Besar": 0.4 },
+      "tags": ["plumbing", "limbah", "grade:std", "grade:lux", "mandatory", "ahsp_2024"],
+      "desc": "Pipa pembuangan WC ke Septictank & Air mandi ke Got."
+    },
+    {
+      "code": "13.5.1",
+      "name": "Bio Septic Tank Pabrikan (1000L) - Ramah Lingkungan",
+      "sat": "unit",
+      "hsp_mat": 2850000,
+      "hsp_upah": 500000,
+      "formula": "1",
+      "coeffs": { "Bio Tank": 1 },
+      "tags": ["limbah", "septictank", "grade:std", "grade:lux", "kota", "mandatory"],
+      "desc": "Septic tank biotech modern anti sedot & anti bau. Wajib di perumahan padat."
+    },
+    {
+      "code": "13.5.2",
+      "name": "Septic Tank Konvensional (Bata + Resapan)",
+      "sat": "unit",
+      "hsp_mat": 1800000,
+      "hsp_upah": 950000,
+      "formula": "0",
+      "coeffs": { "Bata": 500, "Semen": 10, "Pipa": 2 },
+      "tags": ["limbah", "septictank", "grade:eco", "desa", "optional"],
+      "desc": "Septic tank cor/bata manual sistem lama."
+    },
+    {
+      "code": "13.5.3",
+      "name": "Grease Trap Stainless (Jebakan Lemak Dapur)",
+      "sat": "unit",
+      "hsp_mat": 450000,
+      "hsp_upah": 50000,
+      "formula": "0",
+      "coeffs": {},
+      "tags": ["limbah", "dapur", "grade:lux", "restoran", "optional"],
+      "desc": "Kotak penyaring lemak di bawah sink dapur agar pipa tidak mampet."
+    },
+    {
+      "code": "13.5.4",
+      "name": "Bak Kontrol Pasangan Bata 40x40 (Control Box)",
+      "sat": "unit",
+      "hsp_mat": 350000,
+      "hsp_upah": 150000,
+      "formula": "2",
+      "coeffs": { "Bata": 50, "Semen": 0.5, "Tutup Beton": 1 },
+      "tags": ["limbah", "drainase", "mandatory", "ahsp_2024"],
+      "desc": "Lubang kontrol saluran air kotor di halaman. Memudahkan pembersihan."
+    },
+    {
+      "code": "13.5.5",
+      "name": "Sumur Resapan Air Hujan (Biopori Jumbo)",
+      "sat": "unit",
+      "hsp_mat": 1200000,
+      "hsp_upah": 450000,
+      "formula": "0",
+      "coeffs": { "Buis Beton": 3, "Ijuk": 1, "Batu Koral": 0.5 },
+      "tags": ["limbah", "lingkungan", "imb", "pbg", "mandatory"],
+      "desc": "Wajib untuk IMB/PBG baru. Menampung air hujan agar kembali ke tanah."
+    },
+    {
+      "code": "13.6.1",
+      "name": "Tangki Air / Toren PE 550 Liter (3-4 Orang)",
+      "sat": "unit",
+      "hsp_mat": 1100000,
+      "hsp_upah": 200000,
+      "formula": "V.LB < 100 ? 1 : 0",
+      "coeffs": { "Toren": 1, "Radar Otomatis": 1 },
+      "tags": ["toren", "grade:eco", "grade:std", "mandatory"],
+      "desc": "Penampungan air atas (Penguin/Excel). Wajib."
+    },
+    {
+      "code": "13.6.2",
+      "name": "Tangki Air / Toren PE 1000 Liter (5-8 Orang)",
+      "sat": "unit",
+      "hsp_mat": 1950000,
+      "hsp_upah": 300000,
+      "formula": "V.LB >= 100 ? 1 : 0",
+      "coeffs": { "Toren Besar": 1, "Radar Otomatis": 1 },
+      "tags": ["toren", "grade:lux", "kantor", "kost", "mandatory"],
+      "desc": "Kapasitas besar untuk rumah besar / kantor / kost."
+    },
+    {
+      "code": "13.6.3",
+      "name": "Pompa Pendorong (Booster Pump) - Tekanan Stabil",
+      "sat": "unit",
+      "hsp_mat": 1200000,
+      "hsp_upah": 200000,
+      "formula": "V.inp_floors > 1 ? 1 : 0",
+      "coeffs": { "Pompa Booster": 1 },
+      "tags": ["pompa", "grade:lux", "water_heater", "shower_rain", "optional"],
+      "desc": "Agar tekanan air shower kencang & stabil (ditaruh dekat toren). Wajib untuk Rain Shower."
+    },
+    {
+      "code": "13.6.4",
+      "name": "Pompa Jet Pump Sumur Dalam (Sanyo/Shimizu)",
+      "sat": "unit",
+      "hsp_mat": 2800000,
+      "hsp_upah": 350000,
+      "formula": "1",
+      "coeffs": { "Pompa Jetpump": 1, "Mata Jet": 1 },
+      "tags": ["pompa", "air_bersih", "mandatory"],
+      "desc": "Mesin pompa utama penyedot air tanah kedalaman > 20 meter."
+    },
+    {
+      "code": "13.6.5",
+      "name": "Filter Air Tabung FRP 1054 (Carbon + Silica)",
+      "sat": "unit",
+      "hsp_mat": 1850000,
+      "hsp_upah": 250000,
+      "formula": "0",
+      "coeffs": { "Tabung FRP": 1, "Media Filter": 1 },
+      "tags": ["filter", "air_bersih", "kota", "kuning", "optional"],
+      "desc": "Penyaring air tanah yang kuning/bau besi sebelum masuk toren."
+    }
+  ]
+}

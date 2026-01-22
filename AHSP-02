@@ -1,0 +1,303 @@
+{
+  "id": "DIV.02",
+  "category": "02. PEKERJAAN SCAFFOLDING, BEKISTING & ALAT BANTU COR",
+  "items": [
+    {
+      "code": "2.1.1",
+      "name": "Sewa Scaffolding Bambu / Kayu Dolken (Tradisional)",
+      "sat": "ls",
+      "hsp_mat": 1500000,
+      "hsp_upah": 500000,
+      "formula": "V.inp_floors > 1 ? 1 : 0",
+      "coeffs": { "Bambu": 50, "Tali Ijuk": 5 },
+      "tags": ["scaffolding", "grade:eco", "rumah_subsidi_30", "rumah_subsidi_36", "mandatory", "renovasi", "ahsp_2024"],
+      "desc": "Perancah hemat bambu/kayu hutan. Cocok untuk bangunan 1-2 lantai sederhana."
+    },
+    {
+      "code": "2.1.2",
+      "name": "Sewa Scaffolding Frame Set t=170cm (Main Frame)",
+      "sat": "set/bln",
+      "hsp_mat": 45000,
+      "hsp_upah": 15000,
+      "formula": "V.inp_floors > 1 ? (Math.ceil(V.LB / 3) * (V.inp_floors - 1) * 2) : 0",
+      "coeffs": {},
+      "tags": ["scaffolding", "grade:std", "rumah_type_45", "rumah_2_lantai", "ruko", "mandatory", "ahsp_2024"],
+      "desc": "Standar keamanan cor lantai 2. Estimasi sewa 1-2 bulan (Coverage 3m2/set)."
+    },
+    {
+      "code": "2.1.3",
+      "name": "Sewa Scaffolding Heavy Duty (Ringlock/Cuplock System)",
+      "sat": "m3/bln",
+      "hsp_mat": 85000,
+      "hsp_upah": 35000,
+      "formula": "0",
+      "coeffs": {},
+      "tags": ["scaffolding", "grade:lux", "building:huge", "apartemen", "mall", "gudang_wf", "optional"],
+      "desc": "Sistem scaffolding high-load untuk bentang lebar & ketinggian ekstrem."
+    },
+    {
+      "code": "2.1.4",
+      "name": "Safety Net / Jaring Pengaman Proyek (Polynet Biru)",
+      "sat": "m2",
+      "hsp_mat": 15000,
+      "hsp_upah": 5000,
+      "formula": "V.inp_floors > 1 ? (Math.sqrt(V.LB)*4 * V.inp_floors * 3) : 0",
+      "coeffs": {},
+      "tags": ["safety", "building:multistory", "ruko", "apartemen", "hotel_budget", "mandatory", "ahsp_2024"],
+      "desc": "Jaring penahan debu & puing. Wajib untuk bangunan bertingkat di kota."
+    },
+    {
+      "code": "2.1.5",
+      "name": "Safety Deck / Platform Kerja Baja",
+      "sat": "m2",
+      "hsp_mat": 250000,
+      "hsp_upah": 50000,
+      "formula": "0",
+      "coeffs": {},
+      "tags": ["safety", "grade:lux", "high_rise", "apartemen", "optional"],
+      "desc": "Platform pijakan kerja baja anti-slip untuk pekerjaan fasad tinggi."
+    },
+    {
+      "code": "2.1.6",
+      "name": "Sewa Pipe Support / Steger Pipa Tunggal (Adjustable)",
+      "sat": "btg/bln",
+      "hsp_mat": 35000,
+      "hsp_upah": 10000,
+      "formula": "0",
+      "coeffs": {},
+      "tags": ["scaffolding", "grade:std", "renovasi", "optional", "ahsp_2024"],
+      "desc": "Penyangga tunggal yang bisa diatur ketinggiannya, hemat tempat."
+    },
+    {
+      "code": "2.2.1",
+      "name": "Bekisting Kolom Praktis (Papan/Triplek 9mm)",
+      "sat": "m2",
+      "hsp_mat": 65000,
+      "hsp_upah": 45000,
+      "formula": "(V.KLL * 0.15 * V.inp_floors) * 3",
+      "coeffs": { "Papan Kayu": 1, "Paku": 0.5 },
+      "tags": ["bekisting", "grade:eco", "grade:std", "rumah_subsidi_30", "rumah_type_45", "mandatory", "ahsp_2024"],
+      "desc": "Cetakan beton sederhana untuk kolom pengaku dinding."
+    },
+    {
+      "code": "2.2.2",
+      "name": "Bekisting Kolom Utama Semi-Sistem (Multiplek 12mm)",
+      "sat": "m2",
+      "hsp_mat": 135000,
+      "hsp_upah": 65000,
+      "formula": "0",
+      "coeffs": { "Multiplek 12mm": 1, "Kaso 5/7": 2, "Minyak Bekisting": 0.2 },
+      "tags": ["bekisting", "grade:lux", "ruko", "rumah_2_lantai", "sekolah", "optional", "ahsp_2024"],
+      "desc": "Cetakan beton presisi, hasil permukaan lebih halus (Exposed)."
+    },
+    {
+      "code": "2.2.3",
+      "name": "Bekisting Plat Lantai (Bondex/Floordeck Galvanis 0.75mm)",
+      "sat": "m2",
+      "hsp_mat": 165000,
+      "hsp_upah": 35000,
+      "formula": "V.inp_floors > 1 ? (V.LB * (V.inp_floors - 1)) : 0",
+      "coeffs": { "Bondex 0.75": 1.05, "Wiremesh M8": 1 },
+      "tags": ["bekisting", "plat", "grade:std", "grade:lux", "building:multistory", "ruko", "mandatory"],
+      "desc": "Bekisting tetap (tidak dibongkar), sekaligus tulangan bawah plat. Lebih cepat & kuat."
+    },
+    {
+      "code": "2.2.4",
+      "name": "Bekisting Plat Konvensional (Triplek 9mm + Kaso)",
+      "sat": "m2",
+      "hsp_mat": 195000,
+      "hsp_upah": 95000,
+      "formula": "0",
+      "coeffs": { "Triplek 9mm": 1, "Kaso": 3, "Scaffolding": 1 },
+      "tags": ["bekisting", "plat", "grade:eco", "renovasi", "optional", "ahsp_2024"],
+      "desc": "Bekisting dak beton tradisional (bongkar pasang). Lebih boros upah & waktu."
+    },
+    {
+      "code": "2.2.5",
+      "name": "Bekisting Phenolic Film Faced (Beton Expose/Fair Face)",
+      "sat": "m2",
+      "hsp_mat": 250000,
+      "hsp_upah": 120000,
+      "formula": "0",
+      "coeffs": {},
+      "tags": ["bekisting", "grade:lux", "cafe_industrial", "museum", "gallery", "optional"],
+      "desc": "Bekisting kualitas tinggi untuk hasil beton licin tanpa plester (Expose)."
+    },
+    {
+      "code": "2.2.6",
+      "name": "Bekisting Kolom Bulat (Paper Column Form)",
+      "sat": "m'",
+      "hsp_mat": 350000,
+      "hsp_upah": 100000,
+      "formula": "0",
+      "coeffs": {},
+      "tags": ["bekisting", "grade:lux", "masjid", "hotel_budget", "lobby", "optional"],
+      "desc": "Cetakan kolom bulat instan sekali pakai, hasil presisi & cepat."
+    },
+    {
+      "code": "2.2.7",
+      "name": "Bekisting Sloof & Balok (Kayu/Multiplek)",
+      "sat": "m2",
+      "hsp_mat": 115000,
+      "hsp_upah": 60000,
+      "formula": "0",
+      "coeffs": { "Papan/Multiplek": 1, "Kaso": 2 },
+      "tags": ["bekisting", "struktur", "grade:std", "mandatory", "ahsp_2024"],
+      "desc": "Cetakan untuk balok gantung atau sloof pondasi."
+    },
+    {
+      "code": "2.2.8",
+      "name": "Bekisting Tangga Beton (Multiplek + Kaso)",
+      "sat": "m2",
+      "hsp_mat": 145000,
+      "hsp_upah": 85000,
+      "formula": "V.inp_floors > 1 ? 6 : 0",
+      "coeffs": {},
+      "tags": ["bekisting", "struktur", "grade:std", "mandatory", "ahsp_2024"],
+      "desc": "Cetakan rumit untuk anak tangga dan bordes."
+    },
+    {
+      "code": "2.2.9",
+      "name": "Bekisting Dinding Beton / Shear Wall (Double Side)",
+      "sat": "m2",
+      "hsp_mat": 220000,
+      "hsp_upah": 95000,
+      "formula": "0",
+      "coeffs": { "Tie Rod": 1, "Multiplek 15mm": 1 },
+      "tags": ["bekisting", "struktur", "grade:lux", "basement", "lift", "ahsp_2024"],
+      "desc": "Bekisting dinding geser/basement dengan penguat tie rod."
+    },
+    {
+      "code": "2.2.10",
+      "name": "Bekisting Batako/Hebel (Lost Formwork)",
+      "sat": "m2",
+      "hsp_mat": 85000,
+      "hsp_upah": 35000,
+      "formula": "0",
+      "coeffs": { "Batako": 12, "Pasir": 0.05 },
+      "tags": ["bekisting", "grade:eco", "pondasi", "optional"],
+      "desc": "Batako dipasang sebagai cetakan sloof/pilecap dan tidak dibongkar (tertanam)."
+    },
+    {
+      "code": "2.2.11",
+      "name": "Sewa Aluminium Formwork System (High Rise)",
+      "sat": "m2",
+      "hsp_mat": 120000,
+      "hsp_upah": 45000,
+      "formula": "0",
+      "coeffs": {},
+      "tags": ["bekisting", "grade:lux", "apartemen", "hotel", "rusun", "optional"],
+      "desc": "Sistem bekisting aluminium modular untuk proyek >20 lantai (repetitif)."
+    },
+    {
+      "code": "2.3.1",
+      "name": "Minyak Bekisting / Mold Oil (Bond Breaker)",
+      "sat": "ltr",
+      "hsp_mat": 45000,
+      "hsp_upah": 5000,
+      "formula": "Math.ceil(V.LB * 0.15)",
+      "coeffs": {},
+      "tags": ["consumable", "bekisting", "mandatory", "ahsp_2024"],
+      "desc": "Pelumas cetakan agar beton tidak keropos saat bongkaran."
+    },
+    {
+      "code": "2.3.2",
+      "name": "Sewa Jack Base & U-Head (Leveling Scaffolding)",
+      "sat": "set/bln",
+      "hsp_mat": 15000,
+      "hsp_upah": 0,
+      "formula": "V.inp_floors > 1 ? (Math.ceil(V.LB / 3) * 4) : 0",
+      "coeffs": {},
+      "tags": ["scaffolding", "acc", "building:multistory", "mandatory"],
+      "desc": "Aksesoris kaki & kepala steger untuk leveling plat lantai."
+    },
+    {
+      "code": "2.4.1",
+      "name": "Sewa Concrete Pump (Pompa Beton) - Standard Boom",
+      "sat": "shift",
+      "hsp_mat": 3500000,
+      "hsp_upah": 500000,
+      "formula": "0",
+      "coeffs": {},
+      "tags": ["alat_berat", "cor", "building:multistory", "apartemen", "mall", "jalan_beton"],
+      "desc": "Alat pompa beton readymix ke lantai atas/area sulit (1 Shift = 8 jam)."
+    },
+    {
+      "code": "2.4.2",
+      "name": "Sewa Concrete Pump Mini / Kodok (Jalan Sempit)",
+      "sat": "shift",
+      "hsp_mat": 4000000,
+      "hsp_upah": 500000,
+      "formula": "0",
+      "coeffs": {},
+      "tags": ["alat_berat", "cor", "rumah_2_lantai", "ruko", "optional"],
+      "desc": "Pompa beton kecil untuk lokasi perumahan jalan sempit."
+    },
+    {
+      "code": "2.4.3",
+      "name": "Sewa Vibrator Beton (Pemadat)",
+      "sat": "hari",
+      "hsp_mat": 150000,
+      "hsp_upah": 0,
+      "formula": "V.inp_floors > 1 ? 2 : 0",
+      "coeffs": {},
+      "tags": ["alat_bantu", "cor", "grade:std", "grade:lux", "mandatory", "ahsp_2024"],
+      "desc": "Wajib digunakan saat pengecoran agar beton padat & tidak keropos."
+    },
+    {
+      "code": "2.4.4",
+      "name": "Sewa Trowel Machine (Mesin Halus Lantai)",
+      "sat": "hari",
+      "hsp_mat": 350000,
+      "hsp_upah": 150000,
+      "formula": "0",
+      "coeffs": {},
+      "tags": ["alat_bantu", "finishing_lantai", "gudang_wf", "jalan_beton", "pabrik", "ahsp_2024"],
+      "desc": "Mesin poles beton saat setengah kering (Floor Hardener)."
+    },
+    {
+      "code": "2.4.5",
+      "name": "Sewa Bar Bender & Bar Cutter (Potong Tekuk Besi)",
+      "sat": "bln",
+      "hsp_mat": 3500000,
+      "hsp_upah": 500000,
+      "formula": "0",
+      "coeffs": {},
+      "tags": ["alat_bantu", "struktur", "building:multistory", "mandatory"],
+      "desc": "Mesin pemotong dan penekuk besi beton (Rebar) kapasitas besar."
+    },
+    {
+      "code": "2.4.6",
+      "name": "Sewa Air Compressor (Pembersih Bekisting)",
+      "sat": "hari",
+      "hsp_mat": 250000,
+      "hsp_upah": 100000,
+      "formula": "0",
+      "coeffs": {},
+      "tags": ["alat_bantu", "bekisting", "optional"],
+      "desc": "Membersihkan debu/serbuk gergaji pada bekisting sebelum cor."
+    },
+    {
+      "code": "2.4.7",
+      "name": "Sewa Concrete Bucket 0.8-1 m3 (Cor Tower Crane)",
+      "sat": "hari",
+      "hsp_mat": 150000,
+      "hsp_upah": 0,
+      "formula": "0",
+      "coeffs": {},
+      "tags": ["alat_bantu", "cor", "building:huge", "optional"],
+      "desc": "Wadah angkut beton untuk pengecoran menggunakan Tower Crane."
+    },
+    {
+      "code": "2.5.1",
+      "name": "Mobilisasi & Demobilisasi Scaffolding (Truk)",
+      "sat": "rit",
+      "hsp_mat": 0,
+      "hsp_upah": 850000,
+      "formula": "V.inp_floors > 1 ? Math.ceil(V.LB / 100) : 0",
+      "coeffs": {},
+      "tags": ["logistik", "scaffolding", "building:multistory", "mandatory"],
+      "desc": "Biaya angkut steger PP (Otomatis hitung jika lantai > 1)."
+    }
+  ]
+}

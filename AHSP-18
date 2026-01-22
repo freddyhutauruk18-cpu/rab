@@ -1,0 +1,138 @@
+{
+  "id": "DIV.18",
+  "category": "18. PEKERJAAN KOLAM RENANG & FITUR MEWAH (LUXURY)",
+  "items": [
+    {
+      "code": "18.1.1",
+      "name": "Galian Tanah Kolam Renang (Volume Besar)",
+      "sat": "m3",
+      "hsp_mat": 0,
+      "hsp_upah": 85000,
+      "formula": "0",
+      "coeffs": {},
+      "tags": ["kolam", "tanah", "grade:lux", "optional"],
+      "desc": "Galian tanah khusus area kolam renang (Kedalaman > 1.5m)."
+    },
+    {
+      "code": "18.2.1",
+      "name": "Struktur Beton Kolam Renang K-350 (Integral Waterproof)",
+      "sat": "m3",
+      "hsp_mat": 1850000,
+      "hsp_upah": 650000,
+      "formula": "0",
+      "coeffs": { "Ready Mix K350": 1.05, "Besi Ulir": 150, "Waterstop": 2, "Integral": 5 },
+      "tags": ["kolam", "beton", "grade:lux", "waterproof", "optional"],
+      "desc": "Cor beton kedap air khusus kolam (Lantai + Dinding). Besi double layer rapat."
+    },
+    {
+      "code": "18.3.1",
+      "name": "Finishing Mozaik Kolam Renang (Mass Kuda Laut)",
+      "sat": "m2",
+      "hsp_mat": 450000,
+      "hsp_upah": 150000,
+      "formula": "0",
+      "coeffs": { "Mozaik": 1.05, "Epoxy Nat": 0.5, "Epoxy Grout": 1 },
+      "tags": ["kolam", "finishing", "grade:lux", "optional"],
+      "desc": "Keramik kotak kecil/mozaik khusus kolam (Kuda Laut). Tahan kaporit, lumut & tekanan air."
+    },
+    {
+      "code": "18.3.1-B",
+      "name": "Finishing Lantai/Dinding Mozaik Kolam Premium",
+      "sat": "m2",
+      "hsp_mat": 650000,
+      "hsp_upah": 250000,
+      "formula": "0",
+      "coeffs": { "Mozaik": 1.05, "Epoxy Grout": 1 },
+      "tags": ["kolam", "finishing", "grade:lux", "optional"],
+      "desc": "Finishing mozaik dengan standar upah pemasangan presisi tinggi."
+    },
+    {
+      "code": "18.3.2",
+      "name": "Finishing Batu Alam Hijau Sukabumi (Resort Style)",
+      "sat": "m2",
+      "hsp_mat": 650000,
+      "hsp_upah": 200000,
+      "formula": "0",
+      "coeffs": { "Batu Sukabumi": 1.1, "Coating": 0.5 },
+      "tags": ["kolam", "finishing", "grade:lux", "villa", "bali_style", "optional"],
+      "desc": "Batu alam premium yang menjernihkan air & berwarna hijau alami ala resort Bali."
+    },
+    {
+      "code": "18.3.3",
+      "name": "Batu Andesit (Bibit Kolam / Pool Coping)",
+      "sat": "m'",
+      "hsp_mat": 250000,
+      "hsp_upah": 85000,
+      "formula": "0",
+      "coeffs": { "Batu Andesit": 1.1, "Bullnose": 1 },
+      "tags": ["kolam", "finishing", "grade:lux", "optional"],
+      "desc": "Pinggiran bibir kolam tumpul (bullnose) anti gores/tajam."
+    },
+    {
+      "code": "18.4.1",
+      "name": "Paket Peralatan Kolam (Pompa + Filter + Acc)",
+      "sat": "set",
+      "hsp_mat": 18500000,
+      "hsp_upah": 3500000,
+      "formula": "0",
+      "coeffs": { "Pompa Hayward 1HP": 1, "Sand Filter": 1, "Vacuum Fitting": 1, "Main Drain": 1 },
+      "tags": ["kolam", "mep", "grade:lux", "mandatory_pool", "optional"],
+      "desc": "Sistem sirkulasi lengkap (Pompa Hayward 1HP, Filter Pasir, Inlet, Main Drain). Siap pakai."
+    },
+    {
+      "code": "18.4.2",
+      "name": "Lampu Kolam Renang LED Underwater (12 Volt)",
+      "sat": "unit",
+      "hsp_mat": 2200000,
+      "hsp_upah": 350000,
+      "formula": "0",
+      "coeffs": { "Lampu LED": 1, "Trafo": 1 },
+      "tags": ["kolam", "lampu", "mep", "grade:lux", "optional"],
+      "desc": "Lampu tanam dinding kolam IP68, aman tegangan rendah (12V). Termasuk trafo stainless."
+    },
+    {
+      "code": "18.5.1",
+      "name": "Pool Deck Kayu Ulin / Bengkirai (Anti Air)",
+      "sat": "m2",
+      "hsp_mat": 1450000,
+      "hsp_upah": 450000,
+      "formula": "0",
+      "coeffs": { "Kayu Ulin": 1.1, "Coating Ultran": 0.5, "Rangka": 1 },
+      "tags": ["eksterior", "lantai", "grade:lux", "taman", "optional"],
+      "desc": "Lantai kayu asli tahan air/panas untuk pinggiran kolam atau teras. (Iron Wood)."
+    },
+    {
+      "code": "18.5.2",
+      "name": "Gazebo Kayu Kelapa (2x2 Meter)",
+      "sat": "unit",
+      "hsp_mat": 8500000,
+      "hsp_upah": 1500000,
+      "formula": "0",
+      "coeffs": {},
+      "tags": ["eksterior", "taman", "grade:lux", "optional"],
+      "desc": "Saung taman atap sirap/alang-alang. Knock down system."
+    },
+    {
+      "code": "18.6.1",
+      "name": "Solar Water Heater (Pemanas Air Tenaga Surya)",
+      "sat": "unit",
+      "hsp_mat": 22000000,
+      "hsp_upah": 2500000,
+      "formula": "0",
+      "coeffs": { "Unit SWH": 1, "Pipa Tembaga": 10, "Pipa Air Panas": 10 },
+      "tags": ["utilitas", "water_heater", "air_panas", "grade:lux", "hemat_energi", "optional"],
+      "desc": "Pemanas air sentral kapasitas 150-300 Liter (Wika/SolaHart). Hemat listrik & energi surya."
+    },
+    {
+      "code": "18.6.2",
+      "name": "Genset Silent 5000 Watt (Backup Listrik)",
+      "sat": "unit",
+      "hsp_mat": 15000000,
+      "hsp_upah": 1000000,
+      "formula": "0",
+      "coeffs": { "Genset": 1, "Panel COS": 1 },
+      "tags": ["utilitas", "listrik", "grade:lux", "kantor", "optional"],
+      "desc": "Genset tipe silent + Panel otomatis (ATS/COS) jika mati lampu."
+    }
+  ]
+}

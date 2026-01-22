@@ -1,0 +1,40 @@
+/* ==========================================================================
+   STYLE_BASE.CSS
+   Core variables, typography, and basic reset.
+   ========================================================================== */
+
+:root { 
+    --primary: #1a5276;   /* Professional Blue */
+    --secondary: #5d6d7e; /* Slate Grey */
+    --accent: #d35400;    /* Burnt Orange for Actions */
+    --bg: #f4f6f7;        /* Light Grey Background */
+    --text: #212f3d;      /* Dark Text */
+    --white: #ffffff;
+    --border: #d5dbdb;
+    --success: #27ae60;   /* Green */
+    --danger: #c0392b;    /* Red */
+    --warning: #f39c12;   /* Orange/Yellow for Surge */
+    --info: #3498db;      /* Light Blue for Change Item */
+}
+
+/* --- BASE SETTINGS --- */
+body { 
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+    background-color: var(--bg); 
+    color: var(--text); 
+    margin: 0; 
+    padding: 0; 
+    font-size: 13px; 
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Utility Classes */
+.text-right { text-align: right; }
+.text-center { text-align: center; }
+.font-mono { font-family: 'Consolas', monospace; font-weight: 600; color: #2c3e50; }
+
+/* Global Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

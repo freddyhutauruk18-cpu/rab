@@ -1,0 +1,281 @@
+{
+  "id": "DIV.14",
+  "category": "14. PEKERJAAN ELEKTRIKAL, SMART HOME & ELEKTRONIK (MEP - LISTRIK)",
+  "items": [
+    {
+      "code": "14.1.1",
+      "name": "Titik Lampu (Kabel NYM 2x1.5mm) - Standar",
+      "sat": "titik",
+      "hsp_mat": 135000,
+      "hsp_upah": 65000,
+      "formula": "Math.ceil(V.LB / 10) + V.KM + 2",
+      "coeffs": { "Kabel NYM 1.5": 8, "Pipa Conduit": 3, "T-Dus": 1 },
+      "tags": ["listrik", "instalasi", "grade:eco", "grade:std", "mandatory", "ahsp_2024"],
+      "desc": "Instalasi kabel penerangan standar (Supreme/Eterna). (Estimasi 1 titik per 10m2 + KM)."
+    },
+    {
+      "code": "14.1.2",
+      "name": "Titik Lampu Smart Home (Kabel NYM 3x1.5mm + Netral)",
+      "sat": "titik",
+      "hsp_mat": 165000,
+      "hsp_upah": 75000,
+      "formula": "0",
+      "coeffs": { "Kabel NYM 1.5": 8, "Deep Inbow Dus": 1 },
+      "tags": ["listrik", "smart_home", "grade:lux", "tuya", "optional"],
+      "desc": "Instalasi kabel khusus (dengan Netral) untuk saklar pintar/IoT."
+    },
+    {
+      "code": "14.1.3",
+      "name": "Instalasi Stop Kontak (Kabel NYM 3x2.5mm + Arde)",
+      "sat": "titik",
+      "hsp_mat": 185000,
+      "hsp_upah": 75000,
+      "formula": "Math.ceil(V.LB / 15) + 3",
+      "coeffs": { "Kabel NYM 2.5": 10, "Inbow Dus": 1 },
+      "tags": ["listrik", "instalasi", "grade:std", "mandatory", "ahsp_2024"],
+      "desc": "Titik colokan listrik 3 core (Grounding). (Estimasi: 1 titik per 15m2)."
+    },
+    {
+      "code": "14.1.4",
+      "name": "Instalasi Power AC / Water Heater (Jalur Khusus)",
+      "sat": "titik",
+      "hsp_mat": 250000,
+      "hsp_upah": 120000,
+      "formula": "Math.ceil(V.LB/25) + V.KM",
+      "coeffs": { "Kabel NYM 3x2.5": 12, "Stop Kontak AC": 1 },
+      "tags": ["listrik", "ac", "water_heater", "grade:std", "grade:lux", "mandatory", "ahsp_2024"],
+      "desc": "Jalur khusus langsung ke MCB Box untuk beban berat (AC/WH)."
+    },
+    {
+      "code": "14.1.5",
+      "name": "Instalasi Kabel Antena TV / Data (Coaxial/LAN)",
+      "sat": "titik",
+      "hsp_mat": 120000,
+      "hsp_upah": 55000,
+      "formula": "1",
+      "coeffs": { "Kabel RG6/Cat6": 15 },
+      "tags": ["elektronik", "tv", "internet", "grade:std", "optional"],
+      "desc": "Jalur kabel TV atau Internet tanam dinding."
+    },
+    {
+      "code": "14.2.1",
+      "name": "Box MCB Presto 12 Group + Isi (Schneider/ABB)",
+      "sat": "unit",
+      "hsp_mat": 850000,
+      "hsp_upah": 250000,
+      "formula": "V.inp_floors",
+      "coeffs": { "Box MCB": 1, "MCB": 8, "Sisir Busbar": 1 },
+      "tags": ["listrik", "pusat", "grade:std", "mandatory", "ahsp_2024"],
+      "desc": "Pusat pembagi listrik (Panel). Minimal 1 box per lantai."
+    },
+    {
+      "code": "14.2.2",
+      "name": "Grounding System (Pasak Bumi Tembaga 4m)",
+      "sat": "ls",
+      "hsp_mat": 1250000,
+      "hsp_upah": 450000,
+      "formula": "1",
+      "coeffs": { "Copper Rod": 2, "Kabel BC": 15 },
+      "tags": ["listrik", "safety", "grade:std", "mandatory", "ahsp_2024"],
+      "desc": "Pentanahan anti kesetrum & stabilisator arus. Ditanam sedalam 4 meter."
+    },
+    {
+      "code": "14.2.3",
+      "name": "Penangkal Petir Konvensional (Splitzen) Radius 20m",
+      "sat": "set",
+      "hsp_mat": 3500000,
+      "hsp_upah": 1000000,
+      "formula": "V.inp_floors > 1 ? 1 : 0",
+      "coeffs": { "Splitzen Tombak": 2, "Kabel NYY 50mm": 30, "Grounding": 1 },
+      "tags": ["listrik", "safety", "grade:lux", "building:multistory", "mandatory"],
+      "desc": "Perlindungan sambaran petir untuk bangunan bertingkat."
+    },
+    {
+      "code": "14.2.4",
+      "name": "Penangkal Petir Radius Elektrostatis (Kurn/Viking) - R 80m",
+      "sat": "set",
+      "hsp_mat": 9500000,
+      "hsp_upah": 2500000,
+      "formula": "0",
+      "coeffs": { "Head Terminal": 1, "Tiang Penyangga": 1 },
+      "tags": ["listrik", "safety", "grade:lux", "pabrik", "gudang", "optional"],
+      "desc": "Melindungi area luas (Radius 80-150m). Cocok untuk pabrik/gudang."
+    },
+    {
+      "code": "14.3.1",
+      "name": "Saklar & Stop Kontak Set (Broco/Panasonic)",
+      "sat": "set",
+      "hsp_mat": 45000,
+      "hsp_upah": 15000,
+      "formula": "Math.ceil(V.LB / 15)",
+      "coeffs": {},
+      "tags": ["armature", "grade:std", "grade:eco", "mandatory"],
+      "desc": "Unit saklar/colokan standar SNI warna putih."
+    },
+    {
+      "code": "14.3.2",
+      "name": "Saklar & Stop Kontak Premium (Champagne/Black)",
+      "sat": "set",
+      "hsp_mat": 150000,
+      "hsp_upah": 25000,
+      "formula": "0",
+      "coeffs": {},
+      "tags": ["armature", "grade:lux", "interior", "optional"],
+      "desc": "Unit saklar model lebar/frameless/warna (Schneider Avatar/Pieno)."
+    },
+    {
+      "code": "14.4.1",
+      "name": "Lampu Downlight LED 4 inch (Inbow)",
+      "sat": "bh",
+      "hsp_mat": 85000,
+      "hsp_upah": 25000,
+      "formula": "Math.ceil(V.LB / 12)",
+      "coeffs": { "Lampu LED": 1 },
+      "tags": ["lampu", "grade:std", "plafon_gypsum", "mandatory"],
+      "desc": "Lampu tanam plafon gypsum/PVC. Rapi & rata plafon."
+    },
+    {
+      "code": "14.4.2",
+      "name": "Lampu LED Strip (Hidden Lamp) per Roll 5m",
+      "sat": "roll",
+      "hsp_mat": 350000,
+      "hsp_upah": 100000,
+      "formula": "0",
+      "coeffs": { "Trafo": 1 },
+      "tags": ["lampu", "grade:lux", "interior", "plafon_gypsum", "optional"],
+      "desc": "Lampu sembunyi di drop ceiling (Warm White) per 5 meter."
+    },
+    {
+      "code": "14.4.3",
+      "name": "Lampu Gantung Industrial / Hias (Ruang Tamu)",
+      "sat": "bh",
+      "hsp_mat": 1500000,
+      "hsp_upah": 150000,
+      "formula": "0",
+      "coeffs": {},
+      "tags": ["lampu", "grade:lux", "interior", "cafe", "optional"],
+      "desc": "Lampu hias gantung untuk void/ruang keluarga/cafe."
+    },
+    {
+      "code": "14.4.4",
+      "name": "Lampu Jalan PJU LED 50W (Tiang Besi)",
+      "sat": "unit",
+      "hsp_mat": 1850000,
+      "hsp_upah": 350000,
+      "formula": "0",
+      "coeffs": { "Tiang PJU": 1, "Lampu Cobra": 1 },
+      "tags": ["lampu", "eksterior", "jalan", "pabrik", "optional"],
+      "desc": "Penerangan Jalan Umum lengkap tiang besi galvanis."
+    },
+    {
+      "code": "14.5.1",
+      "name": "Titik Instalasi CCTV (Kabel Coaxial/LAN)",
+      "sat": "titik",
+      "hsp_mat": 150000,
+      "hsp_upah": 65000,
+      "formula": "0",
+      "coeffs": { "Kabel RG59/Cat6": 15, "Connector": 2 },
+      "tags": ["elektronik", "cctv", "keamanan", "grade:std", "optional"],
+      "desc": "Hanya tarikan kabel untuk kamera pengawas."
+    },
+    {
+      "code": "14.5.2",
+      "name": "Titik Data / LAN / Wifi Access Point (Cat6)",
+      "sat": "titik",
+      "hsp_mat": 185000,
+      "hsp_upah": 65000,
+      "formula": "0",
+      "coeffs": { "Kabel Belden Cat6": 20, "Modular Jack": 1 },
+      "tags": ["elektronik", "internet", "kantor", "game", "optional"],
+      "desc": "Jalur internet kabel stabil untuk TV Smart/PC/Wifi Ceiling."
+    },
+    {
+      "code": "14.6.1",
+      "name": "Exhaust Fan Plafon / Dinding (Instalasi + Unit)",
+      "sat": "unit",
+      "hsp_mat": 450000,
+      "hsp_upah": 100000,
+      "formula": "V.KM",
+      "coeffs": { "Exhaust Fan": 1, "Pipa Flex": 2 },
+      "tags": ["elektronik", "sirkulasi", "kamar_mandi", "grade:std", "mandatory"],
+      "desc": "Penyedot bau/uap air di kamar mandi atau dapur."
+    },
+    {
+      "code": "14.6.2",
+      "name": "Instalasi Pipa AC (Refrigerant) + Kabel Kontrol",
+      "sat": "m'",
+      "hsp_mat": 145000,
+      "hsp_upah": 55000,
+      "formula": "0",
+      "coeffs": { "Pipa Tembaga": 1, "Armaflex": 1, "Kabel NYM": 1 },
+      "tags": ["elektronik", "ac", "hvac", "grade:std", "grade:lux", "mandatory"],
+      "desc": "Penanaman jalur pipa freon AC sebelum dinding diplester."
+    },
+    {
+      "code": "14.6.3",
+      "name": "Persiapan Instalasi Solar Panel (Jalur Kabel DC)",
+      "sat": "ls",
+      "hsp_mat": 1500000,
+      "hsp_upah": 500000,
+      "formula": "0",
+      "coeffs": { "Kabel PV 4mm": 50, "MC4 Connector": 4 },
+      "tags": ["listrik", "green_energy", "solar_panel", "masa_depan", "optional"],
+      "desc": "Persiapan jalur kabel dari atap ke inverter untuk PLTS Atap."
+    },
+    {
+      "code": "14.6.4",
+      "name": "Genset Change Over Switch (COS) Manual / Ohm Saklar",
+      "sat": "unit",
+      "hsp_mat": 450000,
+      "hsp_upah": 150000,
+      "formula": "0",
+      "coeffs": { "Ohm Saklar": 1 },
+      "tags": ["listrik", "panel", "genset", "optional"],
+      "desc": "Saklar pemindah arus dari PLN ke Genset saat mati lampu."
+    },
+    {
+      "code": "14.5.3",
+      "name": "AC Split 1 PK Inverter + Pasang (Daikin/Sharp)",
+      "sat": "unit",
+      "hsp_mat": 4500000,
+      "hsp_upah": 350000,
+      "formula": "0",
+      "coeffs": { "Pipa AC": 3, "Bracket": 1 },
+      "tags": ["elektronik", "ac", "grade:lux", "kamar", "kantor", "optional"],
+      "desc": "Pendingin ruangan hemat energi. Estimasi 1 PK untuk ruangan 15-20m2."
+    },
+    {
+      "code": "14.5.4",
+      "name": "Water Heater Listrik 15 Liter (Ariston/Modena)",
+      "sat": "unit",
+      "hsp_mat": 2800000,
+      "hsp_upah": 250000,
+      "formula": "0",
+      "coeffs": { "Fleksibel": 2 },
+      "tags": ["elektronik", "mandi", "grade:lux", "water_heater", "optional"],
+      "desc": "Pemanas air mandi listrik tangki. Butuh daya listrik min 350W."
+    },
+    {
+      "code": "14.7.1",
+      "name": "Smoke Detector (Sensor Asap) - Fire Alarm",
+      "sat": "titik",
+      "hsp_mat": 350000,
+      "hsp_upah": 75000,
+      "formula": "0",
+      "coeffs": { "Sensor Asap": 1 },
+      "tags": ["elektronik", "safety", "gedung", "kost", "dapur", "optional"],
+      "desc": "Sensor pendeteksi kebakaran dini. Standalone (baterai) atau Wired."
+    },
+    {
+      "code": "14.7.2",
+      "name": "Lampu Darurat / Emergency Lamp (Otomatis)",
+      "sat": "unit",
+      "hsp_mat": 250000,
+      "hsp_upah": 50000,
+      "formula": "0",
+      "coeffs": {},
+      "tags": ["elektronik", "safety", "tangga", "koridor", "mandatory"],
+      "desc": "Lampu otomatis menyala saat mati listrik. Wajib di tangga darurat."
+    }
+  ]
+}

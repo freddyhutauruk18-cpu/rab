@@ -1,0 +1,136 @@
+/* ==========================================================================
+   STYLE_LAYOUT.CSS
+   Grid system, containers, sidebar, header, and footer structure.
+   ========================================================================== */
+
+/* --- MAIN CONTAINER --- */
+.app-container { 
+    max-width: 1280px; 
+    margin: 20px auto; 
+    margin-left: 80px; /* Space for Sidebar */
+    background: var(--white); 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+    border-radius: 6px; 
+    overflow: hidden; 
+    border: 1px solid var(--border); 
+    transition: margin-left 0.3s;
+}
+
+/* --- SIDEBAR NAVIGATION --- */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 60px;
+    background: var(--primary);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 5px;
+    z-index: 9999;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+
+.sidebar:hover {
+    width: 180px; /* Expand on hover */
+}
+
+/* --- HEADER SECTION --- */
+.app-header { 
+    background: var(--primary); 
+    color: var(--white); 
+    padding: 15px 25px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.app-header h1 { 
+    margin: 0; 
+    font-size: 1.4rem; 
+    font-weight: 600; 
+    letter-spacing: 0.5px; 
+}
+
+.header-total { 
+    font-size: 1.2rem; 
+    font-weight: 800; 
+    color: #f1c40f; 
+    background: rgba(0,0,0,0.2); 
+    padding: 5px 15px; 
+    border-radius: 4px; 
+}
+
+/* --- CONTROLS GRID --- */
+.controls { 
+    padding: 20px; 
+    background: #fafafa; 
+    border-bottom: 1px solid var(--border); 
+}
+
+.grid-inputs { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); 
+    gap: 15px; 
+}
+
+/* --- SECTION WRAPPERS --- */
+.page-section {
+    padding: 0;
+    min-height: 400px;
+}
+
+.canvas-wrapper {
+    margin: 20px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+}
+
+/* --- FOOTER SUMMARY --- */
+.footer-summary { 
+    background: var(--secondary); 
+    color: white; 
+    padding: 20px; 
+}
+
+.summary-box { 
+    display: flex; 
+    justify-content: flex-end; 
+    gap: 40px; 
+    align-items: center; 
+    flex-wrap: wrap; 
+}
+
+.grand-total { 
+    font-size: 1.8rem; 
+    font-weight: 800; 
+    color: #f1c40f; 
+}
+
+/* --- RESPONSIVE MEDIA QUERIES --- */
+@media (max-width: 768px) {
+    .app-container { margin-left: 60px; margin-right: 10px; }
+    .sidebar:hover { width: 60px; } /* Disable sidebar expand on mobile */
+    .summary-box { justify-content: center; text-align: center; }
+}
+
+/* --- PRINT LAYOUT (Structural Hiding) --- */
+@media print {
+    .sidebar, 
+    .controls, 
+    .btn-group,
+    .no-print { 
+        display: none !important; 
+    }
+    
+    body { padding: 0; background: white; }
+    
+    .app-container { 
+        margin: 0 !important;
+        box-shadow: none; 
+        border: none; 
+        width: 100%;
+    }
+}style_layout.css

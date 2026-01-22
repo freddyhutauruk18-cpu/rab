@@ -1,0 +1,249 @@
+{
+  "id": "DIV.11",
+  "category": "11. PEKERJAAN KUNCI, ENGSEL & PENGGANTUNG (HARDWARE)",
+  "description": "Pekerjaan pemasangan aksesoris pintu dan jendela, termasuk kunci mekanik/digital, engsel, handle, dan sistem keamanan pintu.",
+  "items": [
+    {
+      "code": "11.1.1",
+      "name": "Set Kunci Pintu Utama Double (Pull Handle Besar + Body Pelor)",
+      "sat": "set",
+      "hsp_mat": 1250000,
+      "hsp_upah": 125000,
+      "formula": "1",
+      "coeffs": { "Pull Handle 60cm": 1, "Body Pelor (Roller)": 1, "Silinder Kunci Komputer": 1 },
+      "tags": ["kunci", "grade:std", "grade:lux", "utama", "pintu_kupu_tarung", "mandatory", "ahsp_2024"],
+      "desc": "Paket kunci pintu utama dua daun. Menggunakan sistem dorong (Pull Handle) dengan body pelor. (Otomatis 1 set)."
+    },
+    {
+      "code": "11.1.2",
+      "name": "Set Kunci Pintu Utama Single (Lever Handle Besar)",
+      "sat": "set",
+      "hsp_mat": 650000,
+      "hsp_upah": 85000,
+      "formula": "0",
+      "coeffs": { "Lever Handle Besar": 1, "Body Lidah (Mortise)": 1, "Silinder Kunci": 1 },
+      "tags": ["kunci", "grade:std", "utama", "pintu_tunggal", "mandatory", "ahsp_2024"],
+      "desc": "Handle pintu utama model engkol (Lever Handle) ukuran besar/plate panjang. Mekanisme lidah."
+    },
+    {
+      "code": "11.1.3",
+      "name": "Smart Door Lock Premium (Face ID/Fingerprint/App/Card/Key)",
+      "sat": "unit",
+      "hsp_mat": 4500000,
+      "hsp_upah": 250000,
+      "formula": "0",
+      "coeffs": { "Smart Lock Unit": 1, "Baterai Lithium": 1, "Modul WiFi": 1 },
+      "tags": ["kunci", "grade:prem", "smart_home", "sultan", "apartemen", "optional"],
+      "desc": "Kunci pintu digital tercanggih dengan kamera, pengenal wajah, dan kontrol via HP jarak jauh."
+    },
+    {
+      "code": "11.1.4",
+      "name": "Smart Door Lock Standard (Fingerprint/PIN/Card)",
+      "sat": "unit",
+      "hsp_mat": 1850000,
+      "hsp_upah": 150000,
+      "formula": "0",
+      "coeffs": { "Smart Lock Handle": 1, "Baterai AA": 4 },
+      "tags": ["kunci", "grade:lux", "kost_eksklusif", "kantor", "optional"],
+      "desc": "Kunci digital handle pintu standar. Cocok untuk kamar kost eksklusif atau pintu kantor."
+    },
+    {
+      "code": "11.1.5",
+      "name": "Access Control System (Magnetic Lock + RFID Reader)",
+      "sat": "set",
+      "hsp_mat": 3500000,
+      "hsp_upah": 500000,
+      "formula": "0",
+      "coeffs": { "EM Lock 600lbs": 1, "RFID Reader": 1, "Exit Button": 1, "Power Supply": 1 },
+      "tags": ["kunci", "security", "kantor", "pabrik", "pintu_kaca", "optional"],
+      "desc": "Sistem kunci magnetik elektronik untuk pintu kantor/gudang. Terbuka pakai kartu/PIN."
+    },
+    {
+      "code": "11.2.1",
+      "name": "Handle Pintu Kamar (Lever Handle Rosette) Stainless SUS304",
+      "sat": "set",
+      "hsp_mat": 350000,
+      "hsp_upah": 65000,
+      "formula": "Math.ceil(V.LB/25)",
+      "coeffs": { "Lever Handle Rosette": 1, "Body Lidah Kecil": 1, "Silinder Kunci": 1 },
+      "tags": ["kunci", "grade:lux", "kamar", "modern", "mandatory", "ahsp_2024"],
+      "desc": "Handle pintu kamar model pisah (Rosette). Minimalis dan mewah. Bahan Stainless Steel anti karat."
+    },
+    {
+      "code": "11.2.2",
+      "name": "Handle Pintu Kamar (Lever Handle Plate) Ekonomis",
+      "sat": "set",
+      "hsp_mat": 125000,
+      "hsp_upah": 50000,
+      "formula": "0",
+      "coeffs": { "Lever Handle Plate": 1, "Body Kunci": 1 },
+      "tags": ["kunci", "grade:eco", "kamar", "proyek", "mandatory", "ahsp_2024"],
+      "desc": "Handle pintu model plat menyatu. Ekonomis dan fungsional."
+    },
+    {
+      "code": "11.2.3",
+      "name": "Kunci Bulat KM (Knob Lock) Stainless Steel",
+      "sat": "set",
+      "hsp_mat": 95000,
+      "hsp_upah": 40000,
+      "formula": "V.KM",
+      "coeffs": { "Knob Lock Stainless": 1 },
+      "tags": ["kunci", "grade:std", "grade:lux", "basah", "kamar_mandi", "mandatory", "ahsp_2024"],
+      "desc": "Kunci bulat tahan karat untuk kamar mandi. Mekanisme tombol tekan dari dalam."
+    },
+    {
+      "code": "11.2.4",
+      "name": "Kunci Pintu Sliding (Kunci Kait / Hook Lock)",
+      "sat": "set",
+      "hsp_mat": 185000,
+      "hsp_upah": 55000,
+      "formula": "0",
+      "coeffs": { "Body Kunci Kait": 1, "Silinder Oval": 1, "Flush Handle (Tanam)": 2 },
+      "tags": ["kunci", "pintu_geser", "grade:std", "optional"],
+      "desc": "Kunci khusus pintu geser dengan lidah kait. Termasuk handle tanam (coak)."
+    },
+    {
+      "code": "11.2.5",
+      "name": "Kunci Pintu Kaca Patch Fitting (Floor Hinge Door)",
+      "sat": "set",
+      "hsp_mat": 450000,
+      "hsp_upah": 75000,
+      "formula": "0",
+      "coeffs": { "Patch Lock (US-10)": 1, "Silinder Kunci": 1 },
+      "tags": ["kunci", "pintu_kaca", "kantor", "ruko", "optional"],
+      "desc": "Kunci jepit pojok bawah untuk pintu kaca frameless."
+    },
+    {
+      "code": "11.3.1",
+      "name": "Engsel Pintu Stainless Steel 4 Inch (Bearing) - Set 3pcs",
+      "sat": "set",
+      "hsp_mat": 150000,
+      "hsp_upah": 45000,
+      "formula": "1 + Math.ceil(V.LB/25) + V.KM",
+      "coeffs": { "Engsel SUS304 4x3x3mm": 3, "Sekrup Stainless": 24 },
+      "tags": ["engsel", "grade:lux", "grade:std", "pintu_kayu", "mandatory", "ahsp_2024"],
+      "desc": "Engsel tebal dengan bearing (laher) agar pintu tidak turun/berisik. (Standard 3 engsel per pintu)."
+    },
+    {
+      "code": "11.3.2",
+      "name": "Engsel Pintu Besi 4 Inch (Ekonomis) - Set 3pcs",
+      "sat": "set",
+      "hsp_mat": 65000,
+      "hsp_upah": 45000,
+      "formula": "0",
+      "coeffs": { "Engsel Besi 4inch": 3 },
+      "tags": ["engsel", "grade:eco", "pintu_triplek", "optional"],
+      "desc": "Engsel besi biasa lapis crome/kuningan. Untuk pintu ringan."
+    },
+    {
+      "code": "11.3.3",
+      "name": "Engsel Jendela Casement (Friction Stay) Aluminium - Set 2pcs",
+      "sat": "set",
+      "hsp_mat": 95000,
+      "hsp_upah": 40000,
+      "formula": "Math.ceil(V.LB/15)",
+      "coeffs": { "Friction Stay 12-16inch": 2, "Sekrup": 8 },
+      "tags": ["engsel", "jendela", "aluminium", "grade:std", "mandatory", "ahsp_2024"],
+      "desc": "Engsel gunting untuk jendela aluminium bukaan jungkit (Top Hung) atau samping (Side Hung)."
+    },
+    {
+      "code": "11.3.4",
+      "name": "Engsel Pivot Lantai (Floor Hinge) Heavy Duty - Dorma/Setara",
+      "sat": "unit",
+      "hsp_mat": 2200000,
+      "hsp_upah": 350000,
+      "formula": "0",
+      "coeffs": { "Floor Hinge Body": 1, "Top Pivot": 1, "Semen Grouting": 0.2 },
+      "tags": ["engsel", "pintu_kaca", "kantor", "mall", "berat", "grade:lux", "optional"],
+      "desc": "Engsel tanam lantai hidrolik. Mampu menahan beban pintu kaca berat dan menutup otomatis (soft close)."
+    },
+    {
+      "code": "11.3.5",
+      "name": "Rel Pintu Geser / Sliding Track (Max 100kg)",
+      "sat": "set",
+      "hsp_mat": 450000,
+      "hsp_upah": 100000,
+      "formula": "0",
+      "coeffs": { "Rel Atas Aluminium 2m": 1, "Roda Gantung Nylon": 2, "Stopper": 2, "Guide Bawah": 1 },
+      "tags": ["engsel", "pintu_geser", "partisi", "optional"],
+      "desc": "Rel gantung untuk pintu kayu/aluminium geser. Roda nylon agar tidak berisik."
+    },
+    {
+      "code": "11.3.6",
+      "name": "Engsel Pintu Lipat (Folding Door Hinge) Heavy Duty",
+      "sat": "set",
+      "hsp_mat": 3500000,
+      "hsp_upah": 500000,
+      "formula": "0",
+      "coeffs": { "Rel Atas & Bawah": 1, "Roda Atas & Bawah": 1, "Engsel Tengah": 3 },
+      "tags": ["engsel", "pintu_lipat", "garasi", "taman", "optional"],
+      "desc": "Set aksesoris lengkap untuk pintu lipat (per daun). Kuat menahan beban gantung."
+    },
+    {
+      "code": "11.4.1",
+      "name": "Door Closer (Penutup Pintu Otomatis) - Hold Open",
+      "sat": "unit",
+      "hsp_mat": 380000,
+      "hsp_upah": 50000,
+      "formula": "0",
+      "coeffs": { "Door Closer Arm": 1 },
+      "tags": ["aksesoris", "kantor", "dapur", "ac", "fire_door", "optional", "ahsp_2024"],
+      "desc": "Alat hidrolik penutup pintu otomatis. Fitur hold open (bisa ditahan terbuka di 90 derajat)."
+    },
+    {
+      "code": "11.4.2",
+      "name": "Door Stop (Penahan Pintu) Magnet / Karet",
+      "sat": "buah",
+      "hsp_mat": 55000,
+      "hsp_upah": 20000,
+      "formula": "1 + Math.ceil(V.LB/25)",
+      "coeffs": { "Door Stop": 1, "Fischer": 2 },
+      "tags": ["aksesoris", "grade:std", "grade:lux", "mandatory", "ahsp_2024"],
+      "desc": "Mencegah handle pintu menabrak dinding. Model magnet bisa menahan pintu tetap terbuka."
+    },
+    {
+      "code": "11.4.3",
+      "name": "Panic Bar / Exit Device (Pintu Darurat Kebakaran)",
+      "sat": "unit",
+      "hsp_mat": 2800000,
+      "hsp_upah": 250000,
+      "formula": "0",
+      "coeffs": { "Panic Bar Touch Bar": 1, "Outside Trim Handle": 1 },
+      "tags": ["kunci", "safety", "gedung", "mall", "hotel", "darurat", "mandatory", "ahsp_2024"],
+      "desc": "Tuas dorong panjang untuk pintu darurat (Emergency Exit). Wajib untuk standar keselamatan gedung."
+    },
+    {
+      "code": "11.4.4",
+      "name": "Master Key System (1 Kunci Membuka Banyak Pintu)",
+      "sat": "set",
+      "hsp_mat": 150000,
+      "hsp_upah": 0,
+      "formula": "0",
+      "coeffs": { "Silinder Khusus": 1 },
+      "tags": ["kunci", "hotel", "kost", "kantor", "manajemen", "optional"],
+      "desc": "Biaya tambahan per silinder kunci untuk dibuat sistem Master Key (MK). Memudahkan pengelola gedung."
+    },
+    {
+      "code": "11.4.5",
+      "name": "Pull Handle Pintu Kaca Stainless H-Shape 60cm",
+      "sat": "pasang",
+      "hsp_mat": 550000,
+      "hsp_upah": 50000,
+      "formula": "0",
+      "coeffs": { "Pull Handle Pair": 1 },
+      "tags": ["aksesoris", "pintu_kaca", "kantor", "grade:std", "optional"],
+      "desc": "Handle pipa stainless steel bentuk H (depan belakang) untuk pintu kaca atau kayu."
+    },
+    {
+      "code": "11.4.6",
+      "name": "Rambuncis / Kunci Jendela (Casement Handle)",
+      "sat": "buah",
+      "hsp_mat": 65000,
+      "hsp_upah": 25000,
+      "formula": "Math.ceil(V.LB/15)",
+      "coeffs": { "Rambuncis": 1 },
+      "tags": ["aksesoris", "jendela", "mandatory", "ahsp_2024"],
+      "desc": "Handle pengunci jendela aluminium. Model kanan/kiri."
+    }
+  ]
+}

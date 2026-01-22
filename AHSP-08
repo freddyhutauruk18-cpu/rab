@@ -1,0 +1,172 @@
+{
+  "id": "DIV.08",
+  "category": "08. PEKERJAAN PLAFOND, PARTISI GANTUNG & AKUSTIK",
+  "description": "Pekerjaan pemasangan langit-langit (plafon), rangka penggantung, partisi gantung, serta insulasi atap untuk kenyamanan termal dan akustik.",
+  "items": [
+    {
+      "code": "8.1.1",
+      "name": "Plafon Ekspos Industrial (Finishing Cat Dak Beton)",
+      "sat": "m2",
+      "hsp_mat": 45000,
+      "hsp_upah": 45000,
+      "formula": "0",
+      "coeffs": { "Cat Plafon Exposed": 0.35, "Perapihan Beton": 0.2 },
+      "tags": ["plafon", "grade:lux", "industrial", "cafe", "kantor_kreatif", "optional", "ahsp_2024"],
+      "desc": "Langit-langit tanpa plafon penutup. Dak beton diekspos dan dicat (Hitam/Putih/Abu). Termasuk perapihan jalur kabel (Tray)."
+    },
+    {
+      "code": "8.2.1",
+      "name": "Plafon Gypsum 9mm + Rangka Hollow Galvanis (Standard)",
+      "sat": "m2",
+      "hsp_mat": 115000,
+      "hsp_upah": 60000,
+      "formula": "(V.LB * V.inp_floors) - (V.KM * 3)",
+      "coeffs": { "Gypsum Board 9mm": 1.05, "Hollow Galvanis 0.3": 2.8, "Compound": 0.2, "Textile Tape": 1.5 },
+      "tags": ["plafon", "grade:std", "rumah_type_36", "rumah_type_45", "ruko", "mandatory", "ahsp_2024"],
+      "desc": "Plafon standar perumahan & ruko. Rangka hollow galvanis 20x40 & 40x40 tebal 0.3mm (Jarak 60x60). Finishing kompon sambungan."
+    },
+    {
+      "code": "8.2.2",
+      "name": "Plafon Gypsum 9mm Jayaboard + Metal Furing (Premium)",
+      "sat": "m2",
+      "hsp_mat": 165000,
+      "hsp_upah": 85000,
+      "formula": "0",
+      "coeffs": { "Gypsum Jayaboard 9mm": 1.05, "Metal Furing 0.4": 3.5, "Rod Hanger": 1.5, "UBox": 1 },
+      "tags": ["plafon", "grade:lux", "pemerintah", "apartemen", "kantor", "rata_sempurna", "mandatory", "ahsp_2024"],
+      "desc": "Spek resmi gedung bertingkat/kantor pemerintah. Menggunakan sistem gantung Rod Hanger (anti gelombang) dan rangka Metal Furing tebal."
+    },
+    {
+      "code": "8.2.3",
+      "name": "Plafon GRC / Kalsiboard 4mm (Area Basah/Luar)",
+      "sat": "m2",
+      "hsp_mat": 125000,
+      "hsp_upah": 65000,
+      "formula": "(V.KM * 3) + (Math.sqrt(V.LB)*4)",
+      "coeffs": { "GRC/Kalsi 4mm": 1.05, "Hollow Galvanis 0.35": 3, "Compound GRC": 0.25 },
+      "tags": ["plafon", "grade:std", "basah", "kamar_mandi", "teras", "overstek", "mandatory", "ahsp_2024"],
+      "desc": "Plafon tahan air & lembab. Wajib digunakan untuk Kamar Mandi, Teras Luar (Overstek), dan area servis."
+    },
+    {
+      "code": "8.3.1",
+      "name": "Plafon PVC Premium (Shunda/Setara) - Anti Rayap & Air",
+      "sat": "m2",
+      "hsp_mat": 265000,
+      "hsp_upah": 85000,
+      "formula": "0",
+      "coeffs": { "Papan PVC Premium": 1.1, "Hollow Galvanis": 2.5, "Lis PVC": 1 },
+      "tags": ["plafon", "grade:lux", "awet", "anti_rayap", "masjid", "renovasi", "optional", "ahsp_2024"],
+      "desc": "Solusi bebas perawatan selamanya. Tahan air (bocoran atap), anti rayap, tidak perlu dicat. Sambungan sistem klik (interlocking)."
+    },
+    {
+      "code": "8.3.2",
+      "name": "Plafon Akustik Armstrong 60x60 (Kantor Sewa)",
+      "sat": "m2",
+      "hsp_mat": 295000,
+      "hsp_upah": 75000,
+      "formula": "0",
+      "coeffs": { "Acoustic Tile 60x60": 1.05, "Main Tee": 1.2, "Cross Tee": 2.4, "Wall Angle": 0.5 },
+      "tags": ["plafon", "akustik", "kantor", "aula", "ruang_rapat", "grade:lux", "optional", "ahsp_2024"],
+      "desc": "Plafon gantung sistem rangka tampak (Exposed Grid). Meredam suara (akustik). Standar kantor sewa, sekolah, dan ruang meeting."
+    },
+    {
+      "code": "8.3.3",
+      "name": "Plafon Metal (Metal Ceiling) Aluminium Perforated",
+      "sat": "m2",
+      "hsp_mat": 450000,
+      "hsp_upah": 120000,
+      "formula": "0",
+      "coeffs": { "Metal Panel 60x60": 1.05, "Clip-in System": 1.2, "Rod Hanger": 1.5 },
+      "tags": ["plafon", "grade:prem", "bandara", "kantor_pusat", "tahan_api", "higienis", "optional"],
+      "desc": "Plafon panel logam (aluminium/steel) tahan api, awet, dan higienis. Biasa digunakan di bandara, RS, atau dapur komersial."
+    },
+    {
+      "code": "8.3.4",
+      "name": "Plafon Lambersering Kayu Solid (Jati/Bengkirai)",
+      "sat": "m2",
+      "hsp_mat": 750000,
+      "hsp_upah": 200000,
+      "formula": "0",
+      "coeffs": { "Kayu Lambersering": 1.1, "Rangka Kayu": 2, "Finishing Melamik": 1 },
+      "tags": ["plafon", "grade:lux", "villa", "resort", "klasik", "natural", "optional", "ahsp_2024"],
+      "desc": "Plafon susunan papan kayu solid ekspos. Memberikan nuansa hangat, natural, dan mewah. Wajib coating anti rayap."
+    },
+    {
+      "code": "8.4.1",
+      "name": "Plafon WPC (Wood Plastic Composite) Indoor",
+      "sat": "m2",
+      "hsp_mat": 480000,
+      "hsp_upah": 130000,
+      "formula": "0",
+      "coeffs": { "WPC Panel (Kisi-kisi)": 1.1, "Clip Besi": 10, "Hollow Rangka": 2.5 },
+      "tags": ["plafon", "grade:lux", "modern", "cafe", "hotel", "lobby", "optional"],
+      "desc": "Plafon motif kayu bahan komposit (plastik+serbuk kayu). Tahan air, mewah, tanpa finishing. Model kisi-kisi atau flat."
+    },
+    {
+      "code": "8.5.1",
+      "name": "Drop Ceiling / Up Ceiling (Variasi Trap Lampu)",
+      "sat": "m'",
+      "hsp_mat": 120000,
+      "hsp_upah": 85000,
+      "formula": "0",
+      "coeffs": { "Hollow Tambahan": 1, "Gypsum Strip": 0.5, "Corner Bead": 1 },
+      "tags": ["variasi", "grade:lux", "ruang_tamu", "hotel", "estetik", "optional", "ahsp_2024"],
+      "desc": "Biaya tambahan per meter lari untuk membuat trap/tingkatan plafon (naik/turun) untuk lampu sembunyi (Hidden LED/Cove Light)."
+    },
+    {
+      "code": "8.6.1",
+      "name": "Insulasi Atap Glasswool 50mm / Rockwool (Peredam Panas)",
+      "sat": "m2",
+      "hsp_mat": 75000,
+      "hsp_upah": 30000,
+      "formula": "0",
+      "coeffs": { "Glasswool Roll": 1.05, "Wiremesh Penahan": 1 },
+      "tags": ["insulasi", "grade:lux", "nyaman", "hemat_energi", "optional", "ahsp_2024"],
+      "desc": "Material serat kaca peredam panas & suara hujan. Dipasang di atas plafon. Sangat efektif menurunkan suhu ruangan (Hemat AC)."
+    },
+    {
+      "code": "8.6.2",
+      "name": "Aluminium Foil Bubble Double Side (Penolak Panas)",
+      "sat": "m2",
+      "hsp_mat": 45000,
+      "hsp_upah": 20000,
+      "formula": "V.LB * V.inp_floors",
+      "coeffs": { "Bubble Foil": 1.1, "Kawat Loket": 1 },
+      "tags": ["insulasi", "grade:std", "grade:lux", "mandatory", "ahsp_2024"],
+      "desc": "Pelapis penolak panas (radiant barrier) yang dipasang di bawah genteng/atap. Wajib untuk iklim tropis."
+    },
+    {
+      "code": "8.7.1",
+      "name": "Manhole 60x60 (Pintu Kontrol Plafon) + Frame Aluminium",
+      "sat": "unit",
+      "hsp_mat": 380000,
+      "hsp_upah": 95000,
+      "formula": "Math.ceil(V.LB/50) * V.inp_floors",
+      "coeffs": { "Manhole Set Finished": 1, "Penguat Rangka": 1 },
+      "tags": ["detail", "grade:std", "mandatory", "ahsp_2024"],
+      "desc": "Pintu akses maintenance ke dalam rongga plafon (untuk cek kabel/pipa/atap bocor). (Estimasi 1 unit per 50m2 luas lantai)."
+    },
+    {
+      "code": "8.8.1",
+      "name": "List Profil Gypsum 10cm (Klasik/Minimalis)",
+      "sat": "m'",
+      "hsp_mat": 30000,
+      "hsp_upah": 25000,
+      "formula": "0",
+      "coeffs": { "List Gypsum": 1.05, "Compound": 0.1, "Lem List": 0.05 },
+      "tags": ["list", "grade:eco", "grade:std", "klasik", "optional", "ahsp_2024"],
+      "desc": "Pemanis sudut pertemuan dinding & plafon (Cornice). Mencegah retak rambut terlihat di sudut."
+    },
+    {
+      "code": "8.8.2",
+      "name": "Shadow Line Aluminium (Tali Air Modern)",
+      "sat": "m'",
+      "hsp_mat": 55000,
+      "hsp_upah": 35000,
+      "formula": "V.KLL * V.inp_floors",
+      "coeffs": { "Profil Shadowline": 1.05, "Skrup": 10 },
+      "tags": ["list", "grade:lux", "minimalis", "modern", "mandatory", "ahsp_2024"],
+      "desc": "Profil aluminium Z yang menciptakan celah rapi (bayangan) antara plafon & dinding. Wajib untuk rumah desain minimalis modern."
+    }
+  ]
+}

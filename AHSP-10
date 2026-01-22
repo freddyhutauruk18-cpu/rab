@@ -1,0 +1,282 @@
+{
+  "id": "DIV.10",
+  "category": "10. PEKERJAAN KUSEN, PINTU, JENDELA & FASAD KACA",
+  "description": "Pekerjaan pemasangan kusen, daun pintu, jendela, partisi kaca, dan fasad bangunan menggunakan material kayu, aluminium, UPVC, baja, dan kaca.",
+  "items": [
+    {
+      "code": "10.1.1",
+      "name": "Kusen Aluminium 3 inch (Standar/Alexindo) - Powder Coating",
+      "sat": "m'",
+      "hsp_mat": 135000,
+      "hsp_upah": 50000,
+      "formula": "(Math.ceil(V.LB/20) + V.KM) * 14",
+      "coeffs": { "Profil Alumunium 3\"": 1.1, "Sealant": 0.1, "Sekrup/Fischer": 2 },
+      "tags": ["kusen", "grade:std", "grade:eco", "rumah_type_36", "kontrakan", "mandatory", "ahsp_2024"],
+      "desc": "Kusen aluminium ukuran 3 inch (7.6cm). Ekonomis, anti rayap, tahan cuaca. Standar perumahan rakyat."
+    },
+    {
+      "code": "10.1.2",
+      "name": "Kusen Aluminium 4 inch (Premium/YKK/Langgeng) - Tebal",
+      "sat": "m'",
+      "hsp_mat": 245000,
+      "hsp_upah": 65000,
+      "formula": "(Math.ceil(V.LB/20) + V.KM) * 14",
+      "coeffs": { "Profil Alumunium 4\"": 1.1, "Sealant Neutral": 0.15, "Bracket": 2 },
+      "tags": ["kusen", "grade:lux", "grade:prem", "apartemen", "kantor", "rumah_mewah", "mandatory", "ahsp_2024"],
+      "desc": "Profil aluminium 4 inch (10cm) dengan ketebalan plat 1.35mm. Sangat kokoh, finishing halus (powder coating) tahan gores."
+    },
+    {
+      "code": "10.1.3",
+      "name": "Kusen UPVC Reinforced Steel (Kedap Suara)",
+      "sat": "m'",
+      "hsp_mat": 285000,
+      "hsp_upah": 75000,
+      "formula": "0",
+      "coeffs": { "Profil UPVC": 1.05, "Besi Penguat (Reinforce)": 1 },
+      "tags": ["kusen", "grade:lux", "soundproof", "studio", "hotel", "optional", "ahsp_2024"],
+      "desc": "Kusen bahan UPVC dengan tulangan besi di dalamnya. Sangat kedap suara dan suhu (thermal insulation)."
+    },
+    {
+      "code": "10.1.4",
+      "name": "Kusen Kayu Kamper Samarinda Oven (Finishing Melamik)",
+      "sat": "m'",
+      "hsp_mat": 320000,
+      "hsp_upah": 110000,
+      "formula": "0",
+      "coeffs": { "Balok Kayu Kamper": 0.015, "Lem Kayu": 0.1, "Finishing Melamik": 1 },
+      "tags": ["kusen", "grade:lux", "klasik", "kayu", "villa", "optional", "ahsp_2024"],
+      "desc": "Kusen kayu solid oven (kadar air <12%) anti muai susut. Finishing semprot melamik halus."
+    },
+    {
+      "code": "10.1.5",
+      "name": "Kusen Baja / Steel Door Frame (Pintu Darurat/Gudang)",
+      "sat": "unit",
+      "hsp_mat": 1200000,
+      "hsp_upah": 250000,
+      "formula": "0",
+      "coeffs": { "Kusen Plat Baja Tekuk": 1, "Angkur Dinding": 6 },
+      "tags": ["kusen", "industrial", "pabrik", "gudang", "pintu_darurat", "optional"],
+      "desc": "Kusen dari plat baja tekuk (bending). Sangat kuat, tahan benturan (forklift) dan api."
+    },
+    {
+      "code": "10.2.1",
+      "name": "Pintu PVC Standar + Kunci Bulat (Kamar Mandi)",
+      "sat": "unit",
+      "hsp_mat": 450000,
+      "hsp_upah": 85000,
+      "formula": "V.KM",
+      "coeffs": { "Unit Pintu PVC": 1, "Sealant": 0.5 },
+      "tags": ["pintu", "grade:eco", "grade:std", "basah", "kontrakan", "mandatory", "ahsp_2024"],
+      "desc": "Pintu plastik PVC lengkap kusen & kunci. Tahan air, ekonomis. (Otomatis hitung sesuai jumlah KM)."
+    },
+    {
+      "code": "10.2.2",
+      "name": "Daun Pintu HPL / Multiplek (Honeycomb Core) - Minimalis",
+      "sat": "unit",
+      "hsp_mat": 1100000,
+      "hsp_upah": 175000,
+      "formula": "Math.ceil(V.LB/25)",
+      "coeffs": { "Rangka Kayu": 1, "Isian Honeycomb": 1, "HPL Taco": 2, "Lem Kuning": 0.8 },
+      "tags": ["pintu", "grade:std", "grade:lux", "kamar", "apartemen", "mandatory", "ahsp_2024"],
+      "desc": "Pintu interior modern lapis HPL. Ringan (honeycomb core), presisi, banyak pilihan motif."
+    },
+    {
+      "code": "10.2.3",
+      "name": "Daun Pintu Kayu Solid Panel (Kamper/Merbau) - Utama",
+      "sat": "unit",
+      "hsp_mat": 2400000,
+      "hsp_upah": 300000,
+      "formula": "1",
+      "coeffs": { "Papan Kayu Solid": 1, "Finishing PU/Melamik": 1 },
+      "tags": ["pintu", "grade:lux", "grade:prem", "utama", "klasik", "mandatory", "ahsp_2024"],
+      "desc": "Pintu utama kayu solid utuh (bukan tempelan). Berat, kokoh, mewah. Otomatis hitung 1 unit (Depan)."
+    },
+    {
+      "code": "10.2.4",
+      "name": "Pintu Baja Fortress / Security Door (Set Lengkap)",
+      "sat": "unit",
+      "hsp_mat": 4200000,
+      "hsp_upah": 500000,
+      "formula": "0",
+      "coeffs": { "Unit Pintu Baja": 1, "Semen Grouting": 0.5 },
+      "tags": ["pintu", "grade:lux", "security", "ruko", "gudang", "modern", "optional"],
+      "desc": "Pintu plat baja motif kayu. Anti maling (5 titik penguncian), anti rayap, anti susut. Sudah termasuk kusen & handle."
+    },
+    {
+      "code": "10.2.5",
+      "name": "Pintu Kaca Frameless 12mm Tempered (Floor Hinge)",
+      "sat": "unit",
+      "hsp_mat": 5200000,
+      "hsp_upah": 850000,
+      "formula": "0",
+      "coeffs": { "Kaca Tempered 12mm": 1, "Floor Hinge Dorma": 1, "Patch Fitting Set": 1, "Handle Stainless": 1 },
+      "tags": ["pintu", "grade:lux", "kantor", "ruko", "mall", "bank", "optional"],
+      "desc": "Pintu kaca tebal tanpa bingkai (frameless). Menggunakan engsel tanam lantai (Floor Hinge) yang bisa menutup sendiri."
+    },
+    {
+      "code": "10.2.6",
+      "name": "Pintu Sensor Otomatis (Automatic Sliding Door)",
+      "sat": "unit",
+      "hsp_mat": 22000000,
+      "hsp_upah": 3000000,
+      "formula": "0",
+      "coeffs": { "Mesin Auto Door (Motor+Controller)": 1, "Sensor Gerak Microwave": 2, "Daun Pintu Kaca": 2 },
+      "tags": ["pintu", "automatic", "mall", "kantor_pusat", "rs", "hotel", "optional"],
+      "desc": "Pintu kaca geser otomatis dengan sensor gerak. Standar lobby gedung publik/komersial."
+    },
+    {
+      "code": "10.2.7",
+      "name": "Pintu Hermetic (Ruang Operasi/Laboratorium)",
+      "sat": "unit",
+      "hsp_mat": 45000000,
+      "hsp_upah": 5000000,
+      "formula": "0",
+      "coeffs": { "Pintu Hermetic Stainless": 1, "Sistem Kedap Udara": 1, "Sensor Siku/Kaki": 1 },
+      "tags": ["pintu", "medis", "rs", "laboratorium", "pabrik_obat", "optional"],
+      "desc": "Pintu khusus kedap udara (airtight) untuk menjaga sterilitas ruangan (Ruang OK/Isolasi)."
+    },
+    {
+      "code": "10.2.8",
+      "name": "Pintu Garasi Besi Wina (Sistem Tikung/Sliding)",
+      "sat": "daun",
+      "hsp_mat": 2800000,
+      "hsp_upah": 450000,
+      "formula": "0",
+      "coeffs": { "Daun Pintu Besi": 1, "Rel & Roda Tikung": 1, "Komponen Gantung": 1 },
+      "tags": ["pintu", "garage", "mewah", "rumah_type_70", "optional"],
+      "desc": "Pintu garasi plat besi press yang menyusuri dinding (tikung) saat dibuka. Ringan dan awet."
+    },
+    {
+      "code": "10.2.9",
+      "name": "Rolling Door Industri 1.0mm (Perforated/Polos) + Motor",
+      "sat": "m2",
+      "hsp_mat": 1100000,
+      "hsp_upah": 250000,
+      "formula": "0",
+      "coeffs": { "Slat Rolling Door Tebal": 1.1, "Mesin Motor Elektrik": 0.2 },
+      "tags": ["pintu", "garage", "industrial", "gudang", "pabrik", "optional"],
+      "desc": "Pintu gulung besi tebal otomatis (pakai remote/tombol). Untuk akses kendaraan besar (loading dock)."
+    },
+    {
+      "code": "10.2.10",
+      "name": "Folding Gate Besi 0.5mm - 0.8mm (Harmonika)",
+      "sat": "m2",
+      "hsp_mat": 650000,
+      "hsp_upah": 120000,
+      "formula": "0",
+      "coeffs": { "Slat Daun": 1.1, "UNP Silangan": 2 },
+      "tags": ["pintu", "ruko", "toko", "kios", "grade:std", "optional"],
+      "desc": "Pintu lipat besi harmonika standar ruko/toko. Semakin tebal semakin aman dan awet."
+    },
+    {
+      "code": "10.3.1",
+      "name": "Jendela Casement Aluminium + Kaca 5mm (Swing)",
+      "sat": "unit",
+      "hsp_mat": 1100000,
+      "hsp_upah": 175000,
+      "formula": "Math.ceil(V.LB/15)",
+      "coeffs": { "Kusen & Daun Jendela": 1, "Engsel Casement (Friction Stay)": 2, "Rambuncis": 1, "Karet EPDM": 4 },
+      "tags": ["jendela", "grade:std", "grade:lux", "mandatory", "ahsp_2024"],
+      "desc": "Jendela buka jungkit (swing) samping/atas. Lebih kedap air dibanding sliding. (Estimasi 1 jendela per 15m2)."
+    },
+    {
+      "code": "10.3.2",
+      "name": "Jendela Sliding Aluminium + Kaca 5mm (Geser)",
+      "sat": "unit",
+      "hsp_mat": 1250000,
+      "hsp_upah": 200000,
+      "formula": "0",
+      "coeffs": { "Kusen & Daun Jendela": 1, "Roda Sliding": 2, "Kunci Kuping": 1, "Rel Aluminium": 2 },
+      "tags": ["jendela", "grade:std", "hemat_tempat", "apartemen", "balkon", "optional"],
+      "desc": "Jendela geser hemat tempat, tidak memakan area ruangan saat dibuka. Cocok untuk area sempit."
+    },
+    {
+      "code": "10.3.3",
+      "name": "Jendela Nako / Louvre (Kaca Sisir)",
+      "sat": "m2",
+      "hsp_mat": 450000,
+      "hsp_upah": 100000,
+      "formula": "0",
+      "coeffs": { "Rangka Nako Besi/Alum": 1, "Kaca Nako 5mm": 10 },
+      "tags": ["jendela", "sirkulasi", "sekolah", "gudang", "tradisional", "optional"],
+      "desc": "Jendela sisir yang bisa dibuka tutup per bilah kaca. Sirkulasi udara maksimal (100% bukaan)."
+    },
+    {
+      "code": "10.4.1",
+      "name": "Pintu Lipat Aluminium Kaca (Folding Door - View Taman)",
+      "sat": "daun",
+      "hsp_mat": 3200000,
+      "hsp_upah": 600000,
+      "formula": "0",
+      "coeffs": { "Daun Pintu Aluminium": 1, "Rel Gantung Heavy Duty": 1, "Engsel Lipat": 3 },
+      "tags": ["pintu", "grade:lux", "taman", "cafe", "villa", "optional"],
+      "desc": "Pintu bukaan lebar yang bisa dilipat habis ke samping. Menyatukan ruang dalam dan luar (taman). Harga per daun."
+    },
+    {
+      "code": "10.5.1",
+      "name": "Partisi Kaca Tempered 10mm / 12mm (Sekat Kantor)",
+      "sat": "m2",
+      "hsp_mat": 1100000,
+      "hsp_upah": 200000,
+      "formula": "0",
+      "coeffs": { "Kaca Tempered": 1.05, "U-Channel Aluminium": 2, "Sealant": 1 },
+      "tags": ["kaca", "grade:lux", "kantor", "sekat", "meeting_room", "optional"],
+      "desc": "Dinding kaca transparan aman (tempered) untuk sekat ruang kantor atau showroom."
+    },
+    {
+      "code": "10.5.2",
+      "name": "Curtain Wall (Fasad Kaca Gedung High Rise)",
+      "sat": "m2",
+      "hsp_mat": 3800000,
+      "hsp_upah": 950000,
+      "formula": "0",
+      "coeffs": { "Rangka Mullion/Transom": 1, "Kaca Reflective (Stopsol)": 1, "Backing Rod & Sealant": 1 },
+      "tags": ["facade", "building:huge", "office", "hotel", "gedung", "optional"],
+      "desc": "Sistem dinding kaca luar gedung bertingkat. Menggunakan kaca reflektif untuk menolak panas. Pemasangan dengan gondola/scaffolding."
+    },
+    {
+      "code": "10.5.3",
+      "name": "Aluminium Composite Panel (ACP) Seven / Marks (Fasad)",
+      "sat": "m2",
+      "hsp_mat": 750000,
+      "hsp_upah": 250000,
+      "formula": "0",
+      "coeffs": { "ACP Sheet (PVDF Exterior)": 1.1, "Rangka Hollow 4x4": 2, "Sealant & Spon": 1 },
+      "tags": ["facade", "eksterior", "ruko", "kantor", "gedung", "modern", "optional"],
+      "desc": "Pelapis dinding luar bangunan bahan aluminium warna-warni. Tahan cuaca, modern, dan rapi."
+    },
+    {
+      "code": "10.6.1",
+      "name": "Bouvenlight / Ventilasi KM (Jendela Kaca Mati/Jungkit)",
+      "sat": "unit",
+      "hsp_mat": 550000,
+      "hsp_upah": 100000,
+      "formula": "V.KM",
+      "coeffs": { "Kusen & Daun BV": 1, "Kaca Es 5mm": 1 },
+      "tags": ["ventilasi", "grade:std", "grade:lux", "mandatory", "ahsp_2024"],
+      "desc": "Jendela kecil ventilasi udara kamar mandi posisi tinggi. Menggunakan kaca buram (es)."
+    },
+    {
+      "code": "10.7.1",
+      "name": "Smart Door Lock (Fingerprint, Card, PIN, App)",
+      "sat": "unit",
+      "hsp_mat": 3500000,
+      "hsp_upah": 300000,
+      "formula": "0",
+      "coeffs": { "Smart Lock Unit": 1, "Baterai": 4 },
+      "tags": ["aksesoris", "kunci", "grade:lux", "smart_home", "kost_eksklusif", "hotel", "optional"],
+      "desc": "Handle pintu digital canggih. Akses tanpa kunci fisik. Wajib untuk Kost Eksklusif, Hotel, atau Smart Home."
+    },
+    {
+      "code": "10.7.2",
+      "name": "Kawat Nyamuk Magnet (Insect Screen Premium)",
+      "sat": "m2",
+      "hsp_mat": 220000,
+      "hsp_upah": 40000,
+      "formula": "0",
+      "coeffs": { "Fiber Mesh": 1, "List Magnet": 4 },
+      "tags": ["aksesoris", "grade:std", "grade:lux", "kesehatan", "optional"],
+      "desc": "Jaring pelindung nyamuk pada jendela yang bisa dilepas pasang (sistem magnet) untuk dicuci."
+    }
+  ]
+}

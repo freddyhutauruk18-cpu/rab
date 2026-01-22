@@ -1,0 +1,205 @@
+{
+  "id": "DIV.16",
+  "category": "16. PEKERJAAN INTERIOR, KITCHEN SET & WALLPAPER",
+  "description": "Pekerjaan penataan interior, pembuatan perabot tetap (built-in furniture) seperti lemari dapur, lemari pakaian, serta pelapis dinding dekoratif.",
+  "items": [
+    {
+      "code": "16.1.1",
+      "name": "Meja Dapur Beton Cor + Keramik 40x40 (Meja Saja)",
+      "sat": "m'",
+      "hsp_mat": 850000,
+      "hsp_upah": 350000,
+      "formula": "3",
+      "coeffs": { "Besi Beton 8mm": 2, "Semen PC": 1, "Pasir Beton": 0.1, "Keramik Meja": 0.6 },
+      "tags": ["dapur", "grade:eco", "grade:std", "rumah_subsidi", "kontrakan", "mandatory", "ahsp_2024"],
+      "desc": "Pembuatan meja dapur permanen dari beton bertulang lapis keramik. Tanpa lemari kabinet bawah. (Estimasi panjang standar 3 meter)."
+    },
+    {
+      "code": "16.1.2",
+      "name": "Kitchen Set Kabinet Bawah (Multiplek 18mm + HPL Taco)",
+      "sat": "m'",
+      "hsp_mat": 1950000,
+      "hsp_upah": 450000,
+      "formula": "3",
+      "coeffs": { "Multiplek Meranti 18mm": 1, "HPL Taco Standard": 1, "Engsel Slowmotion": 4, "Rel Laci Double Track": 2 },
+      "tags": ["dapur", "furniture", "grade:std", "grade:lux", "interior", "mandatory", "ahsp_2024"],
+      "desc": "Lemari dapur bawah custom. Bahan multiplek tebal lapis HPL anti gores & panas. Termasuk rak sendok & rak piring bawah."
+    },
+    {
+      "code": "16.1.3",
+      "name": "Kitchen Set Kabinet Atas (Multiplek 18mm + HPL Taco)",
+      "sat": "m'",
+      "hsp_mat": 1750000,
+      "hsp_upah": 450000,
+      "formula": "3",
+      "coeffs": { "Multiplek Meranti 18mm": 1, "HPL Taco Standard": 1, "Rak Piring Atas Stainless": 1, "Hidrolik Pintu": 2 },
+      "tags": ["dapur", "furniture", "grade:std", "grade:lux", "interior", "mandatory", "ahsp_2024"],
+      "desc": "Lemari gantung dapur (Upper Cabinet) tinggi standar 80cm. Termasuk rak piring stainless & lampu LED strip bawah kabinet."
+    },
+    {
+      "code": "16.1.4",
+      "name": "Kitchen Set Aluminium + ACP (Anti Rayap & Air)",
+      "sat": "m'",
+      "hsp_mat": 3200000,
+      "hsp_upah": 650000,
+      "formula": "0",
+      "coeffs": { "Frame Aluminium Fauzi/Alexindo": 1, "ACP 3mm (Body & Pintu)": 1, "Engsel Khusus": 4 },
+      "tags": ["dapur", "furniture", "grade:lux", "anti_rayap", "awet", "basah", "optional"],
+      "desc": "Solusi dapur premium bebas rayap selamanya. Rangka aluminium & panel ACP. Cocok untuk area lembab atau rawan rayap."
+    },
+    {
+      "code": "16.1.5",
+      "name": "Kitchen Set PVC Board (Anti Rayap & Air - Finishing HPL/Duco)",
+      "sat": "m'",
+      "hsp_mat": 2800000,
+      "hsp_upah": 600000,
+      "formula": "0",
+      "coeffs": { "PVC Board 18mm": 1, "HPL/Cat Duco": 1 },
+      "tags": ["dapur", "furniture", "grade:lux", "anti_rayap", "modern", "optional"],
+      "desc": "Alternatif anti rayap dengan tampilan seperti kayu (bisa dilapis HPL). Bahan PVC foam board keras & ringan."
+    },
+    {
+      "code": "16.1.6",
+      "name": "Top Table Granit Alam (Black Nero / Star White)",
+      "sat": "m'",
+      "hsp_mat": 1650000,
+      "hsp_upah": 300000,
+      "formula": "3",
+      "coeffs": { "Granit Alam Slab": 0.65, "Lem Granit": 0.1, "Jasa Poles Pinggul": 1 },
+      "tags": ["dapur", "top_table", "grade:lux", "sultan", "batu_alam", "optional", "ahsp_2024"],
+      "desc": "Alas meja dapur dari batu granit alam asli. Tahan panas, dingin, goresan pisau, dan memberikan kesan mewah."
+    },
+    {
+      "code": "16.1.7",
+      "name": "Top Table Solid Surface (Sintetis Mulus)",
+      "sat": "m'",
+      "hsp_mat": 2100000,
+      "hsp_upah": 400000,
+      "formula": "0",
+      "coeffs": { "Solid Surface 12mm": 0.65, "Lem Sambungan": 0.1 },
+      "tags": ["dapur", "top_table", "grade:prem", "higienis", "modern", "optional"],
+      "desc": "Permukaan meja sintetis (akrilik/resin) yang bisa dibentuk tanpa sambungan nat (seamless). Sangat higienis & mudah diperbaiki jika baret."
+    },
+    {
+      "code": "16.1.8",
+      "name": "Backsplash Cermin Bronze / Grey (Beveled)",
+      "sat": "m2",
+      "hsp_mat": 1200000,
+      "hsp_upah": 250000,
+      "formula": "0",
+      "coeffs": { "Cermin 5mm": 1, "Triplek Alas": 1, "Lem Sealant": 0.5 },
+      "tags": ["dapur", "dinding", "grade:lux", "estetik", "optional"],
+      "desc": "Pelapis dinding dapur (antara kabinet) menggunakan cermin warna. Memberikan efek luas dan mewah."
+    },
+    {
+      "code": "16.1.9",
+      "name": "Backsplash Kaca Glasstone (Warna Solid)",
+      "sat": "m2",
+      "hsp_mat": 1450000,
+      "hsp_upah": 300000,
+      "formula": "0",
+      "coeffs": { "Kaca Glasstone 5mm": 1, "Lem Sealant Netral": 0.5 },
+      "tags": ["dapur", "dinding", "grade:lux", "modern", "mudah_bersih", "optional"],
+      "desc": "Kaca dengan cat warna di belakangnya. Sangat mudah dibersihkan dari minyak dan noda masakan."
+    },
+    {
+      "code": "16.2.1",
+      "name": "Wallpaper Dinding Vinyl Premium (Roll Besar 10m)",
+      "sat": "roll",
+      "hsp_mat": 450000,
+      "hsp_upah": 100000,
+      "formula": "0",
+      "coeffs": { "Wallpaper Vinyl": 1, "Lem Wallpaper": 0.2 },
+      "tags": ["interior", "dinding", "grade:std", "kamar", "ruang_tamu", "optional", "ahsp_2024"],
+      "desc": "Pelapis dinding motif bahan vinyl bertekstur. Ukuran roll 0.53m x 10m (Cover area +/- 5 m2). Tahan lembab ringan."
+    },
+    {
+      "code": "16.2.2",
+      "name": "Wall Panel WPC (Kisi-kisi Kayu) / Fluted Panel",
+      "sat": "m2",
+      "hsp_mat": 450000,
+      "hsp_upah": 120000,
+      "formula": "0",
+      "coeffs": { "WPC Panel": 1, "Clip Besi": 10, "Lem Sealant": 0.5 },
+      "tags": ["interior", "dinding", "grade:lux", "backdrop_tv", "headboard", "modern", "optional"],
+      "desc": "Panel dinding motif kayu timbul (jalur-jalur). Populer untuk backdrop TV atau dinding aksen. Tahan air & rayap."
+    },
+    {
+      "code": "16.2.3",
+      "name": "Wall Moulding Gypsum / Kayu (Profil Klasik) + Cat",
+      "sat": "m2",
+      "hsp_mat": 220000,
+      "hsp_upah": 130000,
+      "formula": "0",
+      "coeffs": { "List Profil Gypsum/Kayu": 4, "Compound": 0.5, "Cat Tembok": 0.3 },
+      "tags": ["interior", "dinding", "grade:lux", "klasik", "eropa", "ruang_tamu", "optional", "ahsp_2024"],
+      "desc": "Hiasan dinding kotak-kotak profil timbul ala American Classic / European Style. Sudah termasuk pengecatan ulang dinding."
+    },
+    {
+      "code": "16.2.4",
+      "name": "Partisi Penyekat Ruangan Kisi-Kisi Kayu Solid / HPL",
+      "sat": "m2",
+      "hsp_mat": 1200000,
+      "hsp_upah": 350000,
+      "formula": "0",
+      "coeffs": { "Kayu/Multiplek": 1, "Finishing HPL/Melamik": 1, "Rangka": 1 },
+      "tags": ["interior", "partisi", "grade:lux", "sekat", "optional", "ahsp_2024"],
+      "desc": "Sekat ruangan tembus pandang model jari-jari vertikal. Memisahkan ruang tamu & keluarga tanpa menutup cahaya."
+    },
+    {
+      "code": "16.2.5",
+      "name": "Peredam Suara Dinding (Rockwool + Gypsum + Fabric)",
+      "sat": "m2",
+      "hsp_mat": 650000,
+      "hsp_upah": 200000,
+      "formula": "0",
+      "coeffs": { "Rockwool 60kg/m3": 1, "Rangka Metal Stud": 1, "Gypsum Jayaboard": 1, "Kain Fabric": 1 },
+      "tags": ["interior", "dinding", "akustik", "studio", "karaoke", "optional"],
+      "desc": "Pelapis dinding kedap suara (soundproofing) untuk ruang home theater, studio musik, atau kamar tidur hening."
+    },
+    {
+      "code": "16.3.1",
+      "name": "Lemari Bawah Tangga (Custom Storage)",
+      "sat": "unit",
+      "hsp_mat": 5500000,
+      "hsp_upah": 1800000,
+      "formula": "V.inp_floors > 1 ? 1 : 0",
+      "coeffs": { "Multiplek 18mm": 1, "HPL": 1, "Rak Sepatu": 1 },
+      "tags": ["interior", "furniture", "storage", "grade:lux", "building:multistory", "efisiensi", "optional", "ahsp_2024"],
+      "desc": "Pemanfaatan ruang sisa di bawah tangga untuk gudang, rak sepatu, atau lemari pajangan. Bentuk miring mengikuti tangga."
+    },
+    {
+      "code": "16.3.2",
+      "name": "Wardrobe / Lemari Pakaian Full Plafon (Per m2 Muka)",
+      "sat": "m2",
+      "hsp_mat": 2400000,
+      "hsp_upah": 600000,
+      "formula": "0",
+      "coeffs": { "Multiplek 18mm": 1, "HPL Taco": 1, "Cermin Pintu": 0.5, "Aksesoris": 1 },
+      "tags": ["interior", "furniture", "kamar", "grade:lux", "apartemen", "optional"],
+      "desc": "Lemari baju custom built-in sampai mentok plafon (tinggi > 2.4m). Harga per m2 luas muka pintu. Pintu sliding atau swing."
+    },
+    {
+      "code": "16.3.3",
+      "name": "Backdrop TV Cabinet (Multiplek + HPL + LED)",
+      "sat": "m2",
+      "hsp_mat": 1800000,
+      "hsp_upah": 500000,
+      "formula": "0",
+      "coeffs": { "Multiplek 18mm": 1, "HPL/Duco": 1, "Lampu LED Strip": 1, "Stop Kontak": 2 },
+      "tags": ["interior", "furniture", "ruang_keluarga", "grade:lux", "hiburan", "optional"],
+      "desc": "Panel dinding TV dengan rak gantung (floating shelf) dan pencahayaan sembunyi (ambience light)."
+    },
+    {
+      "code": "16.3.4",
+      "name": "Dipan / Tempat Tidur Custom + Headboard (Queen 160x200)",
+      "sat": "unit",
+      "hsp_mat": 6500000,
+      "hsp_upah": 1500000,
+      "formula": "0",
+      "coeffs": { "Rangka Kayu/Plywood": 1, "Busa & Kain Fabric": 1, "Laci Bawah": 2 },
+      "tags": ["interior", "furniture", "kamar", "grade:lux", "optional"],
+      "desc": "Rangka tempat tidur custom dengan laci penyimpanan di bawah dan sandaran kepala (headboard) empuk (padded wall)."
+    }
+  ]
+}
