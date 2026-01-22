@@ -61,26 +61,18 @@ window.calculateAuto = function() {
     };
 
     // 3. PANGGIL ENGINE BARU (engine_calc.js)
-    // Engine akan mengembalikan { details, total, summary }
     const result = window.Engine.calculate(inputs, window.DATABASE);
 
     // 4. Update State Global (Smart Merging)
-    // Kita gabungkan hasil otomatis Engine + Item Manual yang user tambah sendiri
-    // Pastikan ACTIVE_ITEMS terdefinisi (jika null, buat array kosong)
     if (!window.ACTIVE_ITEMS) window.ACTIVE_ITEMS = [];
 
     const manualItems = window.ACTIVE_ITEMS.filter(item => item.isAuto === false);
-    
-    // Tandai item dari engine sebagai 'isAuto: true' agar nanti bisa dibedakan
     const autoItems = result.details.map(item => ({...item, isAuto: true}));
 
     // Gabungkan: Auto di atas, Manual di bawah
     window.ACTIVE_ITEMS = [...autoItems, ...manualItems];
     
-    // Simpan total sementara
     window.CURRENT_GRAND_TOTAL = result.total; 
-    
-    // Hitung ulang total fix (Auto + Manual) karena ada manual items yg harganya mungkin nambah
     recalcTotal();
 
     // 5. Tampilkan ke Layar (Tabel & Denah)
@@ -90,7 +82,6 @@ window.calculateAuto = function() {
     const budgetVal = document.getElementById('inp_target_budget')?.value;
     if(budgetVal) window.checkBudget(budgetVal);
     
-    // Aktifkan tombol Re-Kalkulasi
     const btnCalc = document.getElementById('btn-calc');
     if(btnCalc) btnCalc.disabled = false;
 
@@ -214,7 +205,6 @@ window.addCustomItem = function() {
     renderAndSync();
 };
 
-// Fungsi ini yang membuat tabel bisa dihapus item-nya
 window.removeItem = function(index) {
     if(!confirm("Hapus item ini?")) return;
     window.ACTIVE_ITEMS.splice(index, 1);
@@ -222,15 +212,12 @@ window.removeItem = function(index) {
     renderAndSync();
 };
 
-// Fungsi ini untuk mereset harga jika user sudah edit tapi ingin balik ke harga standar
 window.resetPrice = function(index) {
     const item = window.ACTIVE_ITEMS[index];
     const stdPrice = (item.hsp_mat || 0) + (item.hsp_upah || 0);
     item.price = stdPrice;
     item.total = item.volume * item.price;
-    // Kembalikan status auto jika item berasal dari database
     if(item.code !== 'KUSTOM') item.isAuto = true;
-    
     recalcTotal();
     renderAndSync();
 };
@@ -240,7 +227,6 @@ window.updatePrice = function(index, newPrice) {
     item.price = parseFloat(newPrice) || 0;
     item.total = item.volume * item.price;
     item.isAuto = false; 
-    
     recalcTotal();
     renderAndSync();
 };
@@ -250,7 +236,6 @@ window.updateVolume = function(index, newVol) {
     item.volume = parseFloat(newVol) || 0;
     item.total = item.volume * item.price;
     item.isAuto = false; 
-    
     recalcTotal();
     renderAndSync();
 };
@@ -313,4 +298,29 @@ window.exportToCSV = function() {
     const a = document.createElement('a');
     a.href = url; a.download = `RAB_PROYEK_${Date.now()}.csv`;
     a.click();
+};
+
+// ==========================================
+// 6. INJECTED: RENDER BUILDING DROPDOWN
+// ==========================================
+// Fungsi ini ditambahkan agar <select> Tipe Bangunan terisi dari building_types.js
+window.renderBuildingDropdown = function() {
+    const sel = document.getElementById('inp_type');
+    if(!sel) return;
+    
+    // Tunggu sampai TYPE_MAP siap
+    if(!window.TYPE_MAP || Object.keys(window.TYPE_MAP).length === 0) {
+        console.warn("TYPE_MAP belum siap, skip render dropdown.");
+        return;
+    }
+
+    sel.innerHTML = '';
+    Object.keys(window.TYPE_MAP).forEach(key => {
+        const typeData = window.TYPE_MAP[key];
+        const opt = document.createElement('option');
+        opt.value = key;
+        opt.innerText = typeData.name;
+        sel.appendChild(opt);
+    });
+    console.log("✅ Dropdown Tipe Bangunan dirender.");
 };
