@@ -1,5 +1,5 @@
 /**
- * APP MODULE 1: INITIALIZATION (V19 - ROBUST BOOT)
+ * APP MODULE 1: INITIALIZATION (V20 - WINDOW FIX)
  * Tugas: Menyiapkan Global State, Fetch Data, dan Bootstrapping.
  */
 
@@ -13,33 +13,41 @@ window.CURRENT_SEARCH_DIV = '';
 window.CURRENT_SEARCH_DIV_NAME = '';
 
 // --- BOOTSTRAP SYSTEM ---
-// Kita cek apakah dokumen sudah siap? Jika ya, langsung gas. Jika belum, tunggu.
+// Expose ke global agar bisa dipanggil oleh Loader index.html
+window.forceStart = initSystem;
+window.initSystem = initSystem;
+
+// Auto-start fallback
 if (document.readyState === "complete" || document.readyState === "interactive") {
-    // Beri jeda sedikit agar script lain benar-benar ter-parse
     setTimeout(initSystem, 500);
 } else {
     document.addEventListener("DOMContentLoaded", initSystem);
 }
 
-// Expose ke global agar bisa dipanggil manual dari Console jika macet
-window.forceStart = initSystem;
+// Flag agar tidak jalan 2x
+window.HAS_STARTED = false;
 
 async function initSystem() {
+    if(window.HAS_STARTED) return;
+    window.HAS_STARTED = true;
+
     console.log("🚀 Starting System Initialization...");
     const status = document.getElementById('system-status');
     if(status) status.innerHTML = "⏳ Menghubungkan Database...";
 
     try {
-        if (typeof GIST_URLS === 'undefined') {
-            console.warn("Config JS belum siap, mencoba tunggu...");
-            // Retry mechanism sederhana
+        // Cek config (Gunakan window.GIST_URLS)
+        const urls = window.GIST_URLS || (typeof GIST_URLS !== 'undefined' ? GIST_URLS : null);
+
+        if (!urls) {
+            console.warn("Config JS belum siap, mencoba retry dalam 1 detik...");
+            window.HAS_STARTED = false;
             setTimeout(initSystem, 1000); 
             return;
         }
 
         // Fetch Data AHSP
-        // Tambahkan timestamp agar JSON tidak di-cache browser secara agresif
-        const requests = GIST_URLS.map(url => {
+        const requests = urls.map(url => {
             const noCacheUrl = url + (url.includes('?') ? '&' : '?') + 't=' + Date.now();
             return fetch(noCacheUrl).then(r => r.json());
         });
@@ -55,29 +63,27 @@ async function initSystem() {
                 });
             }
         });
-        // Sort database by code
+        
         window.DATABASE.sort((a,b) => (a.code||"").localeCompare(b.code||"", undefined, {numeric: true}));
 
         if(status) {
             status.className = "status-ready";
-            status.style.color = "#27ae60"; // Hijau
+            status.style.color = "#27ae60"; 
             status.innerHTML = `✅ SIAP: ${window.DATABASE.length} Item Database Terhubung.`;
         }
 
         const btnCalc = document.getElementById('btn-calc');
         if(btnCalc) btnCalc.disabled = false;
 
-        // Render UI Awal
+        // Render UI
         if (typeof renderBuildingDropdown === 'function') renderBuildingDropdown();
         if (typeof loadProgress === 'function') loadProgress();
         
-        // Auto Calculate Initial State
+        // Auto Calculate
         if(window.ACTIVE_ITEMS.length === 0) {
             console.log("⚡ Auto-Generating Initial RAB...");
             if (typeof calculateAuto === 'function') {
                 calculateAuto();
-            } else {
-                console.warn("Fungsi calculateAuto tidak ditemukan di app_controller.js");
             }
         } else {
             if (typeof renderAndSync === 'function') renderAndSync();
@@ -87,9 +93,10 @@ async function initSystem() {
 
     } catch (e) {
         console.error("Init Error:", e);
+        window.HAS_STARTED = false; // Reset flag agar bisa retry
         if(status) {
             status.style.color = "red";
-            status.innerHTML = "⚠️ Gagal memuat data (Cek Koneksi/Console).";
+            status.innerHTML = "⚠️ Gagal memuat data (Cek Console).";
         }
     }
 }
