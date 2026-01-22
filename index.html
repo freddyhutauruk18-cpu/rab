@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Estimasi Konstruksi Terpadu (All-in-One)</title>
+    <title>Sistem Estimasi Konstruksi Terpadu</title>
     <style>
         :root { --primary: #1a5276; --secondary: #5d6d7e; --accent: #d35400; --bg: #f4f6f7; --text: #212f3d; --white: #ffffff; --border: #d5dbdb; --success: #27ae60; --danger: #c0392b; --warning: #f39c12; --info: #3498db; }
         body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 0; font-size: 13px; }
@@ -34,12 +34,28 @@
         td { padding: 8px 10px; border-bottom: 1px solid #f2f3f4; }
         .row-category { background: #ebf5fb; font-weight: 700; color: var(--primary); }
         .text-right { text-align: right; } .text-center { text-align: center; }
-        .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); }
-        .modal-content { background-color: #fefefe; margin: 10% auto; padding: 20px; border: 1px solid #888; width: 90%; max-width: 600px; border-radius: 8px; }
-        .close { float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+        #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .loader-spinner { width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid var(--accent); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        /* TOAST NOTIFICATION */
+        #toast-notification {
+            display: none; position: fixed; bottom: 20px; right: 20px; padding: 15px;
+            background: #2c3e50; color: white; border-radius: 5px; z-index: 9999;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); animation: slideIn 0.3s;
+        }
+        @keyframes slideIn { from { transform: translateY(100%); } to { transform: translateY(0); } }
     </style>
 </head>
 <body>
+
+    <div id="loader">
+        <div class="loader-spinner"></div>
+        <h3 style="color:#2c3e50;">Memuat Aplikasi...</h3>
+        <small id="loader-status" style="color:#7f8c8d;">Menghubungkan Database</small>
+    </div>
+
+    <div id="toast-notification"></div>
 
     <div class="sidebar no-print">
         <button onclick="showPage('home')" class="nav-btn active" id="btn-nav-home"><span>🏠</span> <span class="nav-text">Home (RAB)</span></button>
@@ -148,18 +164,25 @@
     };
     Object.assign(window.TYPE_MAP, DATA_RESIDENTIAL);
 
-    /* 4. ENGINE CALC */
+    /* 4. ENGINE CALC (FIXED toFixed ERROR) */
     const EngineCalc = {
         calculate: function(inputs, database) {
             const LB = parseFloat(inputs.LB)||0; const LT = parseFloat(inputs.LT)||0; const floors = parseFloat(inputs.floors)||1;
             const width = Math.sqrt(LB/2); const length = width*2;
             const V = { LB:LB, LT:LT, floors:floors, KLL: 2*(length+width), KM: Math.max(1,floors), L_Dinding: (2*(length+width)*3.5*floors)*0.85, Math:Math };
-            let rab=[], total=0, summary={};
+            let rab=[], total=0;
+            
             if(database) database.forEach(item => {
                 let vol = 0;
-                if(typeof item.formula === 'string') { try { vol = new Function("V","Math", "return " + item.formula)(V, Math); } catch(e){} }
-                else { vol = parseFloat(item.formula)||0; }
+                try {
+                    if(typeof item.formula === 'string') { vol = new Function("V","Math", "return " + item.formula)(V, Math); }
+                    else { vol = parseFloat(item.formula); }
+                } catch(e) { vol = 0; }
+
+                // SAFETY CHECK: Cegah error "toFixed of undefined"
+                if (typeof vol !== 'number' || isNaN(vol)) vol = 0;
                 vol = Math.max(0, parseFloat(vol.toFixed(3)));
+
                 if(vol>0) {
                     const price = (item.hsp_mat||0) + (item.hsp_upah||0);
                     const sub = vol*price; total+=sub;
@@ -309,7 +332,16 @@
     };
     window.UIRenderer = UIRenderer;
 
-    /* 8. CONTROLLER & LOGIC */
+    /* 8. CONTROLLER & LOGIC (NO ALERT - TOAST ONLY) */
+    window.showToast = function(msg, type) {
+        const t = document.getElementById('toast-notification');
+        if(!t) return;
+        t.innerText = msg;
+        t.style.display = 'block';
+        t.style.background = type==='warning'?'#e67e22':'#2c3e50';
+        setTimeout(()=> { t.style.display='none'; }, 3000);
+    };
+
     window.calculateAuto = function() {
         const lb = document.getElementById('inp_LB').value;
         const lt = document.getElementById('inp_LT').value;
@@ -321,7 +353,6 @@
         window.ACTIVE_ITEMS = [...auto, ...manual];
         
         window.UIRenderer.renderTable(window.ACTIVE_ITEMS);
-        console.log("Calculated. Items:", window.ACTIVE_ITEMS.length);
     };
 
     window.addCustomItem = function() {
@@ -333,7 +364,7 @@
             code:'MANUAL', name:name, volume:1, sat:'Ls', price:price, total:price, isAuto:false
         });
         window.UIRenderer.renderTable(window.ACTIVE_ITEMS);
-        showToast("✅ Item ditambahkan");
+        showToast("✅ Item ditambahkan", "success");
     };
 
     window.removeItem = function(idx) {
@@ -352,6 +383,7 @@
     window.optimizeLayout = function() { if(window.Engine_Architect) window.Engine_Architect.optimizeLayout(); };
 
     window.exportToCSV = function() {
+        if(window.ACTIVE_ITEMS.length === 0) { showToast("⚠️ Data Kosong!", "warning"); return; }
         let csv = "ITEM,HARGA\n";
         window.ACTIVE_ITEMS.forEach(i => csv += `"${i.name}",${i.total}\n`);
         const a = document.createElement('a');
@@ -365,17 +397,9 @@
         if(id==='denah') setTimeout(()=>window.Engine_Architect.draw(), 100);
     };
 
-    window.showToast = function(msg, type) {
-        const t = document.createElement('div');
-        t.innerText = msg;
-        t.style.cssText = `position:fixed;bottom:20px;right:20px;padding:15px;background:${type==='warning'?'#e67e22':'#2c3e50'};color:white;border-radius:5px;z-index:9999;`;
-        document.body.appendChild(t);
-        setTimeout(()=>t.remove(), 3000);
-    };
-
     /* 9. INIT SEQUENCE */
     async function initSystem() {
-        console.log("🚀 System Start...");
+        console.log("🚀 System Start (V5.1 Fixed)...");
         const status = document.getElementById('system-status');
         
         try {
@@ -396,7 +420,9 @@
             status.innerHTML = `✅ SIAP: ${window.DATABASE.length} Item Database.`;
             status.style.color = 'green';
             document.getElementById('btn-calc').disabled = false;
-            document.getElementById('loader').style.display = 'none';
+            
+            const loader = document.getElementById('loader');
+            if(loader) loader.style.display = 'none';
 
             // Init Engines
             setTimeout(() => {
