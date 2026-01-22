@@ -173,19 +173,22 @@
       const CDN_BASE = `https://cdn.jsdelivr.net/gh/${REPO_USER}/${REPO_NAME}@${BRANCH}/`;
       const RAW_BASE = `https://raw.githack.com/${REPO_USER}/${REPO_NAME}/${BRANCH}/`;
 
-      // JS LIST: Saya hapus types_housing, types_business, dll agar tidak bentrok dengan building_types.js
+      // Versi ini untuk memaksa browser mengambil file baru (Cache Busting)
+      // Ganti angka ini setiap kali Anda update kode di GitHub agar user dapat update
+      const APP_VERSION = "2.0." + Date.now(); 
+
       const jsList = [
         "config.js",
         "init.js",
         "core_models.js",
-        "building_types.js", // Sudah mencakup semua tipe
+        "building_types.js",
         "engine_calc.js",
         "engine_architect.js",
         "engine_furniture.js",
         "ui_renderer.js",
         "app_search.js",
         "app_controller.js",
-        "app_init.js" // Logic start ada di sini
+        "app_init.js"
       ];
 
       // Navigation Logic
@@ -194,7 +197,10 @@
         document.getElementById('page-' + pageId).style.display = 'block';
         document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
         document.getElementById('btn-nav-' + pageId).classList.add('active');
-        if(pageId === 'denah' && window.Engine_Architect) setTimeout(() => window.Engine_Architect.draw(), 100);
+        // Redraw canvas jika pindah ke tab denah
+        if(pageId === 'denah' && window.Engine_Architect && window.Engine_Architect.draw) {
+             setTimeout(() => window.Engine_Architect.draw(), 100);
+        }
       };
 
       async function bootLoader() {
@@ -202,37 +208,42 @@
         console.log("🚀 Loader Started...");
 
         try {
-          // Hanya Load Script, jangan jalankan logika app di sini (biar app_init.js yang kerja)
           for (const file of jsList) {
             status.innerText = "Memuat Modul: " + file;
             await new Promise((resolve, reject) => {
               const s = document.createElement("script");
-              s.src = CDN_BASE + file;
+              // Tambahkan query version agar cache lama ditembus
+              s.src = CDN_BASE + file + "?v=" + APP_VERSION;
               s.onload = resolve;
               s.onerror = () => {
-                  console.warn(`Gagal load ${file} dari CDN, mencoba Raw...`);
-                  s.src = RAW_BASE + file; 
-                  s.onload = resolve; // Tetap lanjut meski dari raw
+                  console.warn(`CDN Gagal untuk ${file}, mencoba Raw...`);
+                  s.src = RAW_BASE + file + "?v=" + APP_VERSION; 
+                  s.onload = resolve;
+                  s.onerror = resolve; // Tetap lanjut (fail safe)
               };
               document.body.appendChild(s);
             });
           }
           
-          console.log("✅ Scripts Loaded. Waiting for App Init...");
-          // Matikan loader saat App Init selesai melakukan tugasnya
-          // Kita beri sedikit delay safety
+          console.log("✅ Scripts Loaded. App should start automatically.");
+          
+          // Matikan loader setelah 2.5 detik (memberi waktu app_init bekerja)
           setTimeout(() => {
              const loader = document.getElementById('loader');
              if(loader) {
                  loader.style.opacity = '0';
                  setTimeout(() => loader.style.display = 'none', 500);
              }
-          }, 2000); 
+          }, 2500); 
 
         } catch (e) {
           console.error(e);
-          status.innerHTML = "<span style='color:red'>Gagal: " + e.message + "</span>";
+          status.innerHTML = "<span style='color:red'>Loader Error: " + e.message + "</span>";
         }
+      }
+
+      bootLoader();
+    </script>
       }
 
       bootLoader();
