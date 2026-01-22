@@ -1,5 +1,4 @@
-/* CONFIG.JS - Database Links Configuration */
-// GUNAKAN window.GIST_URLS AGAR BISA DIBACA DI GOOGLE SITES
+/* CONFIG.JS */
 window.GIST_URLS = [
     "https://raw.githubusercontent.com/freddyhutauruk18-cpu/rab/main/AHSP-01.json",
     "https://raw.githubusercontent.com/freddyhutauruk18-cpu/rab/main/AHSP-02.json",
