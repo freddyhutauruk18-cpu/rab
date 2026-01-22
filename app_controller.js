@@ -1,6 +1,6 @@
 /**
- * APP CONTROLLER - INTEGRATED (V18 FINAL)
- * Tugas: Pusat Logika Bisnis, Kalkulasi Otomatis, Manajemen Denah, dan CRUD Item.
+ * APP CONTROLLER - INTEGRATED (V18.1 FIXED)
+ * Fix: Menghapus alert/confirm (Sandbox Friendly) & Safety Check Canvas
  */
 
 // ==========================================
@@ -11,20 +11,29 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Init Engine Architect pada Canvas jika tersedia
     if(window.Engine_Architect) {
+        // Kita beri waktu agar DOM benar-benar siap
         setTimeout(() => {
-            window.Engine_Architect.init('canvas2d');
-            
-            // Init juga Furniture Engine
             const canvas = document.getElementById('canvas2d');
-            if(window.FurnitureEngine && canvas) {
-                window.FurnitureEngine.init('canvas2d');
+            if(canvas) {
+                window.Engine_Architect.init('canvas2d');
+                
+                // Init juga Furniture Engine
+                if(window.FurnitureEngine) {
+                    window.FurnitureEngine.init('canvas2d');
+                }
+            } else {
+                console.warn("⚠️ Canvas element 'canvas2d' not found yet.");
             }
-        }, 500);
+        }, 1000); // Delay sedikit lebih lama (1s) agar aman di iframe
     }
     
-    // Load data tersimpan jika ada (Fitur Save/Load)
-    if(typeof window.loadProgress === 'function') {
-        window.loadProgress();
+    // Load data tersimpan (Cek support localStorage dulu)
+    try {
+        if(typeof window.loadProgress === 'function') {
+            window.loadProgress();
+        }
+    } catch(e) {
+        console.warn("LocalStorage access blocked by Sandbox (Expected).");
     }
 });
 
@@ -34,7 +43,6 @@ document.addEventListener("DOMContentLoaded", function() {
 // ==========================================
 
 window.calculateAuto = function() {
-    // 1. Ambil Elemen Input
     const typeEl = document.getElementById("inp_type");
     const lbEl = document.getElementById("inp_LB");
     const ltEl = document.getElementById("inp_LT");
@@ -43,13 +51,11 @@ window.calculateAuto = function() {
     const gradeEl = document.getElementById("inp_structure_grade");
     const execEl = document.getElementById("inp_execution_mode");
 
-    // Validasi sederhana
     if (!window.Engine || !window.DATABASE) {
-        console.warn("⚠️ Menunggu Engine atau Database...");
+        showToast("⚠️ Menunggu Database...", "warning");
         return;
     }
 
-    // 2. Siapkan Data Input untuk Engine
     const inputs = {
         LB: lbEl ? lbEl.value : 0,
         LT: ltEl ? ltEl.value : 0,
@@ -60,48 +66,36 @@ window.calculateAuto = function() {
         execution: execEl ? execEl.value : 'kontraktor_pro'
     };
 
-    // 3. PANGGIL ENGINE BARU (engine_calc.js)
     const result = window.Engine.calculate(inputs, window.DATABASE);
 
-    // 4. Update State Global (Smart Merging)
     if (!window.ACTIVE_ITEMS) window.ACTIVE_ITEMS = [];
 
     const manualItems = window.ACTIVE_ITEMS.filter(item => item.isAuto === false);
     const autoItems = result.details.map(item => ({...item, isAuto: true}));
 
-    // Gabungkan: Auto di atas, Manual di bawah
     window.ACTIVE_ITEMS = [...autoItems, ...manualItems];
-    
     window.CURRENT_GRAND_TOTAL = result.total; 
     recalcTotal();
 
-    // 5. Tampilkan ke Layar (Tabel & Denah)
     renderAndSync();
     
-    // Cek Budget
     const budgetVal = document.getElementById('inp_target_budget')?.value;
     if(budgetVal) window.checkBudget(budgetVal);
     
     const btnCalc = document.getElementById('btn-calc');
     if(btnCalc) btnCalc.disabled = false;
 
-    console.log(`✅ Kalkulasi Selesai. Total Item: ${window.ACTIVE_ITEMS.length}`);
+    console.log(`✅ Kalkulasi Selesai. Total: ${window.ACTIVE_ITEMS.length}`);
 };
 
-/**
- * Fungsi Sinkronisasi (Jembatan ke UI Renderer & Canvas)
- */
 window.renderAndSync = function() {
-    // 1. Render Tabel RAB (UI HTML)
     if (window.UIRenderer && window.UIRenderer.renderTable) {
         window.UIRenderer.renderTable(window.ACTIVE_ITEMS);
         window.UIRenderer.updateSummary(window.CURRENT_GRAND_TOTAL);
-    } else {
-        console.error("❌ UI Renderer belum dimuat!");
     }
-
-    // 2. Render Denah 2D (CANVAS ARCHITECT)
-    if (window.Engine_Architect && typeof window.Engine_Architect.draw === 'function') {
+    
+    // Safety check sebelum draw
+    if (window.Engine_Architect && window.Engine_Architect.canvas) {
         window.Engine_Architect.draw(); 
     }
 };
@@ -117,59 +111,66 @@ window.addRoomManual = function() {
     const h = parseFloat(document.getElementById('inp_room_h').value) || 3;
     const type = document.getElementById('inp_room_type').value;
 
-    if(!name) { alert("Nama ruangan wajib diisi!"); return; }
+    // GANTI ALERT DENGAN TOAST
+    if(!name) { 
+        showToast("⚠️ Nama ruangan wajib diisi!", "warning"); 
+        return; 
+    }
 
-    if(window.Engine_Architect) {
+    if(window.Engine_Architect && window.Engine_Architect.canvas) {
         window.Engine_Architect.addRoom(name, w, h, type);
         checkAreaLimit();
     } else {
-        alert("Engine Architect belum siap.");
+        showToast("⚠️ Denah belum siap. Coba refresh.", "warning");
     }
 };
 
 window.optimizeLayout = function() {
-    if(confirm("Layout akan disusun ulang secara otomatis. Lanjutkan?")) {
-        if(window.Engine_Architect) {
-            window.Engine_Architect.optimizeLayout();
-        }
+    // HAPUS CONFIRM() KARENA DIBLOKIR SANDBOX
+    // Langsung eksekusi saja, atau buat modal custom nanti.
+    if(window.Engine_Architect && window.Engine_Architect.canvas) {
+        window.Engine_Architect.optimizeLayout();
+        showToast("✅ Layout disusun ulang otomatis.");
     }
 };
 
 function checkAreaLimit() {
-    if(!window.Engine_Architect) return;
+    if(!window.Engine_Architect || !window.Engine_Architect.rooms) return;
 
     const lt = parseFloat(document.getElementById('inp_LT').value) || 0;
     let totalRoomArea = 0;
     
-    if (window.Engine_Architect.rooms) {
-        window.Engine_Architect.rooms.forEach(r => {
-            totalRoomArea += (r.w * r.h);
-        });
-    }
+    window.Engine_Architect.rooms.forEach(r => {
+        totalRoomArea += (r.w * r.h);
+    });
 
     if (lt > 0 && totalRoomArea > (lt * 0.8)) {
-        showToast(`⚠️ Lahan hampir penuh (${totalRoomArea.toFixed(1)}m² terpakai). Pertimbangkan bangun 2 Lantai!`, "warning");
+        showToast(`⚠️ Lahan hampir penuh (${totalRoomArea.toFixed(1)}m²).`, "warning");
     }
 }
 
-function showToast(msg, type='info') {
+// FUNGSI TOAST (PENGGANTI ALERT)
+window.showToast = function(msg, type='info') {
     let toast = document.getElementById('toast-notification');
     if(!toast) {
         toast = document.createElement('div');
         toast.id = 'toast-notification';
-        toast.style.cssText = "position:fixed; bottom:20px; right:20px; padding:15px; background:#333; color:white; border-radius:5px; z-index:9999; animation: slideIn 0.5s; box-shadow: 0 4px 6px rgba(0,0,0,0.1);";
+        toast.style.cssText = "position:fixed; bottom:20px; right:20px; padding:15px; background:#333; color:white; border-radius:5px; z-index:9999; animation: slideIn 0.5s; box-shadow: 0 4px 6px rgba(0,0,0,0.1); font-family:sans-serif; font-size:14px;";
         document.body.appendChild(toast);
     }
     
     toast.style.background = type === 'warning' ? '#e67e22' : '#2c3e50';
     toast.innerHTML = msg;
     toast.style.display = 'block';
-    setTimeout(() => { toast.style.display = 'none'; }, 5000);
+    
+    // Clear previous timeout if any
+    if(window.toastTimeout) clearTimeout(window.toastTimeout);
+    window.toastTimeout = setTimeout(() => { toast.style.display = 'none'; }, 4000);
 }
 
 
 // ==========================================
-// 4. CRUD OPERATIONS (ITEM MANUAL RAB)
+// 4. CRUD OPERATIONS
 // ==========================================
 
 window.addCustomItem = function() {
@@ -178,14 +179,17 @@ window.addCustomItem = function() {
     const sat = document.getElementById('cust_sat').value || 'ls';
     const price = parseFloat(document.getElementById('cust_price').value) || 0;
 
-    if (!name || price === 0) return alert("Mohon isi nama dan harga!");
+    if (!name || price === 0) {
+        showToast("⚠️ Isi nama dan harga!", "warning");
+        return;
+    }
 
     if (!window.ACTIVE_ITEMS) window.ACTIVE_ITEMS = [];
 
     window.ACTIVE_ITEMS.push({
         id: 'CUST-' + Date.now(),
         code: 'KUSTOM',
-        divId: 'DIV-99', // Penting untuk UI Renderer grouping
+        divId: 'DIV-99', 
         divName: 'Pekerjaan Tambahan',
         category: 'Pekerjaan Tambahan',
         name: name,
@@ -203,13 +207,16 @@ window.addCustomItem = function() {
     
     recalcTotal();
     renderAndSync();
+    showToast("✅ Item ditambahkan.");
 };
 
 window.removeItem = function(index) {
-    if(!confirm("Hapus item ini?")) return;
+    // Skip confirm, langsung hapus (Sandbox friendly)
+    // Bisa tambahkan "Undo" nanti jika mau canggih
     window.ACTIVE_ITEMS.splice(index, 1);
     recalcTotal();
     renderAndSync();
+    showToast("🗑️ Item dihapus.");
 };
 
 window.resetPrice = function(index) {
@@ -260,33 +267,44 @@ window.checkBudget = function(budget) {
 };
 
 window.saveProgress = function() {
-    const data = { 
-        LB: document.getElementById('inp_LB')?.value, 
-        LT: document.getElementById('inp_LT')?.value,
-        type: document.getElementById('inp_type')?.value, 
-        budget: document.getElementById('inp_target_budget')?.value,
-        activeItems: window.ACTIVE_ITEMS 
-    };
-    localStorage.setItem('estimasi_v18', JSON.stringify(data));
-    alert("Data tersimpan di browser!");
+    try {
+        const data = { 
+            LB: document.getElementById('inp_LB')?.value, 
+            LT: document.getElementById('inp_LT')?.value,
+            type: document.getElementById('inp_type')?.value, 
+            budget: document.getElementById('inp_target_budget')?.value,
+            activeItems: window.ACTIVE_ITEMS 
+        };
+        localStorage.setItem('estimasi_v18', JSON.stringify(data));
+        showToast("✅ Data tersimpan di browser!");
+    } catch(e) {
+        showToast("⚠️ Gagal menyimpan (Cookies diblokir)", "warning");
+    }
 };
 
 window.loadProgress = function() {
-    const s = JSON.parse(localStorage.getItem('estimasi_v18'));
-    if(s) {
-        if(s.LB) document.getElementById('inp_LB').value = s.LB;
-        if(s.type) document.getElementById('inp_type').value = s.type;
-        if(s.budget) document.getElementById('inp_target_budget').value = s.budget;
-        if(s.activeItems) {
-            window.ACTIVE_ITEMS = s.activeItems;
-            recalcTotal();
-            renderAndSync();
+    try {
+        const s = JSON.parse(localStorage.getItem('estimasi_v18'));
+        if(s) {
+            if(s.LB) document.getElementById('inp_LB').value = s.LB;
+            if(s.type) document.getElementById('inp_type').value = s.type;
+            if(s.budget) document.getElementById('inp_target_budget').value = s.budget;
+            if(s.activeItems) {
+                window.ACTIVE_ITEMS = s.activeItems;
+                recalcTotal();
+                renderAndSync();
+            }
         }
+    } catch(e) {
+        console.log("No saved data found or storage blocked.");
     }
 };
 
 window.exportToCSV = function() {
-    if(!window.ACTIVE_ITEMS || window.ACTIVE_ITEMS.length === 0) return alert("Data Kosong!");
+    if(!window.ACTIVE_ITEMS || window.ACTIVE_ITEMS.length === 0) {
+        showToast("⚠️ Data Kosong!", "warning");
+        return;
+    }
     let csv = "KODE,URAIAN,VOL,SAT,HARGA,TOTAL\n";
     window.ACTIVE_ITEMS.forEach(i => {
         const cleanName = (i.name || "").replace(/,/g, " ");
@@ -300,17 +318,12 @@ window.exportToCSV = function() {
     a.click();
 };
 
-// ==========================================
-// 6. INJECTED: RENDER BUILDING DROPDOWN
-// ==========================================
-// Fungsi ini ditambahkan agar <select> Tipe Bangunan terisi dari building_types.js
+// RENDER BUILDING DROPDOWN
 window.renderBuildingDropdown = function() {
     const sel = document.getElementById('inp_type');
     if(!sel) return;
     
-    // Tunggu sampai TYPE_MAP siap
     if(!window.TYPE_MAP || Object.keys(window.TYPE_MAP).length === 0) {
-        console.warn("TYPE_MAP belum siap, skip render dropdown.");
         return;
     }
 
@@ -322,5 +335,4 @@ window.renderBuildingDropdown = function() {
         opt.innerText = typeData.name;
         sel.appendChild(opt);
     });
-    console.log("✅ Dropdown Tipe Bangunan dirender.");
 };
