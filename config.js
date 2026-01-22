@@ -1,7 +1,7 @@
 /* CONFIG.JS - Database Links Configuration */
 
-// Menggunakan Link Raw Repository (Lebih stabil & satu paket dengan project)
-const GIST_URLS = [
+// PENTING: Gunakan "window." agar variabel ini bisa dibaca di Google Sites/Iframe
+window.GIST_URLS = [
     "https://raw.githubusercontent.com/freddyhutauruk18-cpu/rab/main/AHSP-01.json", // DIV 01
     "https://raw.githubusercontent.com/freddyhutauruk18-cpu/rab/main/AHSP-02.json", // DIV 02
     "https://raw.githubusercontent.com/freddyhutauruk18-cpu/rab/main/AHSP-03.json", // DIV 03
