@@ -104,7 +104,9 @@ const EngineArchitect = {
 
     // --- RENDERING LOOP ---
     draw: function() {
-        if(!this.ctx) return;
+        // SAFETY CHECK: Pastikan context dan canvas ada sebelum menggambar
+        if(!this.ctx || !this.canvas) return;
+        
         const w = this.canvas.width;
         const h = this.canvas.height;
         
@@ -272,6 +274,9 @@ const EngineArchitect = {
 
     // --- INTERAKSI MOUSE UTAMA (ROOM DRAG) ---
     getMousePos: function(e) {
+        // SAFETY CHECK: Cegah error jika canvas belum siap
+        if (!this.canvas) return { x: 0, y: 0 };
+
         const rect = this.canvas.getBoundingClientRect();
         const centerX = this.canvas.width/2 + this.offsetX;
         const centerY = this.canvas.height/2 + this.offsetY;
@@ -325,5 +330,6 @@ const EngineArchitect = {
 
 // Expose ke Global
 window.Engine_Architect = EngineArchitect;
+
 
 console.log("✅ Engine Architect (Visualization) Loaded.");
