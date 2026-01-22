@@ -1,51 +1,46 @@
-/* Update di ui_renderer.js */
-
 /**
- * UI RENDERER MODULE (V17.5 - INTEGRATED FINAL WITH FURNITURE)
- * Bertanggung jawab atas visualisasi Denah 2D, Interaksi Furniture, Tabel RAB, BOM, dan Summary.
+ * UI RENDERER MODULE (V18.5 - FINAL FIXED & COMPLETE)
+ * Fitur: Denah, BOM, Tabel RAB, Budgeting.
+ * Fix: Anti-Crash pada Sorting & DOM Elements.
  */
 
-// --- MODUL VISUALISASI DENAH ---
+// --- 1. MODUL VISUALISASI DENAH ---
 const UI_Denah = {
     renderPage: function() {
         const container = document.getElementById('page-denah');
         if (!container) return;
         
-        // 1. Render Struktur HTML Utama Denah
         container.innerHTML = `
             <div class="app-header">
                 <h1>📐 Visualisasi Denah 2D</h1>
                 <p>Estimasi Tata Ruang Otomatis (Skala 1:100)</p>
             </div>
-            
             <div class="canvas-container">
                 <canvas id="canvas2d" width="800" height="500"></canvas>
             </div>
-
-            <div class="denah-stats" id="denah-info-panel">
-                </div>
+            <div class="denah-stats" id="denah-info-panel"></div>
+            <p class="canvas-instruction" style="text-align:center; color:#7f8c8d; margin-top:5px;">
+                Klik dan tahan ruangan/furnitur untuk memindahkannya
+            </p>
         `;
-        
-        // 2. Tambahkan Instruksi di bawah canvas (Sesuai Request)
-        container.innerHTML += `<p class="canvas-instruction">Klik dan tahan furnitur untuk memindahkannya</p>`;
 
-        // 3. Inisialisasi Interaksi Furniture pada Canvas
         const canvas = document.getElementById('canvas2d');
+        // Init Furniture Engine
         if (window.FurnitureEngine && canvas) {
-            FurnitureEngine.init(canvas);
+            FurnitureEngine.init('canvas2d');
         }
-        
-        // 4. Memicu fungsi gambar dari engine arsitek jika tersedia
+        // Init Architect Engine
         if (window.Engine_Architect && typeof Engine_Architect.draw === 'function') {
-            Engine_Architect.draw();
+            Engine_Architect.init('canvas2d');
+            setTimeout(() => Engine_Architect.draw(), 100);
         }
     }
 };
 
-// --- MODUL UTAMA UI RENDERER ---
+// --- 2. MODUL UTAMA UI RENDERER ---
 window.UIRenderer = {
     
-    // --- UTAMA: RENDER TABEL RAB ---
+    // --- RENDER TABEL RAB (DENGAN FIX CRASH) ---
     renderTable: function(items) {
         const tbody = document.getElementById('table-body');
         if (!tbody) return;
@@ -54,99 +49,102 @@ window.UIRenderer = {
         let grandTotalBase = 0;
         const groups = {};
 
-        // 1. Grouping Data berdasarkan Divisi Pekerjaan
+        // A. Grouping Data
         items.forEach((item, index) => {
-            if (!groups[item.divId]) {
-                groups[item.divId] = { name: item.divName, items: [], subtotal: 0 };
+            const divId = item.divId || 'DIV-99';
+            const divName = item.divName || 'Lain-lain';
+
+            if (!groups[divId]) {
+                groups[divId] = { name: divName, items: [], subtotal: 0 };
             }
-            // Simpan index asli untuk referensi update data global
-            groups[item.divId].items.push({ ...item, originalIndex: index });
+            groups[divId].items.push({ ...item, originalIndex: index });
             
             const itemTotal = (item.volume * item.price) || 0;
-            groups[item.divId].subtotal += itemTotal;
+            groups[divId].subtotal += itemTotal;
             grandTotalBase += itemTotal;
         });
 
+        // B. Sorting Keys (INI BAGIAN YANG DIPERBAIKI)
         const sortedDivs = Object.keys(groups).sort((a, b) => {
-            const numA = parseInt(a.replace(/[^\d]/g, '')) || 999;
-            const numB = parseInt(b.replace(/[^\d]/g, '')) || 999;
+            // Kita ubah jadi string dulu agar aman dari error 'replace of undefined'
+            const strA = String(a || '');
+            const strB = String(b || '');
+            const numA = parseInt(strA.replace(/[^\d]/g, '')) || 999;
+            const numB = parseInt(strB.replace(/[^\d]/g, '')) || 999;
             return numA - numB;
         });
 
-        // 2. Render HTML baris per baris
+        // C. Render HTML
         sortedDivs.forEach(divId => {
             const group = groups[divId];
             const isCollapsed = window.COLLAPSED_DIVS && window.COLLAPSED_DIVS[divId] === true;
-            const safeGroupName = group.name.replace(/'/g, "\\'");
+            // Escape quote untuk keamanan onclick
+            const safeDivId = String(divId).replace(/'/g, "\\'"); 
+            const safeGroupName = String(group.name).replace(/'/g, "\\'");
 
-            // Header Kelompok Pekerjaan (Kategori)
+            // Header Kategori
             const trHeader = document.createElement('tr');
             trHeader.className = 'row-category';
-            trHeader.style.backgroundColor = '#f8f9fa';
-            trHeader.style.borderBottom = '2px solid #e9ecef';
-
+            trHeader.style.backgroundColor = '#d6eaf8';
+            trHeader.style.color = '#154360';
+            
             trHeader.innerHTML = `
-                <td colspan="2" class="no-print" style="text-align:center; cursor:pointer;" onclick="UIRenderer.toggleCollapse('${divId}')">
+                <td colspan="2" class="no-print" style="text-align:center; cursor:pointer;" onclick="toggleCollapse('${safeDivId}')">
                     ${isCollapsed ? '➕' : '➖'}
                 </td>
-                <td colspan="4" onclick="UIRenderer.toggleCollapse('${divId}')" style="cursor:pointer; padding:12px 15px; color:#2c3e50; font-weight:600;">
+                <td colspan="4" onclick="toggleCollapse('${safeDivId}')" style="cursor:pointer; font-weight:bold; padding:10px;">
                     <div style="display:flex; justify-content:space-between; align-items:center;">
                         <span>${group.name.toUpperCase()}</span>
-                        <button onclick="event.stopPropagation(); openSearchModal('${divId}', '${safeGroupName}')" 
-                                class="btn-mini-add" title="Tambah Item">+ Tambah Item</button>
+                        <button onclick="event.stopPropagation(); openSearchModal('${safeDivId}', '${safeGroupName}')" 
+                                style="background:#2ecc71; border:none; color:white; border-radius:3px; font-size:10px; padding:2px 8px; cursor:pointer;">
+                                + Item
+                        </button>
                     </div>
                 </td>
-                <td style="padding:12px 15px; font-weight:bold; text-align:right; color:#2c3e50;">
+                <td style="padding:10px; font-weight:bold; text-align:right;">
                     ${this.formatRupiah(group.subtotal)}
                 </td>
             `;
             tbody.appendChild(trHeader);
 
-            // Detail Item dalam Kategori (jika tidak sedang di-collapse)
+            // Detail Item (Jika tidak di-collapse)
             if (!isCollapsed) {
                 group.items.forEach((item) => {
                     const tr = document.createElement('tr');
                     const idx = item.originalIndex;
-                    tr.className = 'row-item';
                     
                     const standardPrice = (item.hsp_mat || 0) + (item.hsp_upah || 0);
                     const isPriceChanged = Math.abs(item.price - standardPrice) > 100;
                     
-                    const priceStyle = isPriceChanged 
-                        ? 'border:1px solid #f39c12; background:#fef9e7;' 
-                        : 'border:1px solid transparent;';
-                    
+                    // Tombol Reset Harga (muncul jika harga beda dari standar)
                     const resetBtn = isPriceChanged 
-                        ? `<button onclick="resetPrice(${idx})" class="btn-reset-price" title="Reset Harga">↺</button>` 
+                        ? `<button onclick="resetPrice(${idx})" style="border:none; background:none; cursor:pointer; font-size:14px;" title="Reset ke Standar">↺</button>` 
                         : '';
 
                     tr.innerHTML = `
-                        <td class="no-print text-center" style="width:40px;">
-                            <button onclick="removeItem(${idx})" class="btn-delete" title="Hapus">×</button>
+                        <td class="text-center">
+                            <button onclick="removeItem(${idx})" style="color:red; border:none; background:none; cursor:pointer; font-weight:bold;">×</button>
                         </td>
-                        <td class="font-mono text-center" style="font-size:0.75rem; color:#95a5a6; width:80px;">${item.code||'-'}</td>
-                        <td style="font-weight:500;">
-                            <div style="display:flex; align-items:center; justify-content:space-between;">
-                                <span>${item.name}</span>
-                                <button onclick="openChangeItemModal(${idx})" class="btn-edit-icon">✎</button>
-                            </div>
+                        <td class="text-center" style="font-size:0.85em; color:#666;">${item.code||'-'}</td>
+                        <td>
+                            ${item.name}
+                            ${isPriceChanged ? '<span style="color:#e67e22; font-size:0.8em;">(Custom)</span>' : ''}
                         </td>
                         <td class="text-center">
-                            <input type="number" class="inp-table inp-vol" value="${parseFloat(item.volume).toFixed(2)}" 
-                                   onchange="updateVolume(${idx}, this.value)" step="0.01">
+                            <input type="number" value="${parseFloat(item.volume).toFixed(2)}" 
+                                   onchange="updateVolume(${idx}, this.value)" 
+                                   style="width:60px; text-align:center; border:1px solid #ddd;">
                         </td>
-                        <td class="text-center" style="font-size:0.85rem; color:#666;">${item.sat}</td>
-                        <td class="text-right" style="position:relative;">
-                            <div style="display:flex; align-items:center; justify-content:flex-end; gap:5px;">
+                        <td class="text-center">${item.sat}</td>
+                        <td class="text-right">
+                            <div style="display:flex; justify-content:flex-end; align-items:center;">
                                 ${resetBtn}
-                                <input type="number" class="inp-table inp-price" style="${priceStyle}"
-                                       value="${Math.round(item.price)}" onchange="updatePrice(${idx}, this.value)">
+                                <input type="number" value="${Math.round(item.price)}" 
+                                       onchange="updatePrice(${idx}, this.value)"
+                                       style="width:90px; text-align:right; border:1px solid #ddd; ${isPriceChanged ? 'background:#fef9e7; border-color:#f1c40f;' : ''}">
                             </div>
-                            ${isPriceChanged ? `<div style="font-size:0.6rem; color:#7f8c8d;">Std: ${this.formatRupiah(standardPrice)}</div>` : ''}
                         </td>
-                        <td class="text-right" style="font-weight:600; color:#2c3e50;" id="total-${idx}">
-                            ${this.formatRupiah(item.total)}
-                        </td>
+                        <td class="text-right" style="font-weight:600;">${this.formatRupiah(item.total)}</td>
                     `;
                     tbody.appendChild(tr);
                 });
@@ -154,10 +152,10 @@ window.UIRenderer = {
         });
 
         this.updateSummary(grandTotalBase);
-        this.renderBOM(items);
+        this.renderBOM(items); // Panggil fungsi BOM agar material muncul
     },
 
-    // --- HITUNG SUBTOTAL, JASA (MARGIn) & TOTAL AKHIR ---
+    // --- UPDATE SUMMARY (SUBTOTAL, JASA, GRAND TOTAL) ---
     updateSummary: function(subtotal) {
         const modeInput = document.getElementById('inp_execution_mode');
         const mode = modeInput ? modeInput.value : 'kontraktor_pro';
@@ -169,6 +167,7 @@ window.UIRenderer = {
         const jasaValue = subtotal * jasaPerc;
         const grandTotal = subtotal + jasaValue;
 
+        // Helper aman untuk set text
         const setText = (id, val) => {
             const el = document.getElementById(id);
             if (el) el.innerText = this.formatRupiah(val);
@@ -183,7 +182,7 @@ window.UIRenderer = {
         this.checkBudgetUI(grandTotal);
     },
 
-    // --- RENDER BILL OF MATERIALS (ESTIMASI KEBUTUHAN MATERIAL) ---
+    // --- RENDER BOM (KEBUTUHAN MATERIAL) ---
     renderBOM: function(items) {
         const BOM = {}; 
         items.forEach(item => {
@@ -195,10 +194,11 @@ window.UIRenderer = {
             }
         });
 
+        // Cari atau Buat Container BOM
         let container = document.getElementById('bom-section');
         if (!container) {
             const resArea = document.getElementById('result-area');
-            if(resArea) {
+            if(resArea && resArea.parentNode) {
                 container = document.createElement('div');
                 container.id = 'bom-section';
                 resArea.parentNode.insertBefore(container, resArea.nextSibling);
@@ -206,16 +206,16 @@ window.UIRenderer = {
         }
 
         if (Object.keys(BOM).length === 0) {
-            container.innerHTML = `<div style="padding:15px; color:#999; text-align:center;"><i>Belum ada data material.</i></div>`;
+            container.innerHTML = `<div style="padding:15px; color:#999; text-align:center;"><i>Belum ada estimasi material.</i></div>`;
             return;
         }
 
         let html = `
-            <div class="bom-card" style="margin-top:20px; padding:15px; background:white; border:1px solid #eee; border-radius:8px;">
-                <h3 style="margin-top:0; color:#2c3e50; border-bottom:2px solid #3498db; padding-bottom:10px;">📦 Estimasi Kebutuhan Material</h3>
+            <div style="margin-top:20px; padding:15px; background:white; border:1px solid #eee; border-radius:8px;">
+                <h3 style="margin-top:0; color:#2c3e50; border-bottom:2px solid #3498db; padding-bottom:10px;">📦 Estimasi Material</h3>
                 <table style="width:100%; border-collapse:collapse; margin-top:10px;">
                     <thead style="background:#f8f9fa;">
-                        <tr><th style="padding:8px; text-align:left;">Material</th><th style="text-align:right; padding-right:15px;">Jumlah</th><th>Unit</th></tr>
+                        <tr><th style="padding:8px; text-align:left;">Material</th><th style="text-align:right;">Jumlah</th><th style="text-align:center;">Unit</th></tr>
                     </thead><tbody>`;
         
         Object.keys(BOM).sort().forEach(name => {
@@ -223,10 +223,10 @@ window.UIRenderer = {
             if (d.total > 0.01) {
                 html += `<tr>
                     <td style="padding:6px; border-bottom:1px solid #f1f1f1;">${name}</td>
-                    <td style="text-align:right; padding:6px; padding-right:15px; font-weight:bold; color:#2980b9;">
+                    <td style="text-align:right; padding:6px; font-weight:bold; color:#2980b9;">
                         ${(Math.ceil(d.total*100)/100).toLocaleString('id-ID')}
                     </td>
-                    <td style="padding:6px; color:#666; font-size:0.8rem;">${d.unit}</td>
+                    <td style="padding:6px; text-align:center; color:#666;">${d.unit}</td>
                 </tr>`;
             }
         });
@@ -234,21 +234,24 @@ window.UIRenderer = {
         container.innerHTML = html;
     },
 
-    // --- UI MONITORING BUDGET ---
+    // --- CHECK BUDGET WARNING ---
     checkBudgetUI: function(grandTotal) {
         const targetEl = document.getElementById('inp_target_budget');
         const alertBox = document.getElementById('budget-alert-box');
+        
         if (targetEl && alertBox) {
             const target = parseFloat(targetEl.value) || 0;
             if (target > 0) {
                 const diff = target - grandTotal;
                 alertBox.style.display = 'block';
                 if (diff >= 0) {
-                    alertBox.className = 'budget-alert budget-safe';
-                    alertBox.innerHTML = `✅ <b>AMAN:</b> Sisa anggaran Rp ${this.formatRupiah(diff)}`;
+                    alertBox.className = 'budget-alert';
+                    alertBox.innerHTML = `✅ <b>AMAN:</b> Sisa Rp ${this.formatRupiah(diff)}`;
+                    alertBox.style.background = "#d4edda"; alertBox.style.color = "#155724";
                 } else {
-                    alertBox.className = 'budget-alert budget-danger';
-                    alertBox.innerHTML = `⚠️ <b>OVER BUDGET:</b> Kekurangan dana Rp ${this.formatRupiah(Math.abs(diff))}`;
+                    alertBox.className = 'budget-alert';
+                    alertBox.innerHTML = `⚠️ <b>DEFISIT:</b> Kurang Rp ${this.formatRupiah(Math.abs(diff))}`;
+                    alertBox.style.background = "#f8d7da"; alertBox.style.color = "#721c24";
                 }
             } else {
                 alertBox.style.display = 'none';
@@ -272,14 +275,14 @@ window.UIRenderer = {
         if (n.includes('pasir') || n.includes('batu')) return 'm³';
         if (n.includes('bata') || n.includes('hebel')) return 'Bh';
         if (n.includes('cat')) return 'Kg/Pail';
-        if (n.includes('besi') || n.includes('baja')) return 'Batang';
+        if (n.includes('besi')) return 'Batang';
         if (n.includes('keramik') || n.includes('granit')) return 'Dus';
-        return 'Satuan';
+        return 'Sat';
     }
 };
 
-// --- GLOBAL ALIASES ---
+// --- GLOBAL ALIASES (Penting agar bisa dipanggil dari HTML) ---
 window.renderTable = function() { window.UIRenderer.renderTable(window.ACTIVE_ITEMS); };
 window.toggleCollapse = function(id) { window.UIRenderer.toggleCollapse(id); };
 
-console.log("✅ UI Renderer V17 Loaded.");
+console.log("✅ UI Renderer V18.5 (Fixed & Complete) Loaded.");
