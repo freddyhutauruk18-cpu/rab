@@ -1,110 +1,67 @@
-/**
- * APP MODULE 1: INITIALIZATION (V21 - MERGED CONFIG)
- * Solusi Akhir: Config digabung ke sini untuk mencegah loading error.
- */
+/* APP INIT V6.0 - Robust Startup */
 
-// --- GLOBAL STATE DEFINITION ---
-window.V = {}; 
-window.DATABASE = []; 
-window.ACTIVE_ITEMS = []; 
-window.CURRENT_GRAND_TOTAL = 0; 
-window.ITEM_INDEX_TO_CHANGE = null; 
-window.CURRENT_SEARCH_DIV = ''; 
-window.CURRENT_SEARCH_DIV_NAME = '';
+// Init state jika belum ada (safety)
+if(typeof window.DATABASE === 'undefined') window.DATABASE = [];
+if(typeof window.ACTIVE_ITEMS === 'undefined') window.ACTIVE_ITEMS = [];
 
-// --- HARDCODED CONFIG (Agar pasti terbaca) ---
-const INTERNAL_GIST_URLS = [
-    "https://raw.githubusercontent.com/freddyhutauruk18-cpu/rab/main/AHSP-01.json",
-    "https://raw.githubusercontent.com/freddyhutauruk18-cpu/rab/main/AHSP-02.json",
-    "https://raw.githubusercontent.com/freddyhutauruk18-cpu/rab/main/AHSP-03.json",
-    "https://raw.githubusercontent.com/freddyhutauruk18-cpu/rab/main/AHSP-04.json",
-    "https://raw.githubusercontent.com/freddyhutauruk18-cpu/rab/main/AHSP-05.json",
-    "https://raw.githubusercontent.com/freddyhutauruk18-cpu/rab/main/AHSP-06.json",
-    "https://raw.githubusercontent.com/freddyhutauruk18-cpu/rab/main/AHSP-07.json",
-    "https://raw.githubusercontent.com/freddyhutauruk18-cpu/rab/main/AHSP-08.json",
-    "https://raw.githubusercontent.com/freddyhutauruk18-cpu/rab/main/AHSP-09.json",
-    "https://raw.githubusercontent.com/freddyhutauruk18-cpu/rab/main/AHSP-10.json",
-    "https://raw.githubusercontent.com/freddyhutauruk18-cpu/rab/main/AHSP-11.json",
-    "https://raw.githubusercontent.com/freddyhutauruk18-cpu/rab/main/AHSP-12.json",
-    "https://raw.githubusercontent.com/freddyhutauruk18-cpu/rab/main/AHSP-13.json",
-    "https://raw.githubusercontent.com/freddyhutauruk18-cpu/rab/main/AHSP-14.json",
-    "https://raw.githubusercontent.com/freddyhutauruk18-cpu/rab/main/AHSP-15.json",
-    "https://raw.githubusercontent.com/freddyhutauruk18-cpu/rab/main/AHSP-16.json",
-    "https://raw.githubusercontent.com/freddyhutauruk18-cpu/rab/main/AHSP-17.json",
-    "https://raw.githubusercontent.com/freddyhutauruk18-cpu/rab/main/AHSP-18.json",
-    "https://raw.githubusercontent.com/freddyhutauruk18-cpu/rab/main/AHSP-19.json",
-    "https://raw.githubusercontent.com/freddyhutauruk18-cpu/rab/main/AHSP-20.json"
-];
-
-// --- BOOTSTRAP SYSTEM ---
-window.forceStart = initSystem;
-window.initSystem = initSystem;
-
-if (document.readyState === "complete" || document.readyState === "interactive") {
-    setTimeout(initSystem, 500);
-} else {
-    document.addEventListener("DOMContentLoaded", initSystem);
-}
-
-window.HAS_STARTED = false;
-
-async function initSystem() {
-    if(window.HAS_STARTED) return;
-    window.HAS_STARTED = true;
-
-    console.log("🚀 Starting System Initialization (Merged Config)...");
+async function startSystem() {
+    console.log("🚀 Starting System...");
     const status = document.getElementById('system-status');
-    if(status) status.innerHTML = "⏳ Menghubungkan Database...";
+    
+    // 1. Cek Config
+    if(!window.GIST_URLS) {
+        console.warn("Config belum siap, retry...");
+        setTimeout(startSystem, 1000); 
+        return;
+    }
 
+    // 2. Fetch Data
+    if(status) status.innerHTML = "⏳ Mengunduh Database...";
     try {
-        // Fetch Data AHSP
-        const requests = INTERNAL_GIST_URLS.map(url => {
-            const noCacheUrl = url + (url.includes('?') ? '&' : '?') + 't=' + Date.now();
-            return fetch(noCacheUrl).then(r => r.json());
-        });
-
-        const responses = await Promise.all(requests);
+        const reqs = window.GIST_URLS.map(u => fetch(u + '?t=' + Date.now()).then(r => r.json()));
+        const res = await Promise.all(reqs);
+        
         window.DATABASE = [];
-        responses.forEach(divisi => {
-            const d = Array.isArray(divisi) ? divisi[0] : divisi;
-            if (d && d.items) {
-                d.items.forEach(item => {
-                    window.DATABASE.push({ ...item, divId: d.id, divName: d.category });
-                });
-            }
+        res.forEach(d => {
+            if(d.items) d.items.forEach(i => window.DATABASE.push({...i, divId:d.id, divName:d.category}));
+            else if(Array.isArray(d)) d[0].items.forEach(i => window.DATABASE.push({...i, divId:d[0].id, divName:d[0].category}));
         });
-        window.DATABASE.sort((a,b) => (a.code||"").localeCompare(b.code||"", undefined, {numeric: true}));
-
+        
         if(status) {
-            status.className = "status-ready";
-            status.style.color = "#27ae60"; 
             status.innerHTML = `✅ SIAP: ${window.DATABASE.length} Item Database.`;
+            status.style.color = 'green';
         }
 
+        // 3. Render Dropdown Tipe Bangunan
+        if(typeof window.renderBuildingDropdown === 'function') window.renderBuildingDropdown();
+        else if(window.TYPE_MAP) {
+            // Fallback manual render jika controller belum siap
+            const sel = document.getElementById('inp_type');
+            if(sel) {
+                sel.innerHTML = '';
+                Object.keys(window.TYPE_MAP).forEach(k => {
+                    const opt = document.createElement('option');
+                    opt.value=k; opt.innerText=window.TYPE_MAP[k].name;
+                    sel.appendChild(opt);
+                });
+            }
+        }
+
+        // 4. Auto Calculate & Init Engines
         const btnCalc = document.getElementById('btn-calc');
         if(btnCalc) btnCalc.disabled = false;
 
-        if (typeof renderBuildingDropdown === 'function') renderBuildingDropdown();
-        if (typeof loadProgress === 'function') loadProgress();
-        
-        // Auto Calculate
-        if(window.ACTIVE_ITEMS.length === 0) {
-            console.log("⚡ Auto-Generating Initial RAB...");
-            if (typeof calculateAuto === 'function') {
-                calculateAuto();
-            }
-        } else {
-            if (typeof renderAndSync === 'function') renderAndSync();
-        }
+        setTimeout(() => {
+            if(window.Engine_Architect) window.Engine_Architect.init('canvas2d');
+            if(window.FurnitureEngine) window.FurnitureEngine.init('canvas2d');
+            if(typeof window.calculateAuto === 'function') window.calculateAuto();
+        }, 500);
 
-        console.log("🏁 System Init Complete.");
-
-    } catch (e) {
-        console.error("Init Error:", e);
-        window.HAS_STARTED = false;
-        if(status) {
-            status.style.color = "red";
-            status.innerHTML = "⚠️ Gagal Koneksi (Cek Console)";
-        }
+    } catch(e) {
+        console.error(e);
+        if(status) { status.innerHTML = "⚠️ Gagal Init Data."; status.style.color='red'; }
     }
 }
+
+// Jalankan saat file ini selesai dimuat
+startSystem();
